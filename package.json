@@ -1,0 +1,31 @@
+{
+  "name": "edusight",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "nodemon index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/thienng268/EduSight.git"
+  },
+  "keywords": [
+    "nodejs",
+    "edusight",
+    "teacher"
+  ],
+  "author": "thienng268",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/thienng268/EduSight/issues"
+  },
+  "homepage": "https://github.com/thienng268/EduSight#readme",
+  "dependencies": {
+    "express": "^4.18.2"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.1"
+  }
+}

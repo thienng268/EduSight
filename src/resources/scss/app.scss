@@ -1,5 +1,35 @@
 @import 'variables';
-
-h1 {
-    color: $red-color
+@import 'typography';
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: $font-default;
+    text-decoration: none;
+    list-style: none;
 }
+body{
+    
+}
+.wrapper {
+    display: flex;
+    flex-direction: row;
+    min-height: 100vh;
+
+}
+.main_content {
+    width: calc(100% - 232px);
+    margin-left: 232px;
+    padding: 12px; 
+    flex-grow: 1;
+}
+.side_bar{
+    z-index: 100;
+    background-color: black;
+}
+
+
+
+
+
+

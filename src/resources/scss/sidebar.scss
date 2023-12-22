@@ -5,26 +5,18 @@
     padding: 0;
     box-sizing: border-box;
     font-family: $font-default;
-    color: $dark-teal;
+    text-decoration: none;
 }
-body{
-    width: fit-content;
-    padding: 8px;
-}
-.color-1{
-    color: $light-turtoise;
-}
-.color-2{
-    color: $dark-teal;
-}
-.logo{
-    width: 180px;
-    height: 80px;
 
+body .side-bar{
+    padding: 8px;
+    background-color: $whisper;
+    width: 232px;
+    height: 100vh;
 }
-.logo img {
-    width: 100%;
-    height: auto; 
+.logo img{
+    width: 200px;
+    height: 100px;
 }
 
 .side-bar {
@@ -40,37 +32,118 @@ body{
     
 }
 
-.side-bar-content {
+.sidebar-content {
     height: 100%;
-    overflow-y: auto; /* Scrollable content */
-    //padding-right: 30px; /* Adjust as needed, to push scrollbar out of view */
-    box-sizing: content-box; /* Keeps padding from adding to width */
-    margin-right: -30px; /* Negative margin to hide scrollbar */
+    overflow-y: auto; 
+    box-sizing: content-box; 
+    margin-right: -30px; 
+    margin-left: 4px;
+
 }
-.sub-title{
-    @include font-tiny-bold;
+.sidebar-content p{
+    color: #757575;
+    @include font-small-medium;
+    margin-top: 8px;
+    margin-bottom: 0;
 }
-.side-bar ul li {
+
+.sidebar-content ul li {
     position: relative;
     list-style-type: none;
     height: 48px;
     width: 200px;
     line-height: 48px;
+
 }
-.side-bar ul li a{
-    color: $white;
-    display: flex;
-    align-items: center;
-    text-decoration: none;
-    border-radius: 8px;
-    padding: 0px 12px;
+  
+.sidebar-content ul li a {
+display: flex;
+align-items: center;
+text-decoration: none;
+border-radius: 8px;
+padding: 0px 12px;
+color: $dark-teal;
 }
-.side-bar ul li a:hover{
-background-color: #f2f2f2;
+.sidebar-content img{
+    width: 20px;
+    height: 20px;
 }
-.nav-item{
-    margin-left: 8px;
+
+.sidebar-content ul li a:hover {
+background-color: $dusky-blue;
+color: white;
+
 }
-.active-link{
-    background-color: $light-turtoise;
+
+.dashboard-link img {
+    content: url('/img/sidebar/Dashboard.svg'); /* Normal */
+}
+.dashboard-link:hover img, .dashboard-link.active img {
+    content: url('/img/sidebar/Dashboard-act.svg'); /* Hover & Active */
+}
+
+.teacher-link img {
+    content: url('/img/sidebar/Teacher.svg'); /* Normal */
+}
+.teacher-link:hover img, .teacher-link.active img {
+    content: url('/img/sidebar/Teacher-act.svg'); /* Hover & Active */
+}
+
+.class-link img{
+    content: url("/img/sidebar/Class.png");
+}
+.class-link:hover img, .class-link.active:hover img{
+    content: url("/img/sidebar/Class-act.png");
+}
+
+.schedules-link img{
+    content: url("/img/sidebar/Schedule.svg");
+}
+.schedules-link:hover img, .schedules-link.active:hover img{
+    content: url("/img/sidebar/Schedule-act.svg");
+}
+
+.gradebook-link img{
+    content: url("/img/sidebar/Grade.png");
+}
+.gradebook-link:hover img, .gradebook-link.active:hover img{
+    content: url("/img/sidebar/Grade-act.png");
+}
+
+.award-link img{
+    content: url("/img/sidebar/Award.png");
+}
+.award-link:hover img, .award-link.active:hover img{
+    content: url("/img/sidebar/Award-act.png");
+}
+
+.event-link img{
+    content: url("/img/sidebar/Event.png");
+}
+.event-link:hover img, .event-link.active:hover img{
+    content: url("/img/sidebar/Event-act.png");
+}
+
+.account-link img{
+    content: url("/img/sidebar/Account.png");
+}
+.account-link:hover img, .account-link.active:hover img{
+    content: url("/img/sidebar/Account-act.png");
+}
+
+.settings-link img{
+    content: url("/img/sidebar/Settings.svg");
+}
+.settings-link:hover img, .settings-link.active:hover img{
+    content: url("/img/sidebar/Settings-act.svg");
+}
+.help-link img{
+    content: url("/img/sidebar/Help-circle.svg");
+}
+.help-link:hover img, .help-link.active:hover img{
+    content: url("/img/sidebar/Help-circle-act.svg");
+}
+
+.logout-link img{
+    content: url("/img/sidebar/Log-out.svg");
 }

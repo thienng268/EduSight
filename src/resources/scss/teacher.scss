@@ -1,0 +1,168 @@
+@import 'variables';
+@import 'typography';
+
+
+.top h1{
+  @include font-h3-extra-bold;
+}
+.top h3{
+    @include font-h6-extra-bold;
+}
+.top p{
+    @include font-small-normal;
+}
+.user-avatar {
+    width: 52px;
+    height: 52px; 
+    border-radius: 50%; 
+  }
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 4px 8px;
+  width: 568px; 
+  height: 48px;
+  margin-left: auto;
+  
+}
+
+
+.input-wrapper {
+  position: relative;
+  flex-grow: 1;
+  margin-right: 20px; /* Space between input and avatar */
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px; 
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px; /* Adjust as needed */
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #F4F7FE; 
+  border-radius: 20px; 
+  padding: 5px 8px 5px 40px; 
+}
+
+
+
+.search-input::placeholder { color: #ccc; }
+.search-input:focus {
+  background-color: #F4F7FE; 
+}
+
+.add{
+    background-color: $dusky-blue;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 2px solid $dusky-blue;
+    @include font-medium-semi-bold;
+  }
+  .add:hover{
+    background-color: transparent;
+    color: $dusky-blue;
+  }
+  .add img{
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+    content: url("/img/add (1).png");
+  }
+  .add:hover img{
+    content: url("/img/add (1)-act.png");
+  }
+
+table{
+    width: 940px;
+    height: 60px;
+    border-spacing: 0;
+    overflow: hidden;
+    border-radius: 8px;
+  }
+  th{
+    background-color: $dusky-blue;
+    color: white;
+  }
+  td,th{
+    padding: 8px 8px;
+  
+  }
+  
+  tr:nth-child(odd){
+    background-color: white;
+  }
+  tr:hover{
+    background-color: $soft-coral;
+    border-radius: 20px;
+  }
+  button {
+    padding: 2px 12px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    @include font-regular-normal;
+    transition: background-color 0.3s ease;
+    border-radius: 100px;
+    margin-right: 4px;
+  }
+  
+  
+  .view {
+    background-color: $dusky-blue; 
+    color: $dark-teal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .view:hover {
+    background-color: #24323A; 
+  }
+  
+  .view img {
+    margin-left: 5px;
+  }
+  .table-control {
+    bottom: 0;
+    padding: 10px;
+    border-radius: 4px;
+    @include font-tiny-normal;
+  }
+  
+  
+  .rows-per-page label {
+    margin-right: 5px;
+  }
+  
+  .rows-per-page select {
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    padding: 1px 8px;
+    outline: none;
+  }
+  
+  .pagination-info {
+    margin: 0 15px; /* Gives some space between elements */
+  }
+  
+  .pagination-controls button {
+    background-color: transparent;
+    border-radius: 4px;
+    padding: 5px 10px;
+    margin: 0 5px;
+    cursor: pointer;
+  }
+  
+  .pagination-controls button:hover {
+    background-color: #f2f2f2; /* A light hover effect */
+  }

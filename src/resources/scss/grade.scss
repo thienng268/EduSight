@@ -1,0 +1,108 @@
+@import 'variables';
+@import 'typography';
+
+
+.top h1{
+  @include font-h3-extra-bold;
+}
+.top h3{
+    @include font-h6-extra-bold;
+}
+.top p{
+    @include font-small-normal;
+}
+.user-avatar {
+    width: 52px;
+    height: 52px; 
+    border-radius: 50%; 
+  }
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 4px 8px;
+  width: 568px; 
+  height: 48px;
+  margin-left: auto;
+  
+}
+
+
+.input-wrapper {
+  position: relative;
+  flex-grow: 1;
+  margin-right: 20px; /* Space between input and avatar */
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px; 
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px; /* Adjust as needed */
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #F4F7FE; 
+  border-radius: 20px; 
+  padding: 5px 8px 5px 40px; 
+}
+
+
+
+.search-input::placeholder { color: #ccc; }
+.search-input:focus {
+  background-color: #F4F7FE; 
+}
+
+.table thead {
+    background: none;  /* Removes any default background */
+    color: inherit;    /* Sets the text color to the inherited value */
+}
+.table {
+    width: 100%;
+    border-collapse: separate;
+    border: 2px solid black;
+    border-spacing: 0;
+}
+
+.table thead th {
+    position: sticky;
+    top: 0;
+    background-color: white;
+    z-index: 10;
+    border: 1px solid black;
+}
+.table tbody tr:first-child th {
+    position: sticky;
+    top: 60px; /* This should be the combined height of your thead rows */
+    background-color: white;
+    z-index: 5; /* Lower than thead z-index to ensure it scrolls under thead */
+}
+.table thead tr:first-child th {
+    top: 0;
+}
+
+.table thead tr:nth-child(2) th {
+    top: 49px; /* Adjust this value based on the actual height of your first header row */
+}
+
+.table thead tr:nth-child(3) th {
+    top: 99px; /* Adjust this value based on the combined height of the first two header rows */
+}
+
+
+
+
+
+.teacher-header {
+    width: 200px;
+    min-width: 200px;
+    max-width: 200px;
+}
+
+

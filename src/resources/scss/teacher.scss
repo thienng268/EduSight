@@ -64,12 +64,12 @@
     color: white;
     padding: 8px 16px;
     border-radius: 100px;
+    border: 2px solid $dusky-blue;
     @include font-medium-semi-bold;
   }
   .add:hover{
     background-color: transparent;
     color: $dusky-blue;
-    border: 2px solid $dusky-blue;
   }
   .add img{
     width: 24px;

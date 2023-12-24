@@ -1,0 +1,112 @@
+@import 'variables';
+@import 'typography';
+
+.top h1{
+    @include font-h3-extra-bold;
+  }
+  .top h3{
+      @include font-h6-extra-bold;
+  }
+  .top p{
+      @include font-small-normal;
+  }
+  .user-avatar {
+      width: 52px;
+      height: 52px; 
+      border-radius: 50%; 
+    }
+  .search-container {
+    display: flex;
+    align-items: center;
+    background-color: white;
+    border-radius: 20px;
+    padding: 4px 8px;
+    width: 568px; 
+    height: 48px;
+    margin-left: auto;
+    
+  }
+  
+  
+  .input-wrapper {
+    position: relative;
+    flex-grow: 1;
+    margin-right: 20px; /* Space between input and avatar */
+  }
+  
+  .search-icon {
+    position: absolute;
+    left: 10px; 
+    top: 50%;
+    transform: translateY(-50%);
+    height: 20px; /* Adjust as needed */
+  }
+  
+  .search-input {
+    width: 100%;
+    border: none;
+    outline: none;
+    background-color: #F4F7FE; 
+    border-radius: 20px; 
+    padding: 5px 8px 5px 40px; 
+  }
+  
+  
+  
+  .search-input::placeholder { color: #ccc; }
+  .search-input:focus {
+    background-color: #F4F7FE; 
+  }
+  
+.uploadFile{
+    border: 2px dotted $dusky-blue;
+    width: 448px;
+    height: 312px;
+    padding: 12px 40px;
+    border-radius: 10px;
+  }
+  .uploadFile img{
+    width: 48px;
+    height: 48px;
+  }
+  .uploadFile p{
+    @include font-regular-normal;
+  }
+  .uploadFile h6{
+    @include font-medium-semi-bold;
+    margin-top: 24px;
+  }
+  .chooseFile{
+    background-color: $dusky-blue;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 100px;
+    cursor: pointer;
+  }
+  .chooseFile:hover{
+    background-color: transparent;
+    color: $dusky-blue;
+    border: 2px solid $dusky-blue;
+  }
+  .edit{
+    background-color: $dusky-blue;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 2px solid $dusky-blue;
+
+  }
+  .edit:hover{
+    background-color: transparent;
+    color: $dusky-blue;
+    border: 2px solid $dusky-blue;
+  }
+  .edit img{
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+    content: url("/img/edit.png");
+  }
+  .edit:hover img{
+    content: url("/img/edit-act.png");
+  }

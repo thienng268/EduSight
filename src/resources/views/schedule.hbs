@@ -1,35 +1,44 @@
-<form action="/upload-subjects" method="post" enctype="multipart/form-data">
-  <label for="subjectsFile">List of Subjects, Classes, and Teachers</label>
-  <input type="file" id="subjectsFile" name="subjectsFile" accept=".xlsx" required>
-  <button type="submit">Select file</button>
-</form>
-
-<form action="/upload-assignments" method="post" enctype="multipart/form-data">
-  <label for="assignmentsFile">Teaching Assignments</label>
-  <input type="file" id="assignmentsFile" name="assignmentsFile" accept=".xlsx" required>
-  <button type="submit">Select file</button>
-</form>
-
-<button id="automationCreateButton">Automation Create</button>
-
-<!-- Possibly some JavaScript to handle the Automation Create button click event -->
-<script>
-  document.getElementById('automationCreateButton').addEventListener('click', function() {
-    // Call the appropriate route for automation creation
-    fetch('/create-automation', { method: 'POST' })
-      .then(response => {
-        if (response.ok) {
-          return response.json();
-        }
-        throw new Error('Network response was not ok.');
-      })
-      .then(data => {
-        console.log(data.message);
-        // Handle success
-      })
-      .catch(error => {
-        console.error('There has been a problem with your fetch operation:', error);
-        // Handle failure
-      });
-  });
-</script>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/schedule.css">
+</head>
+<body>
+  <div class="container">
+        <div class="top d-flex justify-content-between">
+            <h1>Schedules</h1>
+            <div class="search-container">
+                <div class="input-wrapper">
+                    <img src="/img/search 1.svg" alt="Search" class="search-icon"> 
+                    <input type="text" class="search-input" placeholder="Search">
+                </div>
+                
+            </div>
+            <img src="/img/Ava.svg" alt="User" class="user-avatar"> 
+            <div class="user">
+                <h3>Veronica</h3>
+                <p>Admin</p>
+            </div>
+        </div>
+                <div class="uploadFile mt-3 d-flex flex-column align-items-center justify-content-center mx-auto">
+                    <img src="/img/document 1.svg" alt="Document Upload">
+                    <h6>List of Subjects, Classes, and Teachers</h6>
+                    <p>Select a file or drag and drop here</p>
+                    <p style="opacity: 50%;"></p>
+                    <form class="d-flex flex-column align-items-center" >
+                        <input type="file" class="form-control-file" id="exampleFormControlFile1" style="display: none;">
+                        <span id="file-chosen" class="mb-1" style="opacity: 50%;">Excel file size no more than 50MB</span>
+                        <label for="exampleFormControlFile1" class="chooseFile">Choose File</label>
+                        
+                    </form>
+                </div>
+                <div class="d-flex ">
+                    <button class="edit mx-auto mt-3">
+                        <img src="/img/edit.png" alt="Edit">
+                        Button nè!
+                    </button>
+                </div>
+  </div>
+</body>

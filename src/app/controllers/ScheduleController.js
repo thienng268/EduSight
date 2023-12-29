@@ -1,13 +1,17 @@
+const xlsx = require('xlsx');
 class ScheduleController
 {
+
     // [GET] /
     index(req, res) {
-        res.render('schedule');
+        res.render('scheduleview');
+
     }
-    
-    // [GET] /schedule/:slug
-    show(req, res) {
-        res.send('New Detail');
+    hamxuly(req,res){
+        //sadsdasdasda
+    }
+    view(req, res) {
+        res.render('schedulecreate');
     }
 }
 

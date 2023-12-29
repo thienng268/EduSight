@@ -10,7 +10,7 @@ class SiteController
         res.render('search');
     }
     theliem(req, res) {
-        res.render('schedule'); // Explicitly set the layout
+        res.render('gradebook'); 
         //res.render('noti/failure', { layout: 'pop_up' });
     }
 }

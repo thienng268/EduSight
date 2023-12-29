@@ -1,0 +1,254 @@
+@import 'variables';
+@import 'typography';
+
+
+.top h1{
+  @include font-h3-extra-bold;
+}
+.top h3{
+    @include font-h6-extra-bold;
+}
+.top p{
+    @include font-small-normal;
+}
+.user-avatar {
+    width: 52px;
+    height: 52px; 
+    border-radius: 50%; 
+  }
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 4px 8px;
+  width: 568px; 
+  height: 48px;
+  margin-left: auto;
+  
+}
+
+
+.input-wrapper {
+  position: relative;
+  flex-grow: 1;
+  margin-right: 20px; /* Space between input and avatar */
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px; 
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px; /* Adjust as needed */
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #F4F7FE; 
+  border-radius: 20px; 
+  padding: 5px 8px 5px 40px; 
+}
+
+
+
+.search-input::placeholder { color: #ccc; }
+.search-input:focus {
+  background-color: #F4F7FE; 
+}
+
+
+.tab-box {
+    width: 100%;
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-bottom: 2px solid rgba(229, 229, 229);
+    font-size: 18px;
+}
+.tab-box .tab-btn {
+  @include font-h5-extra-bold;
+  font-weight: 600;
+  color: #919191;
+  background: none;
+  border: none;
+  padding: 18px;
+  cursor: pointer;
+}
+.tab-box .tab-btn.active{
+  color: $soft-coral;
+  position: relative; /* Add this to ensure the z-index applies correctly */
+}
+.content-box{
+  padding-top: 20px;
+}
+.content-box .content{
+  display: none;
+}
+.line {
+  position: absolute;
+  left: 0; 
+  width: 60px; 
+  height: 5px;
+  background-color: $soft-coral; /* Your active color */
+  border-radius: 10px;
+  transition: all 0.3s ease-in-out;
+}
+table{
+  width: 940px;
+  height: 60px;
+  border-spacing: 0;
+  overflow: hidden;
+  border-radius: 8px;
+}
+th{
+  background-color: $dusky-blue;
+  color: white;
+}
+td,th{
+  padding: 8px 8px;
+
+}
+
+tr:nth-child(odd){
+  background-color: white;
+}
+tr:hover{
+  background-color: $soft-coral;
+  border-radius: 20px;
+}
+button {
+  padding: 2px 12px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  @include font-regular-normal;
+  transition: background-color 0.3s ease;
+  border-radius: 100px;
+  margin-right: 4px;
+}
+
+
+.view {
+  background-color: $dusky-blue; 
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
+
+.view:hover {
+  background-color: #24323A; 
+}
+
+.view img {
+  margin-left: 5px;
+}
+
+.delete {
+    background-color: #E30E0E; 
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .delete:hover {
+    background-color: #8B0000; 
+  }
+  
+  .delete img {
+    margin-left: 5px;
+  }
+.table-control {
+  bottom: 0;
+  padding: 10px;
+  border-radius: 4px;
+  @include font-tiny-normal;
+}
+
+
+.rows-per-page label {
+  margin-right: 5px;
+}
+
+.rows-per-page select {
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  padding: 1px 8px;
+  outline: none;
+}
+
+.pagination-info {
+  margin: 0 15px; /* Gives some space between elements */
+}
+
+.pagination-controls button {
+  background-color: transparent;
+  border-radius: 4px;
+  padding: 5px 10px;
+  margin: 0 5px;
+  cursor: pointer;
+}
+
+.pagination-controls button:hover {
+  background-color: #f2f2f2; /* A light hover effect */
+}
+
+.form-row label{
+  @include font-large-semi-bold;
+}
+
+.uploadFile{
+  border: 2px dotted $dusky-blue;
+  width: 448px;
+  height: 312px;
+  padding: 12px 40px;
+  border-radius: 10px;
+}
+.uploadFile img{
+  width: 48px;
+  height: 48px;
+}
+.uploadFile p{
+  @include font-regular-normal;
+}
+.uploadFile h6{
+  @include font-medium-semi-bold;
+  margin-top: 24px;
+}
+.chooseFile{
+  background-color: $dusky-blue;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 100px;
+  cursor: pointer;
+}
+.chooseFile:hover{
+  background-color: transparent;
+  color: $dusky-blue;
+  border: 2px solid $dusky-blue;
+}
+.content .edit{
+  background-color: $dusky-blue;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 100px;
+}
+.content .edit:hover{
+  background-color: transparent;
+  color: $dusky-blue;
+  border: 2px solid $dusky-blue;
+}
+.edit img{
+  width: 24px;
+  height: 24px;
+  margin-right: 4px;
+  content: url("/img/edit.png");
+}
+.edit:hover img{
+  content: url("/img/edit-act.png");
+}

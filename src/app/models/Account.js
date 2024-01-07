@@ -2,10 +2,12 @@ const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 
 const Account = new Schema({
-    AccKey: String,
+
     Username: String,
     Password: String,
     Role: String,
+    managerID: { type: mongoose.Schema.Types.ObjectId, ref: 'Manager' },
+    teacherID: { type: mongoose.Schema.Types.ObjectId, ref: 'Teacher' },
 });
 
-module.exports = mongoose.model('Account', Account);
+module.exports = mongoose.model('Account', Account,'accounts');

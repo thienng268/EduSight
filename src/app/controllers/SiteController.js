@@ -37,7 +37,7 @@ class SiteController
         res.render('search');
     }
     theliem(req, res) {
-        res.render('gradebook'); 
+        res.render('account_list'); 
         //res.render('noti/failure', { layout: 'pop_up' });
     }
 }

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/schedulecreate.css">
+</head>
+<body>
+  <div class="container">
+        <div class="top d-flex justify-content-between">
+            <h1>Schedules</h1>
+            <div class="search-container">
+                <div class="input-wrapper">
+                    <img src="/img/search 1.svg" alt="Search" class="search-icon"> 
+                    <input type="text" class="search-input" placeholder="Search">
+                </div>
+                
+            </div>
+            <img src="/img/Ava.svg" alt="User" class="user-avatar"> 
+            <div class="user">
+                <h3>Veronica</h3>
+                <p>Admin</p>
+            </div>
+        </div>
+        <div class="uploadFile mt-3 d-flex flex-column align-items-center justify-content-center mx-auto">
+                <img src="/img/document 1.svg" alt="Document Upload">
+                <h6>List of Subjects, Classes, and Teachers</h6>
+                <p>Select a file or drag and drop here</p>
+                <p style="opacity: 50%;"></p>
+                <form id="uploadForm" class="d-flex flex-column align-items-center" action="/schedule/process" method="post" enctype="multipart/form-data">
+                    <input type="file" name="file" accept=".xls,.xlsx" class="form-control-file" id="exampleFormControlFile1" style="display: none;">
+                    <span id="file-chosen" class="mb-1" style="opacity: 50%;">Excel file size no more than 50MB</span>
+                    <label for="exampleFormControlFile1" class="chooseFile">Choose File</label>
+                    <button type="submit" class="edit" id="viewScheduleButton">Xem TKB!</button>
+                </form>
+        </div>
+        <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var fileInput = document.getElementById('exampleFormControlFile1');
+            var fileChosen = document.getElementById('file-chosen');
+            var uploadForm = document.getElementById('uploadForm');
+            fileInput.addEventListener('change', function() {
+                var fileName = fileInput.files[0] ? fileInput.files[0].name : "No file chosen";
+                fileChosen.textContent = 'Đã chọn file: ' + fileName;
+            });
+            uploadForm.addEventListener('submit', function(e) {
+                if (!fileInput.value) {
+                    e.preventDefault();
+                    alert('Chưa có file nào được chọn để upload!');
+                }
+            });
+        });
+        </script>     
+  </div>
+</body>

@@ -1,4 +1,6 @@
 const express = require('express')
+const session = require('express-session');
+const hbs = require('hbs');
 const morgan = require('morgan')
 const handlebars = require('express-handlebars').engine;
 const path = require('path')
@@ -55,3 +57,6 @@ route(app);
 app.listen(port, () => {
   console.log(`App listening on port ${port}`)
 })
+hbs.registerHelper('objectToArray', function(object) {
+  return Object.values(object);
+});

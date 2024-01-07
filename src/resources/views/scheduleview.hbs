@@ -1,0 +1,133 @@
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/scheduleview.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top d-flex justify-content-between">
+            <h1>Gradebook</h1>
+            <div class="search-container">
+                <div class="input-wrapper">
+                    <img src="/img/search 1.svg" alt="Search" class="search-icon"> 
+                    <input type="text" class="search-input" placeholder="Search">
+                </div>
+            </div>
+            <img src="/img/Ava.svg" alt="User" class="user-avatar"> 
+            <div class="user">
+                <h3>Veronica</h3>
+                <p>Admin</p>
+            </div>
+        </div>
+        <div class="scroll-area mt-3">
+            <div class="schedule">
+                <table class="table" id="scheduleTable">
+                
+                    <thead>
+                        <tr>
+                        <th rowspan="3" class="teacher-header">Giáo viên</th>
+                        <th colspan="10">Thứ 2</th>
+                        <th colspan="10">Thứ 3</th>
+                        <th colspan="10">Thứ 4</th>
+                        <th colspan="10">Thứ 5</th>
+                        <th colspan="10">Thứ 6</th>
+                        <th colspan="10">Thứ 7</th>
+                        <!-- Repeat the pattern for the rest of the days -->
+                        </tr>
+                        <tr>
+                        <th colspan="5">Sáng</th>
+                        <th colspan="5">Chiều</th>
+                        <th colspan="5">Sáng</th>
+                        <th colspan="5">Chiều</th>
+                        <th colspan="5">Sáng</th>
+                        <th colspan="5">Chiều</th>
+                        <th colspan="5">Sáng</th>
+                        <th colspan="5">Chiều</th>
+                        <th colspan="5">Sáng</th>
+                        <th colspan="5">Chiều</th>
+                        <th colspan="5">Sáng</th>
+                        <th colspan="5">Chiều</th>
+                        </tr>
+                        <tr>
+                        <!-- The third row headers -->
+                        <th>Tiết 1</th>
+                        <th>Tiết 2</th>
+                        <th>Tiết 3</th>
+                        <th>Tiết 4</th>
+                        <th>Tiết 5</th>
+                        <th>Tiết 1</th>
+                        <th>Tiết 2</th>
+                        <th>Tiết 3</th>
+                        <th>Tiết 4</th>
+                        <th>Tiết 5</th>
+                        <th>Tiết 1</th>
+                        <th>Tiết 2</th>
+                        <th>Tiết 3</th>
+                        <th>Tiết 4</th>
+                        <th>Tiết 5</th>
+                        <th>Tiết 1</th>
+                        <th>Tiết 2</th>
+                        <th>Tiết 3</th>
+                        <th>Tiết 4</th>
+                        <th>Tiết 5</th>
+                        <th>Tiết 1</th>
+                        <th>Tiết 2</th>
+                        <th>Tiết 3</th>
+                        <th>Tiết 4</th>
+                        <th>Tiết 5</th>
+                        <th>Tiết 1</th>
+                        <th>Tiết 2</th>
+                        <th>Tiết 3</th>
+                        <th>Tiết 4</th>
+                        <th>Tiết 5</th>
+                        <th>Tiết 1</th>
+                        <th>Tiết 2</th>
+                        <th>Tiết 3</th>
+                        <th>Tiết 4</th>
+                        <th>Tiết 5</th>
+                        <th>Tiết 1</th>
+                        <th>Tiết 2</th>
+                        <th>Tiết 3</th>
+                        <th>Tiết 4</th>
+                        <th>Tiết 5</th>
+                        <th>Tiết 1</th>
+                        <th>Tiết 2</th>
+                        <th>Tiết 3</th>
+                        <th>Tiết 4</th>
+                        <th>Tiết 5</th>
+                        <th>Tiết 1</th>
+                        <th>Tiết 2</th>
+                        <th>Tiết 3</th>
+                        <th>Tiết 4</th>
+                        <th>Tiết 5</th>
+                        <th>Tiết 1</th>
+                        <th>Tiết 2</th>
+                        <th>Tiết 3</th>
+                        <th>Tiết 4</th>
+                        <th>Tiết 5</th>
+                        <th>Tiết 1</th>
+                        <th>Tiết 2</th>
+                        <th>Tiết 3</th>
+                        <th>Tiết 4</th>
+                        <th>Tiết 5</th>
+                        <!-- Repeat the pattern for the rest of the days -->
+                        </tr>
+                    </thead>
+                    <!--START THE SCHEDULE -->
+                    <tbody class="scroll-content">
+                        {{#each scheduleData}}
+                        <tr>
+                            {{#each this}}
+                            {{!-- <td>{{this}}</td> --}}
+                            <td>{{#if this}}{{this}}{{else}}&nbsp;{{/if}}</td>
+                            {{/each}}
+                        </tr>
+                        {{/each}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</body>

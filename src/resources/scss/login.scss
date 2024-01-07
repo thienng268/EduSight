@@ -1,0 +1,82 @@
+@import 'variables';
+@import 'typography';
+.color-1{
+    color: $dark-teal;
+}
+.color-2{
+    color: $dusky-blue;
+}
+.color-3{
+    color: $soft-coral;
+}
+.login-form span{
+    @include font-h2-extra-bold;
+}
+.login-form p{
+    @include font-medium-medium;
+}
+.login-form{
+    margin-left: 100px;
+    margin-top: 30px;
+}
+.bg img{
+    width: 400px;
+    height: 432px;
+    margin: 40px;
+    justify-self: center;
+    align-self: center;
+    margin-top: 70px;
+}
+.bg{
+    background-color: $dusky-blue;
+    height: 100dvb;
+}
+.form-group button{
+    width: 100%;
+    padding: 8px 16px;
+    background-color: $soft-coral;
+    border-radius: 100px;
+    border: none;
+    @include font-large-medium;
+    color: $dark-teal;
+}
+.form-group button:hover{
+    background-color: #fefefe;
+    border: 1px solid $dark-teal;
+}
+
+.form-check-input {
+    accent-color: $soft-coral; 
+    width: 16px;
+    height: 16px;
+  }
+  
+.form-group{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+.forget-pw{
+    text-decoration: none;
+    color: black;
+    
+}
+.top h1{
+    @include font-h2-extra-bold;
+}
+.top p{
+    @include font-medium-normal;
+}
+
+.form-group label{
+    @include font-h4-extra-bold;
+    color: $dark-teal;
+}
+.form-group .form-check-label{
+    @include font-medium-medium;
+    color: $dark-teal;
+}
+
+a{
+    color: $dark-teal;
+    text-decoration: none;
+}

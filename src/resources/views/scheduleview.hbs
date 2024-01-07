@@ -23,7 +23,7 @@
         </div>
         <div class="scroll-area mt-3">
             <div class="schedule">
-                <table class="table">
+                <table class="table" id="scheduleTable">
                 
                     <thead>
                         <tr>
@@ -117,12 +117,17 @@
                     </thead>
                     <!--START THE SCHEDULE -->
                     <tbody class="scroll-content">
-                        
+                        {{#each scheduleData}}
+                        <tr>
+                            {{#each this}}
+                            {{!-- <td>{{this}}</td> --}}
+                            <td>{{#if this}}{{this}}{{else}}&nbsp;{{/if}}</td>
+                            {{/each}}
+                        </tr>
+                        {{/each}}
                     </tbody>
-               
                 </table>
             </div>
-            </div>
-
+        </div>
     </div>
 </body>

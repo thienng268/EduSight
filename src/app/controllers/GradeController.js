@@ -4,7 +4,7 @@ class GradeController
 {
     //[GET]
     index(req, res) {
-        res.render('grade');
+        res.render('grade_list');
 
     }
     

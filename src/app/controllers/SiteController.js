@@ -12,7 +12,7 @@ class SiteController
 
     async find(req, res) {
         
-        try {
+        /* try {
             const role = 'Teaching';
             const account = await Teacher.find({Status: role});
 
@@ -25,11 +25,16 @@ class SiteController
         } catch (err) {
             console.error(err); // Ghi log lỗi
             res.status(400).json({error: 'ERROR!!!'});
-        }
+        } */
+        //res.render('dashboard')
     }
     // [GET] /
-    index(req, res) {
-        res.render('home');
+    signin(req, res) {
+        res.render('login', { layout: 'non_sb' });
+    }
+
+    dashboard(req, res) {
+        res.render('dashboard');
     }
 
     // [GET] /news/:slug

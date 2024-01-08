@@ -6,7 +6,8 @@ const siteControllers = require('../app/controllers/SiteController');
 router.use('/search', siteControllers.search);
 router.use('/theliem', siteControllers.theliem);
 router.use('/find', siteControllers.find);
-router.use('/', siteControllers.index);
+router.use('/dashboard', siteControllers.dashboard);
+router.use('/', siteControllers.signin);
 
 
 module.exports = router;

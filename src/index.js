@@ -1,11 +1,17 @@
 const express = require('express')
+const session = require('express-session')
 const hbs = require('hbs');
 const morgan = require('morgan')
 const handlebars = require('express-handlebars').engine;
 const path = require('path')
 const route = require('./routes');
 const db = require('./config/db');
-const session = require('express-session');
+
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
+const cors = require('cors');
+
 const bodyParser = require('body-parser');
 var favicon = require('serve-favicon')
 const app = express()
@@ -43,6 +49,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 //Template engine
 app.engine('hbs', handlebars({extname: '.hbs',}),);

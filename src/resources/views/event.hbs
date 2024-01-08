@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/event.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top d-flex justify-content-between">
+            <h1>Event</h1>
+            <div class="search-container">
+                <div class="input-wrapper">
+                    <img src="/img/search 1.svg" alt="Search" class="search-icon"> 
+                    <input type="text" class="search-input" placeholder="Search">
+                </div>
+            </div>
+            <img src="/img/Ava.svg" alt="User" class="user-avatar"> 
+            <div class="user">
+                <h3>Veronica</h3>
+                <p>Admin</p>
+            </div>
+        </div>
+        <div class="d-flex ">
+            <button type="button" class="add d-flex align-items-center mr-auto my-3" data-toggle="modal" data-target="#exampleModal">
+                <img class="mr-2" src="/img/add (1).png" alt="Add">
+                New
+            </button>
+        </div>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6 event-list">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <div class="event-item">
+                                <a href="#">
+                                    <img src="/img/event 1.svg" alt="">
+                                    <div class="title">
+                                        <h6>Acrylic Workshop “Choi non”</h6>
+                                        <a href="#">Xem thêm</a>
+                                    </div>
+                                    <div class="time">
+                                        <span class="date">26</span>
+                                        <span class="month">MAY</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="event-item">
+                                <a href="#">
+                                    <img src="/img/event 2.svg" alt="">
+                                    <div class="title">
+                                        <h6>Acrylic Workshop “Choi non”</h6>
+                                        <a href="#">Xem thêm</a>
+                                    </div>
+                                    <div class="time">
+                                        <span class="date">26</span>
+                                        <span class="month">MAY</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    
+                </div>
+                <div class="col-md-6 event-details d-flex flex-column">
+                    <img src="/img/image 2.svg" alt="">
+                    <h5>Huong Sen Art Exhibition</h5>
+                    <div class="d-flex justify-content-between icon">
+                        <span class="d-flex justify-content-center">
+                            <img src="/img/Time.svg" alt="">
+                            7h00 25/10/2023
+
+                        </span>
+                        <span class="d-flex">
+                            <img src="/img/Pin.svg" alt="">
+                            Auditorium C
+                        </span>
+                    </div>
+                    <p>Dive deep into the mesmerizing world of watercolor paintings at the "Huong Sen" Art Exhibition. This showcase features the serene beauty of lotus flowers, representing purity and grace. Experience the harmonious blend of traditional and contemporary art styles, brought to life with delicate strokes and vibrant colors.</p>
+                </div>
+            </div>
+        </div>
+        
+    </div>
+
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title mb-3" id="exampleModalLabel">New Event</h3>
+                
+            </div>
+            <div class="modal-body">
+                <form class="infor"> 
+                    <div class="form-row"> 
+                        <div class="col form-group">
+                            <label class="add-label" for="EventName">Event Name</label>
+                            <input type="text" class="form-control" name="EventName" id="EventName">
+                        </div>  
+                        <div class="col form-group">
+                            <label class="add-label" for="Date">Date</label>
+                            <input class="form-control" type="date" id="Date" name="Date">
+                        </div>
+                        
+                    </div>
+                    <div class="form-row">
+                        <div class="col mb-3">
+                            <label class="add-label" for="EventVenue">Event Venue</label>
+                            <input type="text" class="form-control" name="EventVenue" id="EventVenue">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col mb-3">
+                            <label class="add-label" for="Description">Event Description</label>
+                            <input type="text" class="form-control" name="Description" id="Description">
+                        </div>
+                    </div>
+                </form>
+                <div class="uploadFile mt-3 d-flex flex-column align-items-center justify-content-center mx-auto">
+                    <img src="/img/document 1.svg" alt="Document Upload">
+                    <h6>Event Poster</h6>
+                    <p>Select a file or drag and drop here</p>
+                    <p style="opacity: 50%;"></p>
+                    <form id="uploadForm" class="d-flex flex-column align-items-center" action="/schedule/process" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file" accept=".png, .svg" class="form-control-file" id="exampleFormControlFile1" style="display: none;">
+                        <span id="file-chosen" class="mb-1" style="opacity: 50%;">PNG, SVG file size no more than 50MB</span>
+                        <label for="exampleFormControlFile1" class="chooseFile">Choose File</label>
+                    </form>
+        </div>
+                
+                    </div>
+                    
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+</body>
+

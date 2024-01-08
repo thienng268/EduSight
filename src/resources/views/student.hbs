@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/student.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top d-flex justify-content-between">
+            <h1>Student</h1>
+            <div class="search-container">
+                <div class="input-wrapper">
+                    <img src="/img/search 1.svg" alt="Search" class="search-icon"> 
+                    <input type="text" class="search-input" placeholder="Search">
+                </div>
+            </div>
+            <img src="/img/Ava.svg" alt="User" class="user-avatar"> 
+            <div class="user">
+                <h3>Veronica</h3>
+                <p>Admin</p>
+            </div>
+        </div>
+        <div class="d-flex ">
+            <button type="button" class="add d-flex align-items-center mr-auto my-3" data-toggle="modal" data-target="#exampleModal">
+                <img class="mr-2" src="/img/add (1).png" alt="Add">
+                New
+            </button>
+        </div>
+        <div>
+            <table id="infoTable">
+                <tr>
+                    <th>ID</th>
+                    <th>Student Name</th>
+                    <th>Date of Birth</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>HS001</td>
+                    <td>Truong Thi Tuyet Nhung</td>
+                    <td>11/03/1996</td>
+                    <td>Teaching</td>
+                    <td class="d-flex">
+                        <button class="view">View</button>
+                        <button type="button" class="edit" data-toggle="modal" data-target="#exampleModal">
+                            Edit
+                        </button>
+                    </td>
+                </tr>
+                <tr class="hidden-info" style="display: none;">
+                    <td  colspan="2">Parent Name: Truong Hoai Co</td>
+                    <td colspan="1">Phone Number: 0678904567 </td>
+                    <td colspan="2">Address: 72 Tan Lap, Di An, Binh Duong</td>
+                </tr>
+                
+            </table>
+            <div class="table-control d-inline-flex justify-content-start align-items-center">
+                <div class="rows-per-page d-inline-flex">
+                    <label for="rows" class="align-self-center">Rows per page:</label>
+                    <select id="rows" name="rows">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="pagination-info">
+                    1/1 of 1
+                </div>
+                <div class="pagination-controls">
+                    <button>&lt;</button> <!-- Previous page -->
+                    <button>&gt;</button> <!-- Next page -->
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h3 class="modal-title mb-3" id="exampleModalLabel">Edit</h3>
+                
+            </div>
+            <div class="modal-body">
+                <form class="infor"> 
+                    <div class="form-row">
+                        <div class="col mb-3">
+                            <label class="add-label" for="StudentName">Student Name</label>
+                            <input type="text" class="form-control" name="StudentName" id="StudentName">
+                        </div>
+                    </div>
+                    
+                    <div class="form-row">   
+                        <div class="col form-group">
+                            <label class="add-label" for="Date">Date of Birth</label>
+                            <input class="form-control" type="date" id="Date" name="Date">
+                        </div>
+                        <div class="col form-group">
+                            <label class="add-label" for="Subject">Status</label>
+                            <select class="custom-select form-control" id="Subject">
+                                <option selected>Studying</option>
+                                <option>Deferred</option>
+                                <option>Drop out</option>
+                                <option>Dismissed</option>
+                                <option>Graduated</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col mb-3">
+                            <label class="add-label" for="ParentName">Parent Name</label>
+                            <input type="text" class="form-control" name="ParentName" id="ParentName">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col mb-3">
+                            <label class="add-label" for="PhoneNumber">Phone Number</label>
+                            <input type="text" class="form-control" name="PhoneNumber" id="PhoneNumber">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col mb-3">
+                            <label class="add-label" for="Address">Address</label>
+                            <input type="text" class="form-control" name="Address" id="Address">
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        document.getElementById("infoTable").addEventListener("click", function(e) {
+        if (e.target && e.target.nodeName === "BUTTON" && e.target.classList.contains("view")) {
+            var nextRow = e.target.parentNode.parentNode.nextElementSibling;
+            if (nextRow && nextRow.classList.contains("hidden-info")) {
+            nextRow.style.display = nextRow.style.display === "none" ? "" : "none";
+            }
+        }
+        });
+        
+    </script>
+</body> 

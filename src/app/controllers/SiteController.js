@@ -38,7 +38,7 @@ class SiteController
     }
     theliem(req, res) {
         //res.render('teacher'); 
-        res.render('login', { layout: 'non_sb' });
+        res.render('teacher');
     }
 }
 

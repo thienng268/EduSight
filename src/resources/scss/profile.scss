@@ -1,0 +1,106 @@
+@import 'variables';
+@import 'typography';
+.color-1{
+    color: $dark-teal;
+}
+.color-2{
+    color: $dusky-blue;
+}
+.color-3{
+    color: $soft-coral;
+}
+.login-form span{
+    @include font-h2-extra-bold;
+}
+.login-form p{
+    @include font-medium-medium;
+}
+.login-form{
+    margin-left: 100px;
+}
+.login-form label{
+    @include font-h6-extra-bold;
+    color: $dark-teal;
+}
+.bg img{
+    width: 400px;
+    height: 432px;
+    margin: 40px;
+    justify-self: center;
+    align-self: center;
+    margin-top: 70px;
+}
+.bg{
+    background-color: $dusky-blue;
+    height: 100dvb;
+}
+.form-group button{
+    width: 100%;
+    padding: 8px 16px;
+    background-color: $soft-coral;
+    border-radius: 100px;
+    border: none;
+    @include font-large-medium;
+    color: $dark-teal;
+}
+.form-group button:hover{
+    background-color: #fefefe;
+    border: 1px solid $dark-teal;
+}
+
+.form-check-input {
+    accent-color: $soft-coral; 
+    width: 16px;
+    height: 16px;
+  }
+  
+.form-group{
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.top h1{
+    @include font-h2-extra-bold;
+}
+.top p{
+    @include font-medium-normal;
+}
+
+
+
+a{
+    color: $dark-teal;
+    text-decoration: none;
+}
+.chooseFile{
+    padding: 5px 10px;
+    color: white;
+    border-radius: 100px;
+    cursor: pointer;
+    border: 1px solid $dusky-blue;
+
+  }
+  .chooseFile:hover{
+    background-color: transparent;
+    color: $dusky-blue;
+    border: 1px solid $dusky-blue;
+  }
+
+
+  .uploadFile{
+    border: 2px dotted $dusky-blue;
+    width: 448px;
+    padding: 12px 40px;
+    border-radius: 10px;
+  }
+  .uploadFile img{
+    width: 48px;
+    height: 48px;
+  }
+  .uploadFile p{
+    @include font-regular-normal;
+  }
+  .uploadFile h6{
+    @include font-medium-semi-bold;
+    margin-top: 24px;
+  }

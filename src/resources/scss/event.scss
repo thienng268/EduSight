@@ -1,0 +1,106 @@
+@import 'variables';
+@import 'typography';
+
+
+.top h1{
+  @include font-h3-extra-bold;
+}
+.top h3{
+    @include font-h6-extra-bold;
+}
+.top p{
+    @include font-small-normal;
+}
+.user-avatar {
+    width: 52px;
+    height: 52px; 
+    border-radius: 50%; 
+  }
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 4px 8px;
+  width: 568px; 
+  height: 48px;
+  margin-left: auto;
+  
+}
+
+
+.input-wrapper {
+  position: relative;
+  flex-grow: 1;
+  margin-right: 20px; /* Space between input and avatar */
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px; 
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px; /* Adjust as needed */
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #F4F7FE; 
+  border-radius: 20px; 
+  padding: 5px 8px 5px 40px; 
+}
+
+
+
+.search-input::placeholder { color: #ccc; }
+.search-input:focus {
+  background-color: #F4F7FE; 
+}
+
+.add{
+    background-color: $dusky-blue;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 100px;
+    border: 2px solid $dusky-blue;
+    @include font-medium-semi-bold;
+  }
+  .add:hover{
+    background-color: transparent;
+    color: $dusky-blue;
+  }
+  .add img{
+    width: 24px;
+    height: 24px;
+    margin-right: 4px;
+    content: url("/img/add (1).png");
+  }
+  .add:hover img{
+    content: url("/img/add (1)-act.png");
+  }
+.event-details{
+    background-color: $dusky-blue;
+    border-radius: 48px;
+    width: 526px;
+    height: 80dvh;
+}
+.event-item{
+    width: 200px;
+    height: 200px;
+}
+.event-item .time{
+    z-index: 2;
+}
+.event-item img{
+    width: 200px;
+    height: 100px;
+    z-index: 1;
+}
+.event-item h6{
+    @include font-regular-extra-bold;
+}
+.event-item a{
+    @include font-tiny-medium; 
+}

@@ -6,26 +6,90 @@ const Manager = require('../models/Manager');
 const Student = require('../models/Student');
 const Subject = require('../models/Subject');
 const Teacher = require('../models/Teacher');
+const Admin = require('../models/Admin');
+
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
 
 class AuthController
 {
 
-    async find(req, res) {
-        
-        try {
-            /* const role = 'Teaching';
-            const account = await Teacher.find({Status: role});
+    async create_account(req, res) {
+      
+      try {
+        // Tạo Account mới
+        const Password= req.body.password;
+        const hashedPassword = await bcrypt.hash(Password, saltRounds);
+      
+        const checkUsername = await Account.findOne({Username: req.body.loginname});
 
-            const newAccount = await Subject.create({StartTime: '12/12/2023'});
-
-            //const role = 'jobseeker4@gmail.com';
-
-            //const checkEmail = await Account.findOne({Email: role});
-            res.json(newAccount); */
-        } catch (err) {
-            console.error(err); // Ghi log lỗi
-            res.status(400).json({error: 'ERROR!!!'});
+        if (checkUsername) {
+          // Nếu Username đã tồn tại, thông báo cho người dùng và không lưu Account mới
+          return res.send(`<script>
+            alert('Tên đăng nhập đã tồn tại');
+            window.history.back();
+          </script>`);
         }
+      
+        const newAccount = new Account({
+          Username: req.body.loginname,
+          Password: hashedPassword,
+          Role: req.body.role,
+        });
+        await newAccount.save();
+    
+        // Nếu Role là 'Teacher', tạo Teacher mới
+        if (req.body.role === 'Teacher') {
+          // Thêm logic để xử lý các trường khác của Teacher nếu cần
+          const newTeacher = new Teacher({ 
+            Name: req.body.username,
+            accountID: newAccount._id,
+            Status: 'Teaching',
+          });
+          await newTeacher.save();
+          await Account.findByIdAndUpdate(newAccount._id, { $set:
+            { teacherID: newTeacher._id,} },{ new: true, useFindAndModify: false }).exec();
+          
+          req.session.teacherID = newTeacher._id;
+          console.log(req.session.teacherID);
+        }
+
+        if (req.body.role === 'Management Staff') {
+          // Thêm logic để xử lý các trường khác của Teacher nếu cần
+          const newManager = new Manager({ 
+            Name: req.body.username,
+            accountID: newAccount._id,
+          });
+          await newManager.save();
+          await Account.findByIdAndUpdate(newAccount._id, { $set:
+            { managerID: newManager._id,} },{ new: true, useFindAndModify: false }).exec();
+          
+            req.session.managerID = newManager._id;
+            console.log(req.session.managerID);
+        }
+
+        if (req.body.role === 'Administrator') {
+          // Thêm logic để xử lý các trường khác của Teacher nếu cần
+          const newAdmin = new Admin({ 
+            Name: req.body.username,
+            accountID: newAccount._id,
+          });
+          await newAdmin.save();
+          await Account.findByIdAndUpdate(newAccount._id, { $set:
+            { adminID: newAdmin._id,} },{ new: true, useFindAndModify: false }).exec();
+
+            req.session.adminID = newAdmin._id;
+            console.log(req.session.adminID);
+        }
+    
+        // Gửi lại account mới cho client
+        //res.json(newAccount);
+        // Hoặc redirect hoặc gửi response phù hợp
+        res.redirect('/auth/account');
+      } catch (error) {
+        // Xử lý lỗi
+        res.status(500).send('An error occurred ' + error);
+      }
     }
     // [GET] /
     account(req, res) {

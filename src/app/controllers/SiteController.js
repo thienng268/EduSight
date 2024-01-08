@@ -13,15 +13,15 @@ class SiteController
     async find(req, res) {
         
         try {
-            /* const role = 'Teaching';
+            const role = 'Teaching';
             const account = await Teacher.find({Status: role});
 
-            const newAccount = await Subject.create({StartTime: '12/12/2023'});
+            const newAccount = await Account.create({Username: 'Liêm', Password: 'liem', Role: 'Teacher'});
 
             //const role = 'jobseeker4@gmail.com';
 
             //const checkEmail = await Account.findOne({Email: role});
-            res.json(newAccount); */
+            res.json(newAccount);
         } catch (err) {
             console.error(err); // Ghi log lỗi
             res.status(400).json({error: 'ERROR!!!'});

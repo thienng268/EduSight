@@ -81,41 +81,42 @@
             
         </div>
         <div class="modal-body">
-            <form class="infor"> 
+            <form action="/auth/create_account" method="post" class="infor"> 
                 <div class="form-row">
                     <div class="col mb-3">
                         <label class="add-label" for="UserName">User</label>
-                        <input type="text" class="form-control" name="UserName" id="UserName">
+                        <input type="text" class="form-control" name="username" id="UserName" required>
                     </div>
                 </div>
                 <div class="form-row">
                     <div class="col mb-3">
                         <label class="add-label" for="LoginName">Login Name</label>
-                        <input type="text" class="form-control" name="LoginName" id="LoginName">
+                        <input type="text" class="form-control" name="loginname" id="LoginName" required>
                     </div>
                 </div>
                 <div class="form-row ">    
                     <div class="col form-group">
                         <label class="add-label" for="Password">Password</label>
-                        <input class="form-control" name="Password" id="Password">
+                        <input type="password" class="form-control" name="password" id="Password" required>
                     </div>
                     <div class="col form-group">
                     <label class="add-label" for="Role">Role</label>
-                        <select class="custom-select" id="Role">
-                            <option selected>Choose...</option>
-                            <option value="1">Teacher</option>
-                            <option value="2">Management Staff</option>
-                            <option value="3">Administrator</option>
+                        <select class="custom-select" name="role" id="Role" required>
+                            <option value="" disabled selected>Choose...</option>
+                            <option value="Teacher">Teacher</option>
+                            <option value="Management Staff">Management Staff</option>
+                            <option value="Administrator">Administrator</option>
                         </select>
                     </div>
+                </div>
+                <div class="modal-footer">
+                    <input type="reset" value="Cancel" class="btn btn-secondary" data-dismiss="modal"></input>
+                    <input type="submit" value="Save changes" class="btn btn-primary"></input>
                 </div>
             </form>
             
         </div>
-        <div class="modal-footer">
-            <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-primary">Save changes</button>
-        </div>
+        
         </div>
     </div>
     </div>

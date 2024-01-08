@@ -7,6 +7,9 @@ const path = require('path')
 const route = require('./routes');
 const db = require('./config/db');
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
 const bodyParser = require('body-parser');
 var favicon = require('serve-favicon')
 const app = express()

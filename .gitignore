@@ -1,5 +1,8 @@
 .vscode
 
+
 src/public/css/
 node_modules/
 package-lock.json
+src/resources/scss/*.css.map
+src/resources/scss/*.css

@@ -7,5 +7,6 @@ router.use('/account', authControllers.account);
 router.post('/create_account', authControllers.create_account);
 router.post('/disable_account', authControllers.disable_account);
 router.post('/enable_account', authControllers.enable_account);
+router.post('/signin', authControllers.signin);
 
 module.exports = router;

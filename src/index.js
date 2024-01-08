@@ -1,5 +1,5 @@
 const express = require('express')
-const session = require('express-session');
+const session = require('express-session')
 const hbs = require('hbs');
 const morgan = require('morgan')
 const handlebars = require('express-handlebars').engine;

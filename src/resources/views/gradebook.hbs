@@ -56,9 +56,10 @@
                     </thead>
                     <!--START THE GRADEBOOK -->
                     <tbody class="scroll-content">
+                        {{#each students}}
                         <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
+                            <td>{{@index}}</td>
+                            <td class="name-cell">{{this.Name}}</td>
                             <td><input type="text" name="input1"></td>
                             <td><input type="text" name="input1"></td>
                             <td><input type="text" name="input1"></td>
@@ -70,190 +71,20 @@
                             <td><input type="text" name="input1"></td>
                             <td><input type="text" name="input1"></td>
                         </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td class="name-cell">Nguyen Thien</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                        </tr>
+                        {{/each}}
                     </tbody>
-               
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
+                            // ... mã khác của bạn ...
+
+                            // Tăng index cho mỗi hàng
+                            const indexCells = document.querySelectorAll('.scroll-content tr td:first-child');
+                            indexCells.forEach((cell, index) => {
+                                cell.textContent = index + 1; // Tăng index bắt đầu từ 1
+                            });
+                        });
+                    </script>
+
                 </table>
             </div>
         </div>

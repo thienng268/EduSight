@@ -21,80 +21,68 @@
                 <p>Admin</p>
             </div>
         </div>
-        <div class="d-flex ">
-            <button class="add d-flex align-items-center mr-auto my-3">
-                <img class="mr-2" src="/img/add (1).png" alt="Add">
-                New
-            </button>
-        </div>
+        
         <div>
-            <table>
-                    <tr>
-                        <th></th>
-                        <th>Class</th>
-                        <th>Head Teacher</th>
-                        <th>Size</th>
-                        <th>Action</th>
-                    
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Truong Thi Tuyet Nhung</td>
-                        <td>52</td>
-                        <td>
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Truong Thi Tuyet Nhung</td>
-                        <td>52</td>
-                        <td>
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Truong Thi Tuyet Nhung</td>
-                        <td>52</td>
-                        <td>
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Truong Thi Tuyet Nhung</td>
-                        <td>52</td>
-                        <td>
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    
-                </table>
-                <div class="table-control d-inline-flex justify-content-start align-items-center">
-                    <div class="rows-per-page d-inline-flex">
-                        <label for="rows" class="align-self-center">Rows per page:</label>
-                        <select id="rows" name="rows">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                    <div class="pagination-info">
-                        1/1 of 1
-                    </div>
-                    <div class="pagination-controls">
-                        <button>&lt;</button> <!-- Previous page -->
-                        <button>&gt;</button> <!-- Next page -->
-                    </div>
+            <table id="infoTable">
+                <tr>
+                    <th>ID</th>
+                    <th>Teacher Name</th>
+                    <th>Date of Birth</th>
+                    <th>Subject</th>
+                    <th>Homeroom</th>
+                    <th>Status</th>
+                    <th>View</th>
+                </tr>
+                {{#each teachers}}
+                <tr>
+                    <td>GV001</td>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.DOB}}</td>
+                    <td>{{this.subjectName}}</td>
+                    <td>{{this.HeadingClass.Name}}</td>
+                    <td>{{this.Status}}</td>
+                    <td>
+                    <button class="view">View</button>
+                    </td>
+                </tr>
+                <tr class="hidden-info" style="display: none;">
+                    <td  colspan="2">Email: {{this.Email}}</td>
+                    <td colspan="2">Phone Number: {{this.Phone}} </td>
+                    <td colspan="3">Address: {{this.Address}}</td>
+                </tr>
+                {{/each}}
+            </table>
+            <div class="table-control d-inline-flex justify-content-start align-items-center">
+                <div class="rows-per-page d-inline-flex">
+                    <label for="rows" class="align-self-center">Rows per page:</label>
+                    <select id="rows" name="rows">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                    </select>
                 </div>
+                <div class="pagination-info">
+                    1/1 of 1
+                </div>
+                <div class="pagination-controls">
+                    <button>&lt;</button> <!-- Previous page -->
+                    <button>&gt;</button> <!-- Next page -->
+                </div>
+            </div>
         </div>
-
-
-
     </div>
-</body>
+    
+
+    <script>
+        document.getElementById("infoTable").addEventListener("click", function(e) {
+        if (e.target && e.target.nodeName === "BUTTON" && e.target.classList.contains("view")) {
+            // Get the next sibling row of the parent row of the clicked button
+            var nextRow = e.target.parentNode.parentNode.nextElementSibling;
+            if (nextRow && nextRow.classList.contains("hidden-info")) {
+            nextRow.style.display = nextRow.style.display === "none" ? "" : "none";
+            }
+        }
+        });
+    </script>
+</body> 

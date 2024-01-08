@@ -30,51 +30,20 @@
                         <th>Size</th>
                         <th>Action</th>
                     </tr>
+                    {{#each classes}}
                     <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Nguyen Thien</td>
-                        <td>55</td>
-                        <td class="d-flex">
-                            <button class="view">View</button>
+                        <td>{{@index}}</td>
+                        <td>{{this.Name}}</td>
+                        <td>{{this.teacherName}}</td>
+                        <td>40</td> <!-- Giả sử có trường Size -->
+                        <td>
+                            <button onclick="viewClass('{{this._doc._id}}')" class="view">View</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Nguyen Thien</td>
-                        <td>55</td>
-                        <td class="d-flex">
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Nguyen Thien</td>
-                        <td>55</td>
-                        <td class="d-flex">
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Nguyen Thien</td>
-                        <td>55</td>
-                        <td class="d-flex">
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Nguyen Thien</td>
-                        <td>55</td>
-                        <td class="d-flex">
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
+                    <script>
+                        console.log("Teacher ID:", {{this.teacherID}});
+                    </script>
+                    {{/each}}
                     
                     
                 </table>
@@ -96,8 +65,6 @@
                         <button>&gt;</button> <!-- Next page -->
                     </div>
                 </div>
-            </div>
-     
     </div>
     <script>
     document.addEventListener('DOMContentLoaded', function () {
@@ -159,8 +126,12 @@
 
         // Initialize the table display
         updateTableDisplay();
+        
     });
-   
-       
-</script>
+    </script>
+    <script>
+        function viewClass(classId) {
+            window.location.href = `/grade/view?classId=${classId}`;
+        }
+    </script>
 </body>

@@ -36,44 +36,18 @@
                         <th>Head Teacher</th>
                         <th>Size</th>
                         <th>Action</th>
-                    
+                    </tr>
+                    {{#each classes}}
                     <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Truong Thi Tuyet Nhung</td>
-                        <td>52</td>
+                        <td>{{@index}}</td>
+                        <td>{{this.Name}}</td>
+                        <td>{{this.teacherName}}</td>
+                        <td>40</td>
                         <td>
                             <button class="view">View</button>
                         </td>
                     </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Truong Thi Tuyet Nhung</td>
-                        <td>52</td>
-                        <td>
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Truong Thi Tuyet Nhung</td>
-                        <td>52</td>
-                        <td>
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Truong Thi Tuyet Nhung</td>
-                        <td>52</td>
-                        <td>
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    
+                    {{/each}}
                 </table>
                 <div class="table-control d-inline-flex justify-content-start align-items-center">
                     <div class="rows-per-page d-inline-flex">

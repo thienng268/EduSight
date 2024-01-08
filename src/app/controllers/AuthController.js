@@ -92,13 +92,93 @@ class AuthController
       }
     }
     // [GET] /
-    account(req, res) {
-        res.render('account_list');
+    async account(req, res) {
+      try {
+        // Lấy danh sách tất cả các lớp học và thông tin giáo viên chủ nhiệm
+        const accounts = await Account.find({Role: 'Teacher'})
+            .select('Username Role Block teacherID'); // Chọn các trường dữ liệu cần hiển thị
+        // Duyệt qua mỗi lớp để thêm thông tin giáo viên vào dữ liệu trả về
+        //console.log(accounts);
+        const accountsWithTeachers = await Promise.all(accounts.map(async (accountItem) => {
+            // Lấy thông tin giáo viên từ bảng Teacher dựa trên teacherID
+            const teacher = await Teacher.findById(accountItem.teacherID).select('Name');
+            // Trả về đối tượng mới có thêm thông tin giáo viên
+            return {
+                ...accountItem.toObject(),
+                teacherName: teacher ? teacher.Name : 'Unknown Teacher', // Nếu không tìm thấy giáo viên, có thể trả về giá trị mặc định
+            };
+        }));
+        //console.log("Account:", accountsWithTeachers);
+
+        const accountandmanagers = await Account.find({Role: 'Management Staff'})
+            .select('Username Role Block managerID'); // Chọn các trường dữ liệu cần hiển thị
+        // Duyệt qua mỗi lớp để thêm thông tin giáo viên vào dữ liệu trả về
+        //console.log(accountandmanagers);
+        const accountsWithManagers = await Promise.all(accountandmanagers.map(async (accountItem) => {
+            // Lấy thông tin giáo viên từ bảng Teacher dựa trên teacherID
+            const manager = await Manager.findById(accountItem.managerID).select('Name');
+            // Trả về đối tượng mới có thêm thông tin giáo viên
+            return {
+                ...accountItem.toObject(),
+                managerName: manager ? manager.Name : 'Unknown Manager', // Nếu không tìm thấy giáo viên, có thể trả về giá trị mặc định
+            };
+        }));
+        //console.log("Account and manager:", accountsWithManagers);
+
+
+        const accountandadmins = await Account.find({Role: 'Administrator'})
+            .select('Username Role Block adminID'); // Chọn các trường dữ liệu cần hiển thị
+        // Duyệt qua mỗi lớp để thêm thông tin giáo viên vào dữ liệu trả về
+        //console.log(accountandadmins);
+        const accountsWithAdmins = await Promise.all(accountandadmins.map(async (accountItem) => {
+            // Lấy thông tin giáo viên từ bảng Teacher dựa trên teacherID
+            const admin = await Admin.findById(accountItem.adminID).select('Name');
+            // Trả về đối tượng mới có thêm thông tin giáo viên
+            return {
+                ...accountItem.toObject(),
+                adminName: admin ? admin.Name : 'Unknown Admin', // Nếu không tìm thấy giáo viên, có thể trả về giá trị mặc định
+            };
+        }));
+        //console.log("Account and admin:", accountsWithAdmins);
+        
+
+        res.render('account_list', { accounts: accountsWithTeachers, accountandmanagers: accountsWithManagers, accountandadmins: accountsWithAdmins});
+    } catch (error) {
+        console.error(error);
+        res.status(500).send('Error: '+error);
+    }
+        //res.render('account_list');
     }
 
     // [GET] /news/:slug
-    search(req, res) {
+    async disable_account(req, res) {
+      try {
+        const { accountId } = req.body;
+        const account = await Account.findByIdAndUpdate(accountId, { Block: false }, { new: true });
+        if (account) {
+          res.json({ success: true, message: 'Account disabled successfully.' });
+        } else {
+          res.status(404).json({ success: false, message: 'Account not found.' });
+        }
         
+      } catch (error) {
+        res.status(500).json({ success: false, message: 'An error occurred.', error: error });
+      }
+    }
+
+    async enable_account(req, res) {
+      try {
+        const { accountId } = req.body;
+        const account = await Account.findByIdAndUpdate(accountId, { Block: true }, { new: true });
+        if (account) {
+          res.json({ success: true, message: 'Account disabled successfully.' });
+        } else {
+          res.status(404).json({ success: false, message: 'Account not found.' });
+        }
+        
+      } catch (error) {
+        res.status(500).json({ success: false, message: 'An error occurred.', error: error });
+      }
     }
     
 }

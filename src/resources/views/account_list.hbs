@@ -37,16 +37,48 @@
                         <th>Role</th>
                         <th>Action</th>
                     </tr>
+                    {{#each accounts}}
                     <tr>
-                        <td>1</td>
-                        <td>Nguyen Thien</td>
-                        <td>thienn@.uit.vn</td>
-                        <td>Teacher</td>
+                        <td>{{@account}}</td>
+                        <td>{{this.teacherName}}</td>
+                        <td>{{this.Username}}</td>
+                        <td>{{this.Role}}</td>
                         <td class="d-flex">
-                            <button class="view">View</button>
-                            <button class="delete">Delete</button>
+                            <button class="toggle-block" data-id="{{this._id}}" data-blocked="{{this.Block}}">
+                                {{#if this.Block}}Disable{{else}}Enable{{/if}}
+                            </button>
                         </td>
                     </tr>
+                    {{/each}}
+
+                    {{#each accountandmanagers}}
+                    <tr>
+                        <td>{{@account}}</td>
+                        <td>{{this.managerName}}</td>
+                        <td>{{this.Username}}</td>
+                        <td>{{this.Role}}</td>
+                        <td class="d-flex">
+                            <button class="toggle-block" data-id="{{this._id}}" data-blocked="{{this.Block}}">
+                                {{#if this.Block}}Disable{{else}}Enable{{/if}}
+                            </button>
+                        </td>
+                    </tr>
+                    {{/each}}
+
+                    {{#each accountandadmins}}
+                    <tr>
+                        <td>{{@account}}</td>
+                        <td>{{this.adminName}}</td>
+                        <td>{{this.Username}}</td>
+                        <td>{{this.Role}}</td>
+                        <td class="d-flex">
+                            <button class="toggle-block" data-id="{{this._id}}" data-blocked="{{this.Block}}">
+                                {{#if this.Block}}Disable{{else}}Enable{{/if}}
+                            </button>
+                        </td>
+                    </tr>
+                    {{/each}}                   
+                   
                     
                     
             </table>
@@ -121,3 +153,41 @@
     </div>
     </div>
 </body>
+<script>
+  document.addEventListener('DOMContentLoaded', function() {
+    const toggleButtons = document.querySelectorAll('.toggle-block');
+
+    toggleButtons.forEach(button => {
+        button.addEventListener('click', function() {
+            const accountId = button.getAttribute('data-id');
+            const shouldBlock = button.textContent.trim() === 'Disable';
+            const action = shouldBlock ? 'disable_account' : 'enable_account';
+
+            fetch(`/auth/${action}`, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({ accountId: accountId })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.success) {
+                    alert(`Account has been ${shouldBlock ? 'disabled' : 'enabled'}.`);
+                    // Toggle the button text based on the action performed
+                    button.textContent = shouldBlock ? 'Enable' : 'Disable';
+                    // Optionally refresh or update the UI as needed
+                } else {
+                    alert(`Failed to ${shouldBlock ? 'disable' : 'enable'} the account.`);
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+            });
+        });
+    });
+});
+
+
+
+</script>

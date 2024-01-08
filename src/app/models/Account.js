@@ -9,6 +9,10 @@ const Account = new Schema({
     managerID: { type: mongoose.Schema.Types.ObjectId, ref: 'Manager' },
     teacherID: { type: mongoose.Schema.Types.ObjectId, ref: 'Teacher' },
     adminID: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin' },
+    Block: {
+        type: Boolean,
+        default: true,
+    }
 });
 
 module.exports = mongoose.model('Account', Account,'accounts');

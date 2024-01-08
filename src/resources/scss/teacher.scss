@@ -166,3 +166,7 @@ table{
   .pagination-controls button:hover {
     background-color: #f2f2f2; /* A light hover effect */
   }
+  /* Style for expanded rows, optional */
+  .hidden-info tr {
+    background-color: gray;
+  }

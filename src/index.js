@@ -5,7 +5,7 @@ const handlebars = require('express-handlebars').engine;
 const path = require('path')
 const route = require('./routes');
 const db = require('./config/db');
-const session = require('express-session');
+
 const bodyParser = require('body-parser');
 var favicon = require('serve-favicon')
 const app = express()

@@ -22,79 +22,131 @@
             </div>
         </div>
         <div class="d-flex ">
-            <button class="add d-flex align-items-center mr-auto my-3">
+            <button type="button" class="add d-flex align-items-center mr-auto my-3" data-toggle="modal" data-target="#exampleModal">
                 <img class="mr-2" src="/img/add (1).png" alt="Add">
                 New
             </button>
         </div>
         <div>
-            <table>
-                    <tr>
-                        <th></th>
-                        <th>Class</th>
-                        <th>Head Teacher</th>
-                        <th>Size</th>
-                        <th>Action</th>
-                    
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Truong Thi Tuyet Nhung</td>
-                        <td>52</td>
-                        <td>
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Truong Thi Tuyet Nhung</td>
-                        <td>52</td>
-                        <td>
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Truong Thi Tuyet Nhung</td>
-                        <td>52</td>
-                        <td>
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td>1</td>
-                        <td>6A.1</td>
-                        <td>Truong Thi Tuyet Nhung</td>
-                        <td>52</td>
-                        <td>
-                            <button class="view">View</button>
-                        </td>
-                    </tr>
-                    
-                </table>
-                <div class="table-control d-inline-flex justify-content-start align-items-center">
-                    <div class="rows-per-page d-inline-flex">
-                        <label for="rows" class="align-self-center">Rows per page:</label>
-                        <select id="rows" name="rows">
-                            <option value="1">1</option>
-                            <option value="2">2</option>
-                            <option value="3">3</option>
-                            <option value="5">5</option>
-                        </select>
-                    </div>
-                    <div class="pagination-info">
-                        1/1 of 1
-                    </div>
-                    <div class="pagination-controls">
-                        <button>&lt;</button> <!-- Previous page -->
-                        <button>&gt;</button> <!-- Next page -->
-                    </div>
+            <table id="infoTable">
+                <tr>
+                    <th>ID</th>
+                    <th>Teacher Name</th>
+                    <th>Date of Birth</th>
+                    <th>Subject</th>
+                    <th>Homeroom</th>
+                    <th>Status</th>
+                    <th>View</th>
+                </tr>
+                <tr>
+                    <td>GV001</td>
+                    <td>Truong Thi Tuyet Nhung</td>
+                    <td>11/03/1996</td>
+                    <td>English</td>
+                    <td>6A.1</td>
+                    <td>Teaching</td>
+                    <td>
+                    <button class="view">View</button>
+                    </td>
+                </tr>
+                <tr class="hidden-info" style="display: none;">
+                    <td  colspan="2">Email: nhungttt@email.com</td>
+                    <td colspan="2">Phone Number: 0678904567 </td>
+                    <td colspan="3">Address: 72 Tan Lap, Di An, Binh Duong</td>
+                </tr>
+            </table>
+            <div class="table-control d-inline-flex justify-content-start align-items-center">
+                <div class="rows-per-page d-inline-flex">
+                    <label for="rows" class="align-self-center">Rows per page:</label>
+                    <select id="rows" name="rows">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                    </select>
                 </div>
+                <div class="pagination-info">
+                    1/1 of 1
+                </div>
+                <div class="pagination-controls">
+                    <button>&lt;</button> <!-- Previous page -->
+                    <button>&gt;</button> <!-- Next page -->
+                </div>
+            </div>
         </div>
-
-
-
     </div>
-</body>
+    
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title mb-3" id="exampleModalLabel">New Teacher</h5>
+                
+            </div>
+            <div class="modal-body">
+                <form class="infor"> 
+                    <div class="form-row">   
+                        <div class="col mb-3">
+                            <label class="add-label" for="TeacherName">TeacherName</label>
+                            <input type="text" class="form-control" name="TeacherName" id="TeacherName">
+                        </div> 
+                        <div class="col form-group">
+                            <label class="add-label" for="Date">Date</label>
+                            <input class="form-control" type="date" id="Date" name="date">
+                        </div>
+                    </div>
+                    <div class="form-row">   
+                        <div class="col form-group">
+                            <label class="add-label" for="Homeroom">Homeroom</label>
+                            <select class="custom-select form-control" id="Homeroom">
+                                <option selected>Choose...</option>
+                            </select>
+                        </div> 
+                        <div class="col form-group">
+                            <label class="add-label" for="Subject">Subject</label>
+                            <select class="custom-select form-control" id="Subject">
+                                <option selected>Choose...</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col mb-3">
+                            <label class="add-label" for="Email">Email</label>
+                            <input type="text" class="form-control" name="Email" id="Email">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col mb-3">
+                            <label class="add-label" for="Phone Number">Phone Number</label>
+                            <input type="text" class="form-control" name="Phone Number" id="Phone Number">
+                        </div>
+                    </div>
+                    <div class="form-row">
+                        <div class="col mb-3">
+                            <label class="add-label" for="Address">Address</label>
+                            <input type="text" class="form-control" name="Address" id="Address">
+                        </div>
+                    </div>
+                </form>
+                
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button type="button" class="btn btn-primary">Save changes</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.getElementById("infoTable").addEventListener("click", function(e) {
+        if (e.target && e.target.nodeName === "BUTTON" && e.target.classList.contains("view")) {
+            // Get the next sibling row of the parent row of the clicked button
+            var nextRow = e.target.parentNode.parentNode.nextElementSibling;
+            if (nextRow && nextRow.classList.contains("hidden-info")) {
+            nextRow.style.display = nextRow.style.display === "none" ? "" : "none";
+            }
+        }
+        });
+    </script>
+</body> 

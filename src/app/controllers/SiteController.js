@@ -37,8 +37,8 @@ class SiteController
         res.render('search');
     }
     theliem(req, res) {
-        res.render('teacher'); 
-        //res.render('noti/failure', { layout: 'pop_up' });
+        //res.render('teacher'); 
+        res.render('login', { layout: 'non_sb' });
     }
 }
 

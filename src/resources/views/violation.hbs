@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/account_list.css">
+    <link rel="stylesheet" href="/css/violation.css">
 </head>
 <body>
     <div class="container">
         <div class="top d-flex justify-content-between">
-            <h1>Account</h1>
+            <h1>Violation Record</h1>
             <div class="search-container">
                 <div class="input-wrapper">
                     <img src="/img/search 1.svg" alt="Search" class="search-icon"> 
@@ -77,36 +77,36 @@
     <div class="modal-dialog modal-dialog-centered">
         <div class="modal-content">
         <div class="modal-header">
-            <h5 class="modal-title mb-3" id="exampleModalLabel">New Account</h5>
+            <h5 class="modal-title mb-3" id="exampleModalLabel">New </h5>
             
         </div>
         <div class="modal-body">
             <form class="infor"> 
                 <div class="form-row">
                     <div class="col mb-3">
-                        <label class="add-label" for="UserName">User</label>
-                        <input type="text" class="form-control" name="UserName" id="UserName">
+                        <label class="add-label" for="StudentName">Student Name</label>
+                        <input type="text" class="form-control" name="StudentName" id="StudentName">
                     </div>
                 </div>
+                
+                <div class="form-row">    
+                    <div class="col form-group">
+                        <label class="add-label" for="Date">Date</label>
+                        <input class="form-control" type="date" id="Date" name="date">
+                    </div>
+                    <div class="col form-group">
+                        <label class="add-label" for="Class">Class</label>
+                        <select class="custom-select form-control" id="Class">
+                            <option selected>Choose...</option>
+                            
+                        </select>
+                    </div>
+                </div>
+
                 <div class="form-row">
                     <div class="col mb-3">
-                        <label class="add-label" for="LoginName">Login Name</label>
-                        <input type="text" class="form-control" name="LoginName" id="LoginName">
-                    </div>
-                </div>
-                <div class="form-row ">    
-                    <div class="col form-group">
-                        <label class="add-label" for="Password">Password</label>
-                        <input class="form-control" name="Password" id="Password">
-                    </div>
-                    <div class="col form-group">
-                    <label class="add-label" for="Role">Role</label>
-                        <select class="custom-select" id="Role">
-                            <option selected>Choose...</option>
-                            <option value="1">Teacher</option>
-                            <option value="2">Management Staff</option>
-                            <option value="3">Administrator</option>
-                        </select>
+                        <label class="add-label" for="Violation">Violation</label>
+                        <input type="text" class="form-control" name="Violation" id="Violation">
                     </div>
                 </div>
             </form>

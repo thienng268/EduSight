@@ -132,6 +132,24 @@ table{
   .view img {
     margin-left: 5px;
   }
+
+  .edit {
+    background-color: $dusky-blue; 
+    color: $dark-teal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+  }
+  
+  .edit:hover {
+    background-color: #24323A; 
+  }
+  
+  .edit img {
+    margin-left: 5px;
+  }
+
   .table-control {
     bottom: 0;
     padding: 10px;

@@ -33,13 +33,16 @@
                     {{#each classes}}
                     <tr>
                         <td>{{@index}}</td>
-                         <td>{{this._doc.Name}}</td>
-                        <td>Thien</td>
+                        <td>{{this.Name}}</td>
+                        <td>{{this.teacherName}}</td>
                         <td>40</td> <!-- Giả sử có trường Size -->
                         <td>
                             <button onclick="viewClass('{{this._doc._id}}')" class="view">View</button>
                         </td>
                     </tr>
+                    <script>
+                        console.log("Teacher ID:", {{this.teacherID}});
+                    </script>
                     {{/each}}
                     
                     

@@ -38,22 +38,24 @@
                     <th>Status</th>
                     <th>View</th>
                 </tr>
+                {{#each teachers}}
                 <tr>
                     <td>GV001</td>
-                    <td>Truong Thi Tuyet Nhung</td>
-                    <td>11/03/1996</td>
-                    <td>English</td>
-                    <td>6A.1</td>
-                    <td>Teaching</td>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.DOB}}</td>
+                    <td>{{this.subjectName}}</td>
+                    <td>{{this.HeadingClass.Name}}</td>
+                    <td>{{this.Status}}</td>
                     <td>
                     <button class="view">View</button>
                     </td>
                 </tr>
                 <tr class="hidden-info" style="display: none;">
-                    <td  colspan="2">Email: nhungttt@email.com</td>
-                    <td colspan="2">Phone Number: 0678904567 </td>
-                    <td colspan="3">Address: 72 Tan Lap, Di An, Binh Duong</td>
+                    <td  colspan="2">Email: {{this.Email}}</td>
+                    <td colspan="2">Phone Number: {{this.Phone}} </td>
+                    <td colspan="3">Address: {{this.Address}}</td>
                 </tr>
+                {{/each}}
             </table>
             <div class="table-control d-inline-flex justify-content-start align-items-center">
                 <div class="rows-per-page d-inline-flex">

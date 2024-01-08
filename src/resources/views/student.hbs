@@ -41,8 +41,11 @@
                     <td>Truong Thi Tuyet Nhung</td>
                     <td>11/03/1996</td>
                     <td>Teaching</td>
-                    <td>
+                    <td class="d-flex">
                         <button class="view">View</button>
+                        <button type="button" class="edit" data-toggle="modal" data-target="#exampleModal">
+                            Edit
+                        </button>
                     </td>
                 </tr>
                 <tr class="hidden-info" style="display: none;">
@@ -77,45 +80,44 @@
         <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
             <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title mb-3" id="exampleModalLabel">New Teacher</h5>
+                <h3 class="modal-title mb-3" id="exampleModalLabel">Edit</h3>
                 
             </div>
             <div class="modal-body">
                 <form class="infor"> 
-                    <div class="form-row">   
+                    <div class="form-row">
                         <div class="col mb-3">
-                            <label class="add-label" for="TeacherName">TeacherName</label>
-                            <input type="text" class="form-control" name="TeacherName" id="TeacherName">
-                        </div> 
-                        <div class="col form-group">
-                            <label class="add-label" for="Date">Date</label>
-                            <input class="form-control" type="date" id="Date" name="date">
+                            <label class="add-label" for="StudentName">Student Name</label>
+                            <input type="text" class="form-control" name="StudentName" id="StudentName">
                         </div>
                     </div>
+                    
                     <div class="form-row">   
                         <div class="col form-group">
-                            <label class="add-label" for="Homeroom">Homeroom</label>
-                            <select class="custom-select form-control" id="Homeroom">
-                                <option selected>Choose...</option>
-                            </select>
-                        </div> 
+                            <label class="add-label" for="Date">Date of Birth</label>
+                            <input class="form-control" type="date" id="Date" name="Date">
+                        </div>
                         <div class="col form-group">
-                            <label class="add-label" for="Subject">Subject</label>
+                            <label class="add-label" for="Subject">Status</label>
                             <select class="custom-select form-control" id="Subject">
-                                <option selected>Choose...</option>
+                                <option selected>Studying</option>
+                                <option>Deferred</option>
+                                <option>Drop out</option>
+                                <option>Dismissed</option>
+                                <option>Graduated</option>
                             </select>
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col mb-3">
-                            <label class="add-label" for="Email">Email</label>
-                            <input type="text" class="form-control" name="Email" id="Email">
+                            <label class="add-label" for="ParentName">Parent Name</label>
+                            <input type="text" class="form-control" name="ParentName" id="ParentName">
                         </div>
                     </div>
                     <div class="form-row">
                         <div class="col mb-3">
-                            <label class="add-label" for="Phone Number">Phone Number</label>
-                            <input type="text" class="form-control" name="Phone Number" id="Phone Number">
+                            <label class="add-label" for="PhoneNumber">Phone Number</label>
+                            <input type="text" class="form-control" name="PhoneNumber" id="PhoneNumber">
                         </div>
                     </div>
                     <div class="form-row">
@@ -134,7 +136,7 @@
             </div>
         </div>
     </div>
-
+    
     <script>
         document.getElementById("infoTable").addEventListener("click", function(e) {
         if (e.target && e.target.nodeName === "BUTTON" && e.target.classList.contains("view")) {

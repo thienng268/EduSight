@@ -1,5 +1,6 @@
 const Teacher = require('../models/Teacher'); 
 const Class = require('../models/Class');
+const Student = require('../models/Student');
 class ClassController
 {
     async index(req, res) {
@@ -26,9 +27,16 @@ class ClassController
     }
     
     
-    // [GET] /schedule/:slug
-    show(req, res) {
-
+    async show(req, res) {
+        try {
+            const classId = req.query.classId; // Lấy ObjectID từ query parameter
+            // Giả sử bạn có một model Student và mỗi student có một field là classID
+            const students = await Student.find({ classID: classId }).lean();
+            res.render('student', { students }); // Truyền danh sách học sinh đến template
+        } catch (error) {
+            console.error(error);
+            res.status(500).send('LỖI');
+        }
     }
 }
 

@@ -102,12 +102,18 @@
                             <label class="add-label" for="Homeroom">Homeroom</label>
                             <select class="custom-select form-control" id="Homeroom">
                                 <option selected>Choose...</option>
+                                {{#each classes}}
+                                    <option value="{{this._doc._id}}">{{this._doc.Name}}</option>
+                                {{/each}}
                             </select>
                         </div> 
                         <div class="col form-group">
                             <label class="add-label" for="Subject">Subject</label>
                             <select class="custom-select form-control" id="Subject">
                                 <option selected>Choose...</option>
+                                {{#each subjects}}
+                                    <option value="{{this._doc._id}}">{{this._doc.NameSubject}}</option>
+                                {{/each}}
                             </select>
                         </div>
                     </div>
@@ -120,7 +126,7 @@
                     <div class="form-row">
                         <div class="col mb-3">
                             <label class="add-label" for="Phone Number">Phone Number</label>
-                            <input type="text" class="form-control" name="Phone Number" id="Phone Number">
+                            <input type="text" class="form-control" name="Phone Number" id="PhoneNumber">
                         </div>
                     </div>
                     <div class="form-row">
@@ -134,11 +140,60 @@
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
+                <button type="button" class="btn btn-primary" onclick="saveTeacher()" >Add</button>
             </div>
             </div>
         </div>
     </div>
+
+    <script>
+        function saveTeacher() {
+            const Name = document.getElementById('TeacherName').value;
+            const Date = document.getElementById('Date').value;
+            const Homeroom = document.getElementById('Homeroom').value;
+            const Subject = document.getElementById('Subject').value;
+            const Email = document.getElementById('Email').value;
+            const PhoneNumber = document.getElementById('PhoneNumber').value;
+            const Address = document.getElementById('Address').value;
+
+            // Gửi POST request với dữ liệu đã nhập
+            fetch('/teacher/add', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    Name,
+                    Date,
+                    Homeroom,
+                    Subject,
+                    Email,
+                    PhoneNumber,
+                    Address,
+                }),
+            })
+            .then(response => {
+    if (!response.ok) {
+        throw new Error(`Lỗi HTTP! Trạng thái: ${response.status}`);
+    }
+    return response.json();
+})
+.then(data => {
+    if (data.success) {
+        console.log('Thành công:', data.message);
+        if (data.closeModal) {
+            $('#exampleModal').modal('hide');  // Đóng modal
+        }
+        location.reload();
+    } else {
+        console.error('Lỗi:', data.message);
+    }
+})
+.catch((error) => {
+    console.error('Lỗi:', error);
+});
+        }
+    </script>
 
     <script>
         document.getElementById("infoTable").addEventListener("click", function(e) {

@@ -5,12 +5,24 @@ class GradeController
 {
     async index(req, res) {
         try {
-            const teacherId = "659a905fb7d11e808e17b0b2";
-            const teacher = await Teacher.findById(teacherId).populate('TeachingClass');
-            const classIds = teacher.TeachingClass.map(tc => tc._id);
-            const classes = await Class.find({ '_id': { $in: classIds } }).select('Name');
-            console.log("Classes:", classes);
-            res.render('grade_list', { classes });
+            const teacherIdGoc = "659a905fb7d11e808e17b0b2";
+            const teacherGoc = await Teacher.findById(teacherIdGoc).populate('TeachingClass');
+            const classIds = teacherGoc.TeachingClass.map(tc => tc._id);
+            const classes = await Class.find({ '_id': { $in: classIds } })
+                .populate({
+                    path: 'teacherID',
+                    select: 'Name',
+                })
+                .select('Name teacherID');
+            const classesWithTeacherName = await Promise.all(classes.map(async (classItem) => {
+                const teacher = await Teacher.findById(classItem.teacherID).select('Name');
+                return {
+                    ...classItem.toObject(),
+                    teacherName: teacher ? teacher.Name : 'Unknown Teacher',
+                };
+            }));
+            console.log("Classes:", classesWithTeacherName);
+            res.render('grade_list', { classes: classesWithTeacherName });
         } catch (error) {
             console.error(error);
             res.status(500).send('Có lỗi xảy ra');

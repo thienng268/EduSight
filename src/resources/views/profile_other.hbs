@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/profile.css">
+    
 </head>
 <body>
     <div class="container d-flex align-items-center">
@@ -14,24 +15,14 @@
             <span class="color-1">We are </span><span class="color-3">Edu</span><span class="color-2">Sight</span>
             <p>Welcome,<br>
             Please complete your profile</p>
-            <form action="/profile/loading_profile" method="post" enctype="multipart/form-data" class="infor"> 
+            <form id="profile_other_form" action="/profile/loading_profile_other" method="post" enctype="multipart/form-data" class="infor"> 
                     <div class="form-row">   
                         <div class="col form-group">
                             <label class="add-label" for="Date">Date of Birth</label>
                             <input class="form-control" type="date" id="Date" name="date">
                         </div>
-                    
-                        <div class="col form-group">
-                            <label class="add-label" for="Subject">Subject</label>
-                            <select class="custom-select form-control" id="Subject" name="subject">
-                                <option value="" disabled selected>Choose...</option>
-                                {{#each subjects}}
-                                    <option value="{{this._id}}">{{this.NameSubject}}</option>
-                                {{/each}}
-                            </select>
-
-                        </div>
-
+                      
+                        
                     </div>
                     
                     <div class="form-row">
@@ -56,6 +47,7 @@
                     </div>
                 </form>
             </div>
+
 </body>
 <script>
     

@@ -42,7 +42,7 @@ class SiteController
         res.render('search');
     }
     theliem(req, res) {
-        res.render('dashboard'); 
+        res.render('homeroom'); 
         //res.render('profile', { layout: 'non_sb' });
     }
 }

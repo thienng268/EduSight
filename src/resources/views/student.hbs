@@ -36,11 +36,12 @@
                     <th>Status</th>
                     <th></th>
                 </tr>
+                {{#each students}}
                 <tr>
                     <td>HS001</td>
-                    <td>Truong Thi Tuyet Nhung</td>
-                    <td>11/03/1996</td>
-                    <td>Teaching</td>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.DOB}}</td>
+                    <td>{{this.Status}}</td>
                     <td class="d-flex">
                         <button class="view">View</button>
                         <button type="button" class="edit" data-toggle="modal" data-target="#exampleModal">
@@ -49,11 +50,11 @@
                     </td>
                 </tr>
                 <tr class="hidden-info" style="display: none;">
-                    <td  colspan="2">Parent Name: Truong Hoai Co</td>
-                    <td colspan="1">Phone Number: 0678904567 </td>
-                    <td colspan="2">Address: 72 Tan Lap, Di An, Binh Duong</td>
+                    <td  colspan="2">Parent Name: {{this.ParentName}}</td>
+                    <td colspan="1">Parent Phone Number: {{this.ParentPhone}} </td>
+                    <td colspan="2">Address: {{this.Address}}</td>
                 </tr>
-                
+                {{/each}}
             </table>
             <div class="table-control d-inline-flex justify-content-start align-items-center">
                 <div class="rows-per-page d-inline-flex">

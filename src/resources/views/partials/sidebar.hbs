@@ -10,87 +10,206 @@
             <img src="/img/logo_rec.svg" alt="logo_fix" class="logo">
         </div>
         <div class="sidebar-content">
-            <p>MAIN</p>
-            <ul>
-                <li class="dashboard-link">
-                    <a href="#">
-                        <img src="/img/sidebar/Dashboard.svg" alt="Dashboard" class="mr-2">
-                        Dashboard
-                    </a>
-                </li>
-                <li class="class-link">
-                    <a href="#">
-                        <img src="/img/sidebar/Class.png" alt="Class" class="mr-2">
-                        Class
-                    </a>
-                </li>
-                <li class="homeroom-link">
-                    <a href="#">
-                        <img src="/img/sidebar/Overview.png" alt="Homeroom" class="mr-2">
-                        Homeroom
-                    </a>
-                </li>
-                <li class="teacher-link">
-                    <a href="#">
-                        <img src="/img/sidebar/Teacher.svg" alt="Teacher" class="mr-2">
-                        Teacher
-                    </a>
-                </li>
-                <li class="schedules-link">
-                    <a href="#">
-                        <img src="/img/sidebar/Schedule.svg" alt="Schedules" class="mr-2">
-                        Schedules
-                    </a>
-                </li>
-                <li class="gradebook-link">
-                    <a href="#">
-                        <img src="/img/sidebar/Grade.png" alt="Gradebook" class="mr-2">
-                        Gradebook
-                    </a>
-                </li>
-                <li class="award-link">
-                    <a href="#">
-                        <img src="/img/sidebar/Award.png" alt="Award" class="mr-2">
-                        Violation Record 
-                    </a>
-                </li>
-                <li class="event-link">
-                    <a href="#">
-                        <img src="/img/sidebar/Event.png" alt="Event" class="mr-2">
-                        Event
-                    </a>
-                </li>
-                <li class="account-link">
-                    <a href="#">
-                        <img src="/img/sidebar/Account.png" alt="Account" class="mr-2">
-                        Account
-                    </a>
-                </li>
-                
-                
-            </ul>
-            <p>SETTINGS</p>
-            <ul>
-                <li class="settings-link">
-                    <a href="#">
-                        <img src="/img/sidebar/Settings.svg" alt="Settings" class="mr-2">
-                        Settings
-                    </a>
-                </li>
-                <li class="help-link">
-                    <a href="#">
-                        <img src="/img/sidebar/Help-circle.svg" alt="Helps" class="mr-2">
-                        Helps
-                    </a>
-                </li>
-                <li class="logout-link">
-                    <a href="#" style="color: #D55F5A;">
-                        <img src="/img/sidebar/Log-out.svg" alt="Logout" class="mr-2">
-                        Logout Account
-                    </a>
-                </li>
 
-            </ul>
+            {{#if user}}
+                {{#if user.isTeacher}}
+                    <p>MAIN</p>
+                    <ul>
+                        <li class="dashboard-link">
+                            <a href="/dashboard">
+                                <img src="/img/sidebar/Dashboard.svg" alt="Dashboard" class="mr-2">
+                                Dashboard
+                            </a>
+                        </li>
+                        <li class="homeroom-link">
+                            <a href="#">
+                                <img src="/img/sidebar/Overview.png" alt="Homeroom" class="mr-2">
+                                Homeroom
+                            </a>
+                        </li>
+                        <li class="gradebook-link">
+                            <a href="/grade">
+                                <img src="/img/sidebar/Grade.png" alt="Gradebook" class="mr-2">
+                                Gradebook
+                            </a>
+                        </li>
+                        
+                        
+                    </ul>
+                    <p>SETTINGS</p>
+                    <ul>
+                        <li class="settings-link">
+                            <a href="#">
+                                <img src="/img/sidebar/Settings.svg" alt="Settings" class="mr-2">
+                                Settings
+                            </a>
+                        </li>
+                        <li class="help-link">
+                            <a href="#">
+                                <img src="/img/sidebar/Help-circle.svg" alt="Helps" class="mr-2">
+                                Helps
+                            </a>
+                        </li>
+                        <li class="logout-link">
+                            <a href="/" style="color: #D55F5A;">
+                                <img src="/img/sidebar/Log-out.svg" alt="Logout" class="mr-2">
+                                Logout Account
+                            </a>
+                        </li>
+
+                    </ul>
+                {{else}}
+                    {{#if user.isManager}}
+                        <p>MAIN</p>
+                        <ul>
+                            <li class="dashboard-link">
+                                <a href="/dashboard">
+                                    <img src="/img/sidebar/Dashboard.svg" alt="Dashboard" class="mr-2">
+                                    Dashboard
+                                </a>
+                            </li>
+                            <li class="class-link">
+                                <a href="/class">
+                                    <img src="/img/sidebar/Class.png" alt="Class" class="mr-2">
+                                    Class
+                                </a>
+                            </li>
+                            <li class="teacher-link">
+                                <a href="/teacher">
+                                    <img src="/img/sidebar/Teacher.svg" alt="Teacher" class="mr-2">
+                                    Teacher
+                                </a>
+                            </li>
+                            <li class="schedules-link">
+                                <a href="/schedule">
+                                    <img src="/img/sidebar/Schedule.svg" alt="Schedules" class="mr-2">
+                                    Schedules
+                                </a>
+                            </li>
+                            
+                            <li class="award-link">
+                                <a href="#">
+                                    <img src="/img/sidebar/Award.png" alt="Award" class="mr-2">
+                                    Violation Record 
+                                </a>
+                            </li>
+                            <li class="event-link">
+                                <a href="#">
+                                    <img src="/img/sidebar/Event.png" alt="Event" class="mr-2">
+                                    Event
+                                </a>
+                            </li>
+                            
+                            
+                            
+                        </ul>
+                        <p>SETTINGS</p>
+                        <ul>
+                            <li class="settings-link">
+                                <a href="#">
+                                    <img src="/img/sidebar/Settings.svg" alt="Settings" class="mr-2">
+                                    Settings
+                                </a>
+                            </li>
+                            <li class="help-link">
+                                <a href="#">
+                                    <img src="/img/sidebar/Help-circle.svg" alt="Helps" class="mr-2">
+                                    Helps
+                                </a>
+                            </li>
+                            <li class="logout-link">
+                                <a href="/" style="color: #D55F5A;">
+                                    <img src="/img/sidebar/Log-out.svg" alt="Logout" class="mr-2">
+                                    Logout Account
+                                </a>
+                            </li>
+
+                        </ul>
+                    {{else}}
+                        {{#if user.isAdmin}}
+                            <p>MAIN</p>
+                            <ul>
+                                <li class="dashboard-link">
+                                    <a href="/dashboard">
+                                        <img src="/img/sidebar/Dashboard.svg" alt="Dashboard" class="mr-2">
+                                        Dashboard
+                                    </a>
+                                </li>
+                                <li class="class-link">
+                                    <a href="/class">
+                                        <img src="/img/sidebar/Class.png" alt="Class" class="mr-2">
+                                        Class
+                                    </a>
+                                </li>
+                                <li class="teacher-link">
+                                    <a href="/teacher">
+                                        <img src="/img/sidebar/Teacher.svg" alt="Teacher" class="mr-2">
+                                        Teacher
+                                    </a>
+                                </li>
+                                <li class="schedules-link">
+                                    <a href="/schedule">
+                                        <img src="/img/sidebar/Schedule.svg" alt="Schedules" class="mr-2">
+                                        Schedules
+                                    </a>
+                                </li>
+                                <li class="gradebook-link">
+                                    <a href="/grade">
+                                        <img src="/img/sidebar/Grade.png" alt="Gradebook" class="mr-2">
+                                        Gradebook
+                                    </a>
+                                </li>
+                                <li class="award-link">
+                                    <a href="#">
+                                        <img src="/img/sidebar/Award.png" alt="Award" class="mr-2">
+                                        Violation Record 
+                                    </a>
+                                </li>
+                                <li class="event-link">
+                                    <a href="#">
+                                        <img src="/img/sidebar/Event.png" alt="Event" class="mr-2">
+                                        Event
+                                    </a>
+                                </li>
+                                <li class="account-link">
+                                    <a href="#">
+                                        <img src="/img/sidebar/Account.png" alt="Account" class="mr-2">
+                                        Account
+                                    </a>
+                                </li>
+                                
+                                
+                            </ul>
+                            <p>SETTINGS</p>
+                            <ul>
+                                <li class="settings-link">
+                                    <a href="#">
+                                        <img src="/img/sidebar/Settings.svg" alt="Settings" class="mr-2">
+                                        Settings
+                                    </a>
+                                </li>
+                                <li class="help-link">
+                                    <a href="#">
+                                        <img src="/img/sidebar/Help-circle.svg" alt="Helps" class="mr-2">
+                                        Helps
+                                    </a>
+                                </li>
+                                <li class="logout-link">
+                                    <a href="/" style="color: #D55F5A;">
+                                        <img src="/img/sidebar/Log-out.svg" alt="Logout" class="mr-2">
+                                        Logout Account
+                                    </a>
+                                </li>
+
+                            </ul>
+                        {{else}}
+                            
+                        {{/if}}
+                    {{/if}}
+                {{/if}}
+            {{else}}
+               
+            {{/if}}
         </div>
         
     </div>

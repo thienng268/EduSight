@@ -26,7 +26,7 @@ class AuthController
         if (checkUsername) {
           // Nếu Username đã tồn tại, thông báo cho người dùng và không lưu Account mới
           return res.send(`<script>
-            alert('Tên đăng nhập đã tồn tại');
+            alert('Username available');
             window.history.back();
           </script>`);
         }
@@ -248,9 +248,20 @@ class AuthController
           // Lưu trữ token trong cookie hoặc gửi trực tiếp trong phản hồi
           res.cookie('token', token_admin, { httpOnly: true });
           req.session.adminID = account.adminID;
+          req.session.Role = account.Role;
           console.log(req.session.adminID);
           // Chuyển hướng người dùng đến trang quản trị
-          return res.redirect('/dashboard');
+          const admin = await Admin.findOne({_id: account.adminID}).exec();
+          //console.log(admin.Phone)
+          if(admin.Phone === undefined)
+              {
+                //return res.redirect('/dashboard');
+                return res.redirect('/profile/your');
+              }else{
+                //return res.redirect('/profile');
+                return res.redirect('/dashboard');
+              }
+          
       } else {
           if (account.Role === 'Teacher') {
               // Đảm bảo JWT_SECRET được cấu hình và có giá trị
@@ -266,9 +277,22 @@ class AuthController
               // Lưu trữ token trong cookie hoặc gửi trực tiếp trong phản hồi
               res.cookie('token', token_teacher, { httpOnly: true });
               req.session.teacherID = account.teacherID;
-              console.log(req.session.teacherID);
+              req.session.Role = account.Role;
+              req.session.email = account.Username;
+              //console.log(req.session.teacherID);
               // Chuyển hướng người dùng đến trang quản trị
-              return res.redirect('/dashboard');
+              const teacher = await Teacher.findOne({_id: account.teacherID}).exec();
+              //console.log(teacher);
+              //console.log(teacher.Phone)
+              if(teacher.Phone === undefined)
+              {
+                //return res.redirect('/dashboard');
+                return res.redirect('/profile');
+              }else{
+                //return res.redirect('/profile');
+                return res.redirect('/dashboard');
+              }
+
           } else {
               if (account.Role === 'Management Staff') {
                   // Đảm bảo JWT_SECRET được cấu hình và có giá trị
@@ -284,9 +308,22 @@ class AuthController
                   // Lưu trữ token trong cookie hoặc gửi trực tiếp trong phản hồi
                   res.cookie('token', token_manager, { httpOnly: true });
                   req.session.managerID = account.managerID;
-                  console.log(req.session.managerID);
+                  //console.log(req.session.managerID);
+                  req.session.Role = account.Role;
+                  console.log(req.session.Role);
                   // Chuyển hướng người dùng đến trang quản trị
-                  return res.redirect('/dashboard');
+
+                  const manager = await Manager.findOne({_id: account.managerID}).exec();
+                  //console.log(manager)
+                  if(manager.Phone === undefined)
+                  {
+                    //return res.redirect('/dashboard');
+                    return res.redirect('/profile/your');
+                  }else{
+                    //return res.redirect('/profile');
+                    return res.redirect('/dashboard');
+                  }
+
               } else {
                   return res.status(403).send('Not have access.');
               }

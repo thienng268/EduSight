@@ -1,4 +1,4 @@
- <!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -30,7 +30,7 @@
                         <img src="/img/file-pdf (1).png" alt="PDF File Export">
                         PDF Export
                     </button>
-                    <button class="edit ml-auto">
+                    <button id="saveButton" class="edit ml-auto">
                         <img src="/img/edit.png" alt="Edit">
                         Save
                     </button>
@@ -56,35 +56,66 @@
                     </thead>
                     <!--START THE GRADEBOOK -->
                     <tbody class="scroll-content">
-                        {{#each students}}
-                        <tr>
+                        {{#each combinedData}}
+                        <tr data-grade-id="{{this.GradeID}}">
                             <td>{{@index}}</td>
                             <td class="name-cell">{{this.Name}}</td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
-                            <td><input type="text" name="input1"></td>
+                            <td><input type="text" name="HS11" value="{{this.HS11}}"></td>
+                            <td><input type="text" name="HS12" value="{{this.HS12}}"></td>
+                            <td><input type="text" name="HS13" value="{{this.HS13}}"></td>
+                            <td><input type="text" name="HS14" value="{{this.HS14}}"></td>
+                            <td><input type="text" name="HS21" value="{{this.HS21}}"></td>
+                            <td><input type="text" name="HS22" value="{{this.HS22}}"></td>
+                            <td><input type="text" name="HS3" value="{{this.HS3}}"></td>
+                            <td><input type="text" name="Average" value="{{this.Average}}"></td>
+                            <td><input type="text" name="HK1" value="{{this.HK1}}"></td>
+                            <td><input type="text" name="CN" value="{{this.CN}}"></td>
                         </tr>
                         {{/each}}
                     </tbody>
                     <script>
-                        document.addEventListener('DOMContentLoaded', function () {
-                            // ... mã khác của bạn ...
+                        document.getElementById('saveButton').addEventListener('click', function() {
+                        const gradeInputs = document.querySelectorAll('.scroll-content tr');
+                        const gradesData = Array.from(gradeInputs).map(row => {
+                            const cells = row.querySelectorAll('input');
+                            return {
+                                gradeId: row.getAttribute('data-grade-id'),
+                                hs11: cells[0].value,
+                                hs12: cells[1].value,
+                                hs13: cells[2].value,
+                                hs14: cells[3].value,
+                                hs21: cells[4].value,
+                                hs22: cells[5].value,
+                                hs3: cells[6].value,
+                                Average: cells[7].value,
+                                // và các trường dữ liệu khác...
+                            };
+                        });
+                        console.log("A:", gradesData);
+                        fetch('./grade/update', {
+                            method: 'POST',
+                            headers: { 'Content-Type': 'application/json' },
+                            body: JSON.stringify(gradesData)
+                        })
+                        .then(response => response.json()
+                            )
+                        .then(data => {
+                            console.log('Success:', data);
+                        })
+                        .catch((error) => {
+                            console.error('Loi:', error);
+                        });
+                    });
+                    </script>
 
-                            // Tăng index cho mỗi hàng
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function () {
                             const indexCells = document.querySelectorAll('.scroll-content tr td:first-child');
                             indexCells.forEach((cell, index) => {
                                 cell.textContent = index + 1; // Tăng index bắt đầu từ 1
                             });
                         });
                     </script>
-
                 </table>
             </div>
         </div>

@@ -1,36 +1,212 @@
-
-<div class="d-flex ">
-            <button type="button" class="add d-flex align-items-center mr-auto my-3" data-toggle="modal" data-target="#exampleModal">
-                <img class="mr-2" src="/img/add (1).png" alt="Add">
-                New
-            </button>
-        </div>
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
-            <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title mb-3" id="exampleModalLabel">New Teacher</h5>
-                
+<!DOCTYPE html>
+<html lang="en">
+<html ng-app="myApp" ng-controller="AppCtrl" lang="en"></html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/dashboard.css">
+</head>
+<body>
+    <div class="container">
+        <div class="top d-flex justify-content-between">
+            <h1>Dashboard</h1>
+            <div class="search-container">
+                <div class="input-wrapper">
+                    <img src="/img/search 1.svg" alt="Search" class="search-icon"> 
+                    <input type="text" class="search-input" placeholder="Search">
+                </div>
             </div>
-            <div class="modal-body">
-                <form class="infor"> 
-                    <div class="form-row">   
-                        <div class="col mb-3">
-                            <label class="add-label" for="TeacherName">TeacherName</label>
-                            <input type="text" class="form-control" name="TeacherName" id="TeacherName">
-                        </div> 
-                        <div class="col form-group">
-                            <label class="add-label" for="Date">Date</label>
-                            <input class="form-control" type="date" id="Date" name="date">
+            <img src="/img/Ava.svg" alt="User" class="user-avatar"> 
+            <div class="user">
+                <h3>Veronica</h3>
+                <p>Admin</p>
+            </div>
+        </div>
+        
+        <div class="container">
+            <div class="row">
+                <div id="profileColumn" class="col-4 profile d-flex flex-column">
+                    <div class="d-flex justify-content-between">
+                        <h5>My Profile</h5>
+                        <button type="button" class="edit d-flex align-items-center justify-content-center ml-auto" data-toggle="modal" data-target="#exampleModal">
+                            <img src="/img/Create.svg" alt="Add">
+                        </button>
+                    </div>
+                    <div class="image-container">
+                        <img src="/img/20.png" alt="Avatar">
+                    </div>
+                    <p><strong>Name:</strong> Mrs. Veronica Greenlan</p>
+                    <p><strong>Subject:</strong> Mathematics</p>
+                    <p><strong>Email:</strong> 123abc@gmail.com</p>
+                    <p><strong>Phone Number:</strong> 098776765</p>
+                    <p><strong>Class:</strong>  7A.4</p>
+                    <p class="ml-5">6A.1</p>
+                </div>
+                <div id="mainColumn" class="col-8 main d-flex flex-column">
+                    <h3>Hi, Mrs. Veronica!</h3>
+                    <div class="stastic d-flex my-3">
+                        <div class="sta d-flex">
+                            <img src="/img/Icon (2).svg" alt="">
+                                <div class="d-flex flex-column">
+                                    Class
+                                    <span class="number">52</span>
+                                </div>
+                        </div>
+                        <div class="sta d-flex">
+                            <img src="/img/Icon (2).svg" alt="">
+                                <div class="d-flex flex-column">
+                                    Teacher
+                                    <span class="number">72</span>
+                                </div>
+                        </div>
+                        <div class="sta d-flex">
+                            <img src="/img/Icon (2).svg" alt="">
+                                <div class="d-flex flex-column">
+                                    Student
+                                    <span class="number">2080</span>
+                                </div>
                         </div>
                     </div>
+                    <h5>Quick Actions</h5>
+                    <div class="line-2 d-flex my-3">
+                        <div class="quick-act d-flex flex-column justify-content-center">
+                            <a class="d-flex" href="#">
+                                <img src="/img/sidebar/Grade.png" alt="">
+                                Edit Gradebook
+                                <img class="ml-auto" src="/img/Chevron Right.svg" alt="">
+                            </a>
+                            <a class="d-flex" href="#">
+                                <img src="/img/sidebar/Event.png" alt="">
+                                View Event
+                                <img class="ml-auto" src="/img/Chevron Right.svg" alt="">
+
+                            </a>
+                            <a class="d-flex" href="#">
+                                <img src="/img/sidebar/Schedule.svg" alt="">
+                                View Schedule
+                                <img class="ml-auto" src="/img/Chevron Right.svg" alt="">
+
+                            </a>
+
+                        </div>
+                        <div class="calendar">
+                            <div class="calendar__body">
+                                <div class="calendar__days">
+                                <div>M</div>
+                                <div>T</div>
+                                <div>W</div>
+                                <div>T</div>
+                                <div>F</div>
+                                <div>S</div>
+                                <div>S</div>
+                                </div>
+
+                                <div class="calendar__dates">
+                                <div class="calendar__date calendar__date--grey"><span>27</span></div>
+                                <div class="calendar__date calendar__date--grey"><span>28</span></div>
+                                <div class="calendar__date calendar__date--grey"><span>29</span></div>
+                                <div class="calendar__date calendar__date--grey"><span>30</span></div>
+                                <div class="calendar__date"><span>1</span></div>
+                                <div class="calendar__date"><span>2</span></div>
+                                <div class="calendar__date"><span>3</span></div>
+                                <div class="calendar__date"><span>4</span></div>
+                                <div class="calendar__date"><span>5</span></div>
+                                <div class="calendar__date"><span>6</span></div>
+                                <div class="calendar__date"><span>7</span></div>
+                                <div class="calendar__date"><span>8</span></div>
+                                <div class="calendar__date"><span>9</span></div>
+                                <div class="calendar__date"><span>10</span></div>
+                                <div class="calendar__date"><span>11</span></div>
+                                <div class="calendar__date"><span>12</span></div>
+                                <div class="calendar__date"><span>13</span></div>
+                                <div class="calendar__date"><span>14</span></div>
+                                <div class="calendar__date"><span>15</span></div>
+                                <div class="calendar__date calendar__date--selected calendar__date--first-date calendar__date--range-start"><span>16</span></div>
+                                <div class="calendar__date calendar__date--selected calendar__date--last-date"><span>17</span></div>
+                                <div class="calendar__date calendar__date--selected calendar__date--first-date"><span>18</span></div>
+                                <div class="calendar__date calendar__date--selected"><span>19</span></div>
+                                <div class="calendar__date calendar__date--selected"><span>20</span></div>
+                                <div class="calendar__date calendar__date--selected calendar__date--last-date calendar__date--range-end"><span>21</span></div>
+                                <div class="calendar__date"><span>22</span></div>
+                                <div class="calendar__date"><span>23</span></div>
+                                <div class="calendar__date"><span>24</span></div>
+                                <div class="calendar__date"><span>25</span></div>
+                                <div class="calendar__date"><span>26</span></div>
+                                <div class="calendar__date"><span>27</span></div>
+                                <div class="calendar__date"><span>28</span></div>
+                                <div class="calendar__date"><span>29</span></div>
+                                <div class="calendar__date"><span>30</span></div>
+                                <div class="calendar__date"><span>31</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <h5>Upcoming Events</h5>
+                    <div class="event d-flex justify-content-between">
+                        <div class="event-item">
+                                <a href="#">
+                                    <img src="/img/event 1.svg" alt="">
+                                    <div class="title">
+                                        <h6>Acrylic Workshop “Choi non”</h6>
+                                        <a href="#">Xem thêm</a>
+                                    </div>
+                                    <div class="time">
+                                        <span class="date">26</span>
+                                        <span class="month">MAY</span>
+                                    </div>
+                                </a>
+                        </div>
+                        <div class="event-item">
+                                <a href="#">
+                                    <img src="/img/event 1.svg" alt="">
+                                    <div class="title">
+                                        <h6>Acrylic Workshop “Choi non”</h6>
+                                        <a href="#">Xem thêm</a>
+                                    </div>
+                                    <div class="time">
+                                        <span class="date">26</span>
+                                        <span class="month">MAY</span>
+                                    </div>
+                                </a>
+                        </div>
+                        <div class="event-item">
+                                <a href="#">
+                                    <img src="/img/event 1.svg" alt="">
+                                    <div class="title">
+                                        <h6>Acrylic Workshop “Choi non”</h6>
+                                        <a href="#">Xem thêm</a>
+                                    </div>
+                                    <div class="time">
+                                        <span class="date">26</span>
+                                        <span class="month">MAY</span>
+                                    </div>
+                                </a>
+                        </div>
+                    </div>
+                    
+                </div>
+                
+            </div>
+        </div>
+        
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg modal-dialog-scrollable">
+                <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mb-3" id="exampleModalLabel">Edit</h5>
+                    
+                </div>
+                <div class="modal-body">
+                    <form class="infor"> 
                     <div class="form-row">   
                         <div class="col form-group">
-                            <label class="add-label" for="Homeroom">Homeroom</label>
-                            <select class="custom-select form-control" id="Homeroom">
-                                <option selected>Choose...</option>
-                            </select>
-                        </div> 
+                            <label class="add-label" for="Date">Date of Birth</label>
+                            <input class="form-control" type="date" id="Date" name="date">
+                        </div>
+                      
                         <div class="col form-group">
                             <label class="add-label" for="Subject">Subject</label>
                             <select class="custom-select form-control" id="Subject">
@@ -38,12 +214,7 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-row">
-                        <div class="col mb-3">
-                            <label class="add-label" for="Email">Email</label>
-                            <input type="text" class="form-control" name="Email" id="Email">
-                        </div>
-                    </div>
+                    
                     <div class="form-row">
                         <div class="col mb-3">
                             <label class="add-label" for="Phone Number">Phone Number</label>
@@ -56,13 +227,31 @@
                             <input type="text" class="form-control" name="Address" id="Address">
                         </div>
                     </div>
+                    <div class="uploadFile mt-3 d-flex flex-column align-items-center justify-content-center mx-auto">
+
+                        <input type="file" name="file" accept=".png" class="form-control-file" id="exampleFormControlFile1" style="display: none;">
+                        <label for="exampleFormControlFile1" class="chooseFile">Upload Avatar</label>
+                    </div>
                 </form>
-                
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" class="btn btn-primary">Save changes</button>
+                </div>
+                </div>
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
-            </div>
-        </div>
     </div>
+    <script>
+        window.onload = function() {
+            var profileColumn = document.getElementById('profileColumn');
+            var mainColumn = document.getElementById('mainColumn');
+
+            var maxHeight = Math.max(profileColumn.clientHeight, mainColumn.clientHeight);
+
+            // Set the height of both columns to the maximum height
+            profileColumn.style.height = maxHeight + 'px';
+            mainColumn.style.height = maxHeight + 'px';
+        };
+
+    </script>
+</body>

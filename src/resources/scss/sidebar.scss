@@ -143,6 +143,12 @@ color: white;
 .help-link:hover img, .help-link.active:hover img{
     content: url("/img/sidebar/Help-circle-act.svg");
 }
+.homeroom-link img{
+    content: url("/img/sidebar/Overview.png");
+}
+.homeroom-link:hover img, .homeroom-link.active:hover img{
+    content: url("/img/sidebar/Overview-act.png");
+}
 
 .logout-link img{
     content: url("/img/sidebar/Log-out.svg");

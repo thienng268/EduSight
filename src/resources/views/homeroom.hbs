@@ -3,12 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/class_list.css">
+    <link rel="stylesheet" href="/css/homeroom.css">
 </head>
 <body>
     <div class="container">
         <div class="top d-flex justify-content-between">
-            <h1>Class</h1>
+            <h1>Homeroom</h1>
             <div class="search-container">
                 <div class="input-wrapper">
                     <img src="/img/search 1.svg" alt="Search" class="search-icon"> 
@@ -23,33 +23,39 @@
             </div>
         </div>
         <div class="tab-box d-flex justify-content-start">
-            <button class="tab-btn">Class List</button>
-            <button class="tab-btn">New Class</button>
+            <button class="tab-btn">Evaluate Conduct</button>
+            <button class="tab-btn">Finalize Grades</button>
             <div class="line"></div>
         </div>
         <div class="content-box">
             <div class="content">
-                <table>
-                    <tr>
-                        <th></th>
-                        <th>Class</th>
-                        <th>Head Teacher</th>
-                        <th>Size</th>
-                        <th>Action</th>
-                    </tr>
-                    {{#each classes}}
-                    <tr>
-                        <td>{{@index}}</td>
-                        <td>{{this.Name}}</td>
-                        <td>{{this.teacherName}}</td>
-                        <td>40</td>
-                        <td>
-                            <button onclick="viewClass('{{this._id}}')" class="view">View</button>
-                        </td>
-                    </tr>
-                    {{/each}}
-                </table>
-                <div class="table-control d-inline-flex justify-content-start align-items-center">
+                <table id="infoTable">
+                <tr>
+                    <th>ID</th>
+                    <th>Student Name</th>
+                    <th>Date of Birth</th>
+                    <th>Status</th>
+                    <th></th>
+                </tr>
+                <tr>
+                    <td>HS001</td>
+                    <td>Truong Thi Tuyet Nhung</td>
+                    <td>11/03/1996</td>
+                    <td>Studying</td>
+                    <td>
+                        <select class="custom-select form-control" id="Subject">
+                                <option selected>Excellent</option>
+                                <option>Good</option>
+                                <option>Satisfactory</option>
+                                <option>Needs Improvement</option>
+                                <option>Unsatisfactory</option>
+                            </select>
+                    </td>
+                </tr>
+                
+                
+            </table>
+            <div class="table-control d-inline-flex justify-content-start align-items-center">
                     <div class="rows-per-page d-inline-flex">
                         <label for="rows" class="align-self-center">Rows per page:</label>
                         <select id="rows" name="rows">
@@ -67,45 +73,47 @@
                         <button>&gt;</button> <!-- Next page -->
                     </div>
                 </div>
+                
             </div>
             <div class="content">
-                <div class="form-row col-10">
-                    <div class="form-group col">
-                        <label for="className">Class Name</label>
-                        <input type="text" class="form-control" id="className">
-                    </div>
-                    <div class="form-group col">
-                        <label for="headTeacher">Head Teacher</label>
-                        <select id="headTeacher" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>Nguyen Thien</option>
-                            <option>Nguyen Thien</option>
-                            <option>Nguyen Thien</option>
-                            <option>Nguyen Thien</option>
-                        </select>
-                    </div>
-                </div>
-                <div class="uploadFile mt-3 d-flex flex-column align-items-center justify-content-center mx-auto">
-                    <img src="/img/document 1.svg" alt="Document Upload">
-                    <h6>List of Students of the class</h6>
-                    <p>Select a file or drag and drop here</p>
-                    <p style="opacity: 50%;"></p>
-                    <form class="d-flex flex-column align-items-center" >
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" style="display: none;">
-                        <span id="file-chosen" class="mb-1" style="opacity: 50%;">Excel file size no more than 50MB</span>
-                        <label for="exampleFormControlFile1" class="chooseFile">Choose File</label>
-                        
-                    </form>
-                </div>
-                <div class="d-flex ">
-                    <button class="edit mx-auto mt-3">
-                        <img src="/img/edit.png" alt="Edit">
-                        Add Class
+                <div class="d-flex my-3">
+                    <button class="excel mr-3">
+                        <img src="/img/file-excel (1).png" alt="Excel File Export">
+                        Excel Export
                     </button>
-                </div>
+                    <button class="pdf">
+                        <img src="/img/file-pdf (1).png" alt="PDF File Export">
+                        PDF Export
+                    </button>
+            </div>
+                <table class="student-grades">
+                    <tr>
+                        <th></th>
+                        <th>Toan</th>
+                        <th>Van</th>
+                        <th>Anh</th>
+                        <th>KHTN</th>
+                        <th>Lich su va Dia li</th>
+                        <th>GDCD</th>
+                        <th>Cong nghe</th>
+                        <th>Tin hoc</th>
+                        <th>DTB</th>
+                    </tr>
+                    <tr>
+                        <td>Nguyen Thien</td>
+                        <td>3.5</td>
+                        <td>3.5</td>
+                        <td>3</td>
+                        <td>3.5</td>
+                        <td>3.6</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>2.5</td>
+                    </tr>
+                </table>
             </div>
             
-        </div>
         
 
         
@@ -218,40 +226,8 @@
             }
         });
 
-        //==============DRAG FILE INTO DIV==================================//
-        document.getElementById('exampleFormControlFile1').addEventListener('change', function() {
-        var fileName = document.getElementById('exampleFormControlFile1').files[0].name;
-        document.getElementById('file-chosen').textContent = fileName;
-    });
+       
 
-        document.addEventListener('DOMContentLoaded', function () {
-    var uploadDiv = document.querySelector('.uploadFile');
-    var fileInput = document.getElementById('exampleFormControlFile1');
 
-    uploadDiv.addEventListener('dragover', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        // Add some visual feedback here
-    });
-
-    uploadDiv.addEventListener('drop', function (e) {
-        e.preventDefault();
-        e.stopPropagation();
-        if (e.dataTransfer.files.length) {
-            fileInput.files = e.dataTransfer.files;
-            // Update any UI component or perform any action after file drop
-        }
-    });
-
-    fileInput.addEventListener('change', function () {
-        // Handle file selection via input
-        // For example, update UI to show selected file name
-    });
-    });
-    </script>
-    <script>
-        function viewClass(classId) {
-            window.location.href = `/class/view?classId=${classId}`;
-        }
     </script>
 </body>

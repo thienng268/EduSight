@@ -153,13 +153,20 @@
 
                     // Cập nhật nội dung vào các phần tử có id tương ứng
                     document.getElementById('eventName').textContent = name;
-                    document.getElementById('eventTime').textContent = date;
-                    document.getElementById('eventVenue').textContent = venue;
+                    const eventTimeSpan = document.getElementById('eventTime');
+                    const eventVenueSpan = document.getElementById('eventVenue');
+                    capNhatNoiDungSpan(eventTimeSpan, date);
+                    capNhatNoiDungSpan(eventVenueSpan, venue);
                     document.getElementById('eventDescription').textContent = description;
                 });
             });
         });
-
+        function capNhatNoiDungSpan(spanElement, newText) {
+            const imgTag = spanElement.querySelector('img');
+            spanElement.innerHTML = ''; // Xóa nội dung hiện tại
+            spanElement.appendChild(imgTag); // Thêm lại img tag
+            spanElement.appendChild(document.createTextNode(newText)); // Thêm văn bản mới
+        }
     </script>
 </body>
 

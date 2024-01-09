@@ -10,6 +10,7 @@
             <img src="/img/logo_rec.svg" alt="logo_fix" class="logo">
         </div>
         <div class="sidebar-content">
+
             {{#if user}}
                 {{#if user.isTeacher}}
                     <p>MAIN</p>
@@ -20,7 +21,12 @@
                                 Dashboard
                             </a>
                         </li>
-                        
+                        <li class="homeroom-link">
+                            <a href="#">
+                                <img src="/img/sidebar/Overview.png" alt="Homeroom" class="mr-2">
+                                Homeroom
+                            </a>
+                        </li>
                         <li class="gradebook-link">
                             <a href="/grade">
                                 <img src="/img/sidebar/Grade.png" alt="Gradebook" class="mr-2">

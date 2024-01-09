@@ -6,6 +6,7 @@ const gradeRouter = require('./grade');
 const classRouter = require('./class');
 const authRouter = require('./auth');
 const teacherRouter = require('./teacher');
+const eventRouter = require('./event');
 
 function route(app)
 {

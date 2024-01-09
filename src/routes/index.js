@@ -5,9 +5,11 @@ const gradeRouter = require('./grade');
 const classRouter = require('./class');
 const authRouter = require('./auth');
 const teacherRouter = require('./teacher');
+const eventRouter = require('./event');
 
 function route(app)
 {
+    app.use('/homeroom', homeroomRouter);
     app.use('/violation', violationRouter);
     app.use('/teacher', teacherRouter);
     app.use('/class', classRouter);

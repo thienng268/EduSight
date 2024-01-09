@@ -29,6 +29,11 @@
         </div>
         <div class="content-box">
             <div class="content">
+                <div class="d-flex my-3">
+                    <button class="excel mr-3" onclick="saveBehaviour()">
+                        Save
+                    </button>  
+                </div>
                 <table id="infoTable">
                 <tr>
                     <th>ID</th>
@@ -37,22 +42,23 @@
                     <th>Status</th>
                     <th></th>
                 </tr>
+                {{#each students}}
                 <tr>
                     <td>HS001</td>
-                    <td>Truong Thi Tuyet Nhung</td>
-                    <td>11/03/1996</td>
-                    <td>Studying</td>
+                    <td>{{this.Name}}</td>
+                    <td>{{this.DOB}}</td>
+                    <td>{{this.Status}}</td>
                     <td>
-                        <select class="custom-select form-control" id="Subject">
-                                <option selected>Excellent</option>
-                                <option>Good</option>
-                                <option>Satisfactory</option>
-                                <option>Needs Improvement</option>
-                                <option>Unsatisfactory</option>
-                            </select>
+                        <select class="custom-select form-control" id="Subject" data-student-id="{{this._id}}">
+                            <option {{#if (eq this.Behaviour "Excellent")}}selected{{/if}}>Excellent</option>
+                            <option {{#if (eq this.Behaviour "Good")}}selected{{/if}}>Good</option>
+                            <option {{#if (eq this.Behaviour "Satisfactory")}}selected{{/if}}>Satisfactory</option>
+                            <option {{#if (eq this.Behaviour "Needs Improvement")}}selected{{/if}}>Needs Improvement</option>
+                            <option {{#if (eq this.Behaviour "Unsatisfactory")}}selected{{/if}}>Unsatisfactory</option>
+                        </select>
                     </td>
                 </tr>
-                
+                {{/each}}
                 
             </table>
             <div class="table-control d-inline-flex justify-content-start align-items-center">
@@ -225,9 +231,32 @@
                 resetRowsPerPage(firstTable); // Use reset function to initialize the table
             }
         });
+    </script>
+    <script>
+        function saveBehaviour() {
+            const selects = document.querySelectorAll('.custom-select');
+            const behaviours = Array.from(selects).map(select => {
+                return {
+                    studentId: select.dataset.studentId,
+                    behaviour: select.value
+                };
+            });
 
-       
-
-
+            // Gửi yêu cầu cập nhật đến máy chủ
+            fetch('http://localhost:3000/homeroom/update/behaviour', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(behaviours)
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log('Cập nhật thành công:', data);
+            })
+            .catch(error => {
+                console.error('Lỗi khi cập nhật:', error);
+            });
+        }
     </script>
 </body>

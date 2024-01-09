@@ -1,5 +1,167 @@
 <!DOCTYPE html>
 <html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/violation.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="top d-flex justify-content-between">
+            <h1>Violation Record</h1>
+            <div class="search-container">
+                <div class="input-wrapper">
+                    <img src="/img/search 1.svg" alt="Search" class="search-icon">
+                    <input type="text" class="search-input" placeholder="Search">
+                </div>
+            </div>
+            <img src="/img/Ava.svg" alt="User" class="user-avatar">
+            <div class="user">
+                <h3>Veronica</h3>
+                <p>Admin</p>
+            </div>
+        </div>
+        <div class="d-flex ">
+            <button type="button" class="add d-flex align-items-center mr-auto my-3" data-toggle="modal"
+                data-target="#exampleModal">
+                <img class="mr-2" src="/img/add (1).png" alt="Add">
+                New
+            </button>
+
+        </div>
+        <div>
+            <table>
+                <tr>
+                    <th></th>
+                    <th>Student Name</th>
+                    <th>Class</th>
+                    <th>Violation</th>
+                    <th>Date</th>
+                </tr>
+                {{#each violations}}
+                <tr>
+                    <td>1</td>
+                    <td>{{this.NameStudent}}</td>
+                    <td>{{this.Class}}</td>
+                    <td>{{this.Violation}}</td>
+                    <td>{{this.Date}}</td>
+                </tr>
+                {{/each}}
+
+            </table>
+            <div class="table-control d-inline-flex justify-content-start align-items-center">
+                <div class="rows-per-page d-inline-flex">
+                    <label for="rows" class="align-self-center">Rows per page:</label>
+                    <select id="rows" name="rows">
+                        <option value="1">1</option>
+                        <option value="2">2</option>
+                        <option value="3">3</option>
+                        <option value="5">5</option>
+                    </select>
+                </div>
+                <div class="pagination-info">
+                    1/1 of 1
+                </div>
+                <div class="pagination-controls">
+                    <button>&lt;</button> <!-- Previous page -->
+                    <button>&gt;</button> <!-- Next page -->
+                </div>
+            </div>
+        </div>
+
+
+
+    </div>
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title mb-3" id="exampleModalLabel">New </h5>
+
+                </div>
+                <div class="modal-body">
+                    <form class="infor">
+                        <div class="form-row">
+                            <div class="col mb-3">
+                                <label class="add-label" for="StudentName">Student Name</label>
+                                <input type="text" class="form-control" name="StudentName" id="StudentName">
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col form-group">
+                                <label class="add-label" for="Date">Date</label>
+                                <input class="form-control" type="date" id="Date" name="date">
+                            </div>
+                            <div class="col form-group">
+                                <label class="add-label" for="Class">Class</label>
+                                <select class="custom-select form-control" id="Class">
+                                    <option selected>Choose...</option>
+                                    {{#each classes}}
+                                    <option value="{{this.Name}}">{{this.Name}}</option>
+                                    {{/each}}
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="form-row">
+                            <div class="col mb-3">
+                                <label class="add-label" for="Violation">Violation</label>
+                                <input type="text" class="form-control" name="Violation" id="Violation">
+                            </div>
+                        </div>
+                    </form>
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                    <button type="button" id="addButton" class="btn btn-primary">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        document.getElementById('addButton').addEventListener('click', function () {
+            const nameStudent = document.getElementById('StudentName').value;
+            const className = document.getElementById('Class').value;
+            const violation = document.getElementById('Violation').value;
+            const date = document.getElementById('Date').value;
+            // Gửi POST request với dữ liệu đã nhập
+            fetch('./vio/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json'},
+                body: JSON.stringify({ nameStudent, className, violation, date })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json(); // Nếu máy chủ trả về dữ liệu không phải JSON, dòng này sẽ bị lỗi
+                })
+                .then(data => {
+                    if (data.success) {
+                        console.log('Thành công:', data.message);
+                        if (data.closeModal) {
+                            $('#exampleModal').modal('hide');  // Đóng modal
+                        }
+                        location.reload();
+                    } else {
+                        console.error('ABC:', data.message);
+                    }
+                })
+                .catch((error) => {
+                    console.log(error)
+                    console.error('Loi:', error);
+                });
+        });
+    </script>
+</body>
+
+
+{{!-- <!DOCTYPE html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -29,7 +191,8 @@
             
         </div>
         <div>
-            <table>
+            <table id="infoTable">
+                
                     <tr>
                         <th></th>
                         <th>Student Name</th>
@@ -37,14 +200,15 @@
                         <th>Violation</th>
                         <th>Date</th>
                     </tr>
+                    {{#each violations}}
                     <tr>
                         <td>1</td>
-                        <td>Nguyen Thien</td>
-                        <td>6A.1</td>
-                        <td>Bullying</td>
-                        <td>26/3/2003</td>
+                        <td>{{this.NameStudent}}</td>
+                        <td>{{this.Class}}</td>
+                        <td>{{this.Date}}</td>
+                        <td>{{this.Violation}}</td>
                     </tr>
-                    
+                    {{/each}}
                     
             </table>
             <div class="table-control d-inline-flex justify-content-start align-items-center">
@@ -116,4 +280,16 @@
         </div>
     </div>
     </div>
-</body>
+
+    <script>
+        document.getElementById("infoTable").addEventListener("click", function(e) {
+        if (e.target && e.target.nodeName === "BUTTON" && e.target.classList.contains("view")) {
+            // Get the next sibling row of the parent row of the clicked button
+            var nextRow = e.target.parentNode.parentNode.nextElementSibling;
+            if (nextRow && nextRow.classList.contains("hidden-info")) {
+            nextRow.style.display = nextRow.style.display === "none" ? "" : "none";
+            }
+        }
+        });
+    </script>
+</body> --}}

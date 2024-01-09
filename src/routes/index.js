@@ -10,6 +10,7 @@ const eventRouter = require('./event');
 
 function route(app)
 {
+    app.use('/event', eventRouter);
     app.use('/homeroom', homeroomRouter);
     app.use('/violation', violationRouter);
     app.use('/teacher', teacherRouter);

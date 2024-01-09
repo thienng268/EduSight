@@ -1,0 +1,303 @@
+@import 'variables';
+@import 'typography';
+
+
+.top h1{
+  @include font-h3-extra-bold;
+}
+.top h3{
+    @include font-h6-extra-bold;
+}
+.top p{
+    @include font-small-normal;
+}
+.user-avatar {
+    width: 52px;
+    height: 52px; 
+    border-radius: 50%; 
+  }
+.search-container {
+  display: flex;
+  align-items: center;
+  background-color: white;
+  border-radius: 20px;
+  padding: 4px 8px;
+  width: 568px; 
+  height: 48px;
+  margin-left: auto;
+  
+}
+
+
+.input-wrapper {
+  position: relative;
+  flex-grow: 1;
+  margin-right: 20px; /* Space between input and avatar */
+}
+
+.search-icon {
+  position: absolute;
+  left: 10px; 
+  top: 50%;
+  transform: translateY(-50%);
+  height: 20px; /* Adjust as needed */
+}
+
+.search-input {
+  width: 100%;
+  border: none;
+  outline: none;
+  background-color: #F4F7FE; 
+  border-radius: 20px; 
+  padding: 5px 8px 5px 40px; 
+}
+
+
+
+.search-input::placeholder { color: #ccc; }
+.search-input:focus {
+  background-color: #F4F7FE; 
+}
+
+.profile{
+  background-color: $soft-coral;
+  height: 100vh;
+  border-radius: 36px 36px 0 0; 
+  box-sizing: border-box;
+  padding: 30px
+}
+.profile h5{
+    @include font-h5-extra-bold;
+}
+.edit{
+    border-radius: 100%;
+    background-color: $dusky-blue;
+    padding: 4px;
+    border: none;
+    cursor: pointer;
+    width: 40px;
+    height: 40px;
+
+}
+.edit img{
+    width: 24px;
+    height: 24px;
+    align-self: center;
+    justify-self: center;
+}
+.image-container {
+    align-self: center;
+    border: 5px solid $dusky-blue; 
+    padding: 10px; 
+    background-color: transparent; 
+    border-radius: 100%;
+    width: 220px;
+    height: 220px;
+
+}
+
+.image-container img{
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+.main h3{
+    @include font-h3-extra-bold;
+}
+.main h5{
+    @include font-h5-extra-bold;
+}
+
+.stastic .sta{
+    width: 220px;
+    height: 96px;
+    background-color: white;
+    border-radius: 20px;
+    align-items: center;
+    justify-content: start;
+    padding-left: 20px;
+    margin-right: 12px;
+    box-shadow: 0 4px rgba(0, 0, 0, 0.2); 
+
+}
+.number{
+    @include font-h5-extra-bold;
+}
+.stastic .sta:last-child{
+    margin-right: 0;
+}
+.stastic img{
+    width: 56px;
+    height: 56px;
+    margin-right: 12px;
+}
+.quick-act{
+    width: 300px;
+    border: none;
+    border-radius: 20px;
+    margin-right: 20px;
+}
+  .quick-act a{
+    padding: 12px;
+    height: 50px;
+    background-color: white;
+    border: none;
+    padding-left: 20px;
+    border-radius: 16px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.1);
+    margin-bottom: 10px;
+    text-decoration: none;
+    color: $dark-teal;
+    cursor: pointer;
+  }
+  .quick-act a:hover{
+    transform: translateY(-3px);
+  }
+  
+  .quick-act img{
+    width: 32px;
+    height: 32px;
+    margin-right: 8px;
+  }
+  .event-item{
+    width: 194px;
+    height: 194px;
+    margin-bottom: 20px; 
+    overflow: hidden; 
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    border-radius: 20px;
+
+}
+.event-item a{
+  text-decoration: none;
+  color: $dark-teal;
+}
+
+.event-item img{
+    width: 200px;
+    height: 94px;
+}
+.event-item h6{
+    @include font-regular-extra-bold;
+}
+.event-item a{
+    @include font-tiny-medium; 
+}
+.event-item {
+  position: relative;
+  max-width: 300px; 
+}
+.event-item img {
+  width: 100%;
+  display: block;
+}
+.title {
+  position: absolute;
+  bottom: 10px; 
+  left: 10px; 
+  padding: 5px;
+  border-radius: 5px;
+}
+.time {
+  position: absolute;
+  width: 45px;
+  height: 45px;
+  top: 10px; 
+  right: 10px; 
+  background: $soft-coral;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-radius: 10px; 
+  z-index: 100; 
+}
+.time .date{
+  @include font-h6-extra-bold;
+}
+.time .month{
+  @include font-tiny-extra-bold;
+  margin-top: -6px;
+}
+.time .date, .time .month {
+  display: block; 
+  text-align: center;
+}
+.line-2 {
+    background-color: transparent;
+}
+
+
+.calendar {
+    width: 400px;
+    border-radius: 34px; /* Rounded corners for the calendar */
+    background-image: linear-gradient(to bottom, #f3f4f6, #fff);
+    border: 1px solid $dusky-blue;
+}
+
+.calendar__days {
+    background-color: $dusky-blue;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    text-align: center;
+    font-weight: 700;
+    font-size: 1.02rem;
+    color: white;
+    padding: 0 24px 14px;
+}
+
+.calendar__dates {
+    padding: 10px 20px;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+}
+
+.calendar__date {
+    text-align: center;
+    font-weight: 600;
+    font-size: 1.02rem;
+    cursor: pointer;
+    color: #000; /* Default text color */
+}
+
+.calendar__date--grey {
+    color: #c5c8ca;
+    cursor: not-allowed;
+}
+
+.calendar__date--selected {
+    color: $soft-coral;
+    background-color: #ffeaec;
+}
+
+.chooseFile{
+    padding: 5px 10px;
+    color: $dusky-blue;
+    border-radius: 100px;
+    cursor: pointer;
+    border: 1px solid $dusky-blue;
+
+  }
+  .chooseFile:hover{
+    background-color: transparent;
+    color: $dusky-blue;
+    border: 1px solid $dusky-blue;
+    transform: translateY(-3px);
+  }
+
+
+  .uploadFile{
+    border: 2px dotted $dusky-blue;
+    width: 448px;
+    padding: 12px 40px;
+    border-radius: 10px;
+  }
+  .uploadFile img{
+    width: 48px;
+    height: 48px;
+  }
+  .uploadFile p{
+    @include font-regular-normal;
+  }
+  .uploadFile h6{
+    @include font-medium-semi-bold;
+    margin-top: 24px;
+  }

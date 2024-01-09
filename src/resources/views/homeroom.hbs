@@ -41,23 +41,79 @@
                     <td>HS001</td>
                     <td>Truong Thi Tuyet Nhung</td>
                     <td>11/03/1996</td>
-                    <td>Teaching</td>
-                    <td class="d-flex">
-                        <button class="view">View</button>
-                        <button type="button" class="edit" data-toggle="modal" data-target="#exampleModal">
-                            Edit
-                        </button>
+                    <td>Studying</td>
+                    <td>
+                        <select class="custom-select form-control" id="Subject">
+                                <option selected>Excellent</option>
+                                <option>Good</option>
+                                <option>Satisfactory</option>
+                                <option>Needs Improvement</option>
+                                <option>Unsatisfactory</option>
+                            </select>
                     </td>
                 </tr>
                 
                 
             </table>
-               
-            <div class="content">
+            <div class="table-control d-inline-flex justify-content-start align-items-center">
+                    <div class="rows-per-page d-inline-flex">
+                        <label for="rows" class="align-self-center">Rows per page:</label>
+                        <select id="rows" name="rows">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="pagination-info">
+                        1/1 of 1
+                    </div>
+                    <div class="pagination-controls">
+                        <button>&lt;</button> <!-- Previous page -->
+                        <button>&gt;</button> <!-- Next page -->
+                    </div>
+                </div>
                 
             </div>
+            <div class="content">
+                <div class="d-flex my-3">
+                    <button class="excel mr-3">
+                        <img src="/img/file-excel (1).png" alt="Excel File Export">
+                        Excel Export
+                    </button>
+                    <button class="pdf">
+                        <img src="/img/file-pdf (1).png" alt="PDF File Export">
+                        PDF Export
+                    </button>
+            </div>
+                <table class="student-grades">
+                    <tr>
+                        <th></th>
+                        <th>Toan</th>
+                        <th>Van</th>
+                        <th>Anh</th>
+                        <th>KHTN</th>
+                        <th>Lich su va Dia li</th>
+                        <th>GDCD</th>
+                        <th>Cong nghe</th>
+                        <th>Tin hoc</th>
+                        <th>DTB</th>
+                    </tr>
+                    <tr>
+                        <td>Nguyen Thien</td>
+                        <td>3.5</td>
+                        <td>3.5</td>
+                        <td>3</td>
+                        <td>3.5</td>
+                        <td>3.6</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>3</td>
+                        <td>2.5</td>
+                    </tr>
+                </table>
+            </div>
             
-        </div>
         
 
         

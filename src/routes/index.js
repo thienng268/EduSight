@@ -1,4 +1,5 @@
 const violationRouter = require('./violation');
+const homeroomRouter = require('./homeroom');
 const siteRouter = require('./site');
 const scheduleRouter = require('./schedule');
 const gradeRouter = require('./grade');

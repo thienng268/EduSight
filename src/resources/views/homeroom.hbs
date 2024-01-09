@@ -95,28 +95,30 @@
                 <table class="student-grades">
                     <tr>
                         <th></th>
-                        <th>Toan</th>
-                        <th>Van</th>
+                        <th>Toán</th>
+                        <th>Văn</th>
                         <th>Anh</th>
                         <th>KHTN</th>
-                        <th>Lich su va Dia li</th>
+                        <th>Lịch sử và Địa lý</th>
                         <th>GDCD</th>
-                        <th>Cong nghe</th>
-                        <th>Tin hoc</th>
+                        <th>Công nghệ</th>
+                        <th>Tin học</th>
                         <th>DTB</th>
                     </tr>
+                    {{#each students}}
                     <tr>
-                        <td>Nguyen Thien</td>
-                        <td>3.5</td>
-                        <td>3.5</td>
-                        <td>3</td>
-                        <td>3.5</td>
-                        <td>3.6</td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>3</td>
-                        <td>2.5</td>
+                        <td>{{this.Name}}</td>
+                        <td>{{lookup this.SubjectAverages 'Toán'}}</td>
+                        <td>{{lookup this.SubjectAverages 'Văn'}}</td>
+                        <td>{{lookup this.SubjectAverages 'Anh'}}</td>
+                        <td>{{lookup this.SubjectAverages 'KHTN'}}</td>
+                        <td>{{lookup this.SubjectAverages 'Lịch sử và Địa lý'}}</td>
+                        <td>{{lookup this.SubjectAverages 'GDCD'}}</td>
+                        <td>{{lookup this.SubjectAverages 'Công nghệ'}}</td>
+                        <td>{{lookup this.SubjectAverages 'Tin học'}}</td>
+                        <td>0</td>
                     </tr>
+                    {{/each}}
                 </table>
             </div>
             

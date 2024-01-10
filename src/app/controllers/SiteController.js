@@ -142,7 +142,7 @@ class SiteController
         res.render('search');
     }
     theliem(req, res) {
-        res.render('homeroom'); 
+        res.render('violation'); 
         //res.render('profile', { layout: 'non_sb' });
     }
 }

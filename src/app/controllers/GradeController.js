@@ -71,6 +71,15 @@ class GradeController
         try {
             const updatedData = req.body;
             const updatePromises = updatedData.map(data => {
+                const hs11 = Number(data.hs11);
+                const hs12 = Number(data.hs12);
+                const hs13 = Number(data.hs13);
+                const hs14 = Number(data.hs14);
+                const hs21 = Number(data.hs21);
+                const hs22 = Number(data.hs22);
+                const hs3 = Number(data.hs3);
+                const hasNullValue = [data.hs11, data.hs12, data.hs13, data.hs14, data.hs21, data.hs22, data.hs3].some(value => value === null);
+                const average = hasNullValue ? null : ((hs11 + hs12 + hs13 + hs14 + hs21 * 2 + hs22 * 2 + hs3 * 3) / 11).toFixed(1);
                 return Grade.findByIdAndUpdate(
                     data.gradeId,
                     {
@@ -82,8 +91,7 @@ class GradeController
                             HS21: data.hs21,
                             HS22: data.hs22,
                             HS3: data.hs3,
-                            Average: data.Average,
-                            // và các trường dữ liệu khác...
+                            Average: average,
                         }
                     },
                     { new: true }

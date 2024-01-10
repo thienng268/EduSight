@@ -10,43 +10,116 @@
 <body>
     <div class="container">
         <div class="top d-flex justify-content-between">
-            <h1>Violation Record</h1>
+            <h1>Reward &amp Violation</h1>
             <div class="search-container">
                 <div class="input-wrapper">
                     <img src="/img/search 1.svg" alt="Search" class="search-icon">
                     <input type="text" class="search-input" placeholder="Search">
                 </div>
             </div>
-            <img src="/img/Ava.svg" alt="User" class="user-avatar">
-            <div class="user">
-                <h3>Veronica</h3>
-                <p>Admin</p>
-            </div>
+            
         </div>
-        <div class="d-flex ">
-            <button type="button" class="add d-flex align-items-center mr-auto my-3" data-toggle="modal"
-                data-target="#exampleModal">
-                <img class="mr-2" src="/img/add (1).png" alt="Add">
-                New
-            </button>
 
+        <div class="tab-box d-flex justify-content-start">
+            <button class="tab-btn">Violation Record</button>
+            <button class="tab-btn">Top Rewards</button>
+            <div class="line"></div>
         </div>
-        <div>
+        <div class="content-box">
+            <div class="content">
+                <div class="d-flex ">
+                    <button type="button" class="add d-flex align-items-center mr-auto my-3" data-toggle="modal"
+                        data-target="#exampleModal">
+                        <img class="mr-2" src="/img/add (1).png" alt="Add">
+                        New
+                    </button>
+
+                </div>
+                <div>
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Student Name</th>
+                            <th>Class</th>
+                            <th>Violation</th>
+                            <th>Date</th>
+                        </tr>
+                        {{#each violations}}
+                        <tr>
+                            <td>1</td>
+                            <td>{{this.NameStudent}}</td>
+                            <td>{{this.Class}}</td>
+                            <td>{{this.Violation}}</td>
+                            <td>{{this.Date}}</td>
+                        </tr>
+                        {{/each}}
+
+                    </table>
+                    <div class="table-control d-inline-flex justify-content-start align-items-center">
+                        <div class="rows-per-page d-inline-flex">
+                            <label for="rows" class="align-self-center">Rows per page:</label>
+                            <select id="rows" name="rows">
+                                <option value="1">1</option>
+                                <option value="2">2</option>
+                                <option value="3">3</option>
+                                <option value="5">5</option>
+                            </select>
+                        </div>
+                        <div class="pagination-info">
+                            1/1 of 1
+                        </div>
+                        <div class="pagination-controls">
+                            <button>&lt;</button> <!-- Previous page -->
+                            <button>&gt;</button> <!-- Next page -->
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <div class="content">
+                <div class="radio mb-3">
+                    <input type="radio" id="school" name="option" value="school">
+                    <label for="school">School</label>
+
+                    <input type="radio" id="grade" name="option" value="grade">
+                    <label for="grade">Grade</label>
+
+                    <input type="radio" id="class" name="option" value="class">
+                    <label for="class">Class</label>
+                </div>
+
+                <div class="mb-3" id="gradeSelection" style="display:none;">
+                    <label for="gradeChoice">Choose a Grade:</label>
+                    <select id="gradeChoice">
+                        <option value="grade1">Grade 1</option>
+                        <option value="grade2">Grade 2</option>
+                    </select>
+                </div>
+
+                <div class="mb-3" id="classSelection" style="display:none;">
+                    <label for="classChoice">Choose a Class:</label>
+                    <select id="classChoice">
+                        <option value="classA">Class A</option>
+                        <option value="classB">Class B</option>
+                    </select>
+                </div>
+
             <table>
                 <tr>
                     <th></th>
                     <th>Student Name</th>
+                    <th>Date of Birth</th>
                     <th>Class</th>
-                    <th>Violation</th>
-                    <th>Date</th>
+                    <th>Score</th>
+                    
                 </tr>
                 {{#each violations}}
                 <tr>
                     <td>1</td>
-                    <td>{{this.NameStudent}}</td>
-                    <td>{{this.Class}}</td>
-                    <td>{{this.Violation}}</td>
-                    <td>{{this.Date}}</td>
+                    <td>Nguyen Thien</td>
+                    <td>26/03/2003</td>
+                    <td>6A.1</td>
+                    <td>9.45</td>
                 </tr>
                 {{/each}}
 
@@ -70,9 +143,10 @@
                 </div>
             </div>
         </div>
+            </div>
 
-
-
+        </div>
+        
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -122,6 +196,11 @@
             </div>
         </div>
     </div>
+
+
+
+
+
     <script>
             document.getElementById('addButton').addEventListener('click', function () {
                 const nameStudent = document.getElementById('StudentName').value;
@@ -154,5 +233,68 @@
                         console.error('Loi:', error);
                     });
                 });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const tabs = document.querySelectorAll('.tab-btn');
+        const allContent = document.querySelectorAll('.content');
+        const line = document.querySelector('.line');
+
+        function updateLine(tab) {
+            line.style.width = `${tab.offsetWidth}px`;
+            line.style.left = `${tab.offsetLeft}px`;
+            line.style.bottom = '-3px';
+        }
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                tabs.forEach((t, i) => {
+                    t.classList.remove('active');
+                    allContent[i].style.display = 'none';
+                });
+
+                tab.classList.add('active');
+                allContent[index].style.display = 'block';
+                updateLine(tab);
+            });
+        });
+
+        if (allContent.length > 0) {
+            tabs[0].classList.add('active');
+            allContent[0].style.display = 'block';
+            updateLine(tabs[0]);
+        }
+    });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+    const schoolRadio = document.getElementById('school');
+    const gradeRadio = document.getElementById('grade');
+    const classRadio = document.getElementById('class');
+
+    const gradeSelection = document.getElementById('gradeSelection');
+    const classSelection = document.getElementById('classSelection');
+
+    function updateSelectionDisplay() {
+        if (gradeRadio.checked) {
+            gradeSelection.style.display = 'block';
+            classSelection.style.display = 'none';
+        } else if (classRadio.checked) {
+            gradeSelection.style.display = 'none';
+            classSelection.style.display = 'block';
+        } else {
+            gradeSelection.style.display = 'none';
+            classSelection.style.display = 'none';
+        }
+    }
+
+    schoolRadio.addEventListener('change', updateSelectionDisplay);
+    gradeRadio.addEventListener('change', updateSelectionDisplay);
+    classRadio.addEventListener('change', updateSelectionDisplay);
+
+    // Initialize
+    updateSelectionDisplay();
+});
+
     </script>
 </body>

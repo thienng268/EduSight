@@ -16,11 +16,7 @@
                 </div>
                 
             </div>
-            <img src="/img/Ava.svg" alt="User" class="user-avatar"> 
-            <div class="user">
-                <h3>Veronica</h3>
-                <p>Admin</p>
-            </div>
+            
         </div>
         <div class="tab-box d-flex justify-content-start">
             <button class="tab-btn">Evaluate Conduct</button>
@@ -82,15 +78,25 @@
                 
             </div>
             <div class="content">
-                <div class="d-flex my-3">
-                    <button class="excel mr-3">
-                        <img src="/img/file-excel (1).png" alt="Excel File Export">
-                        Excel Export
-                    </button>
-                    <button class="pdf">
-                        <img src="/img/file-pdf (1).png" alt="PDF File Export">
-                        PDF Export
-                    </button>
+                <div class="d-flex my-3 justify-content-between">
+                    <form class="form-inline">
+                        <label class="sem-label mr-3" for="Semester">Semester</label>
+                                <select class="custom-select form-control" id="Semester">
+                                    <option selected>Choose...</option>
+                                    <option>I</option>
+
+                                </select>
+                    </form>
+                    <div>
+                        <button class="excel mr-3">
+                            <img src="/img/file-excel (1).png" alt="Excel File Export">
+                            Excel Export
+                        </button>
+                        <button class="pdf ">
+                            <img src="/img/file-pdf (1).png" alt="PDF File Export">
+                            PDF Export
+                        </button>
+                    </div>
             </div>
                 <table class="student-grades">
                     <tr>

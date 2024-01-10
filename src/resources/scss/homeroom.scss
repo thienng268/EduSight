@@ -236,4 +236,9 @@ button {
   .pdf:hover img{
     content: url("/img/file-pdf (2).png");
   }
-  
+.sem-label{
+  @include font-h6-extra-bold;
+}
+.custom-select{
+  border-radius: 20px;
+}

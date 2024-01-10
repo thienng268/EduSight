@@ -8,126 +8,346 @@
 <body>
     <div class="container">
         <div class="top d-flex justify-content-between">
-            <h1>Gradebook</h1>
+            <h1>Schedule</h1>
             <div class="search-container">
                 <div class="input-wrapper">
                     <img src="/img/search 1.svg" alt="Search" class="search-icon"> 
                     <input type="text" class="search-input" placeholder="Search">
+                    
                 </div>
             </div>
-            <img src="/img/Ava.svg" alt="User" class="user-avatar"> 
-            <div class="user">
-                <h3>Veronica</h3>
-                <p>Admin</p>
-            </div>
+            
         </div>
-        <div class="scroll-area mt-3">
-            <div class="schedule">
-                <table class="table" id="scheduleTable">
+        <div class="tab-box d-flex justify-content-start">
+            <button class="tab-btn">Schedule View</button>
+            <button class="tab-btn">Schedule List</button>
+            <button class="tab-btn">New Schedule</button>
+            <div class="line"></div>
+        </div>
+        <div class="content-box">
+            <div class="content">
+                <div class="scroll-area mt-3">
+                    <div class="schedule">
+                        <div class="filter mb-3">
+                            <label for="filter" class="mr-1">Filter:</label>
+                            <select id="filter" name="rows">
+                                <option value="1">Nguyen Hoang Giang</option>
+                                <option value="" disabled selected>Choose..</option>
+                            </select>
+                        </div>
+                        <table class="table" id="scheduleTable">
                 
-                    <thead>
-                        <tr>
-                        <th rowspan="3" class="teacher-header">Giáo viên</th>
-                        <th colspan="10">Thứ 2</th>
-                        <th colspan="10">Thứ 3</th>
-                        <th colspan="10">Thứ 4</th>
-                        <th colspan="10">Thứ 5</th>
-                        <th colspan="10">Thứ 6</th>
-                        <th colspan="10">Thứ 7</th>
-                        <!-- Repeat the pattern for the rest of the days -->
-                        </tr>
-                        <tr>
-                        <th colspan="5">Sáng</th>
-                        <th colspan="5">Chiều</th>
-                        <th colspan="5">Sáng</th>
-                        <th colspan="5">Chiều</th>
-                        <th colspan="5">Sáng</th>
-                        <th colspan="5">Chiều</th>
-                        <th colspan="5">Sáng</th>
-                        <th colspan="5">Chiều</th>
-                        <th colspan="5">Sáng</th>
-                        <th colspan="5">Chiều</th>
-                        <th colspan="5">Sáng</th>
-                        <th colspan="5">Chiều</th>
-                        </tr>
-                        <tr>
-                        <!-- The third row headers -->
-                        <th>Tiết 1</th>
-                        <th>Tiết 2</th>
-                        <th>Tiết 3</th>
-                        <th>Tiết 4</th>
-                        <th>Tiết 5</th>
-                        <th>Tiết 1</th>
-                        <th>Tiết 2</th>
-                        <th>Tiết 3</th>
-                        <th>Tiết 4</th>
-                        <th>Tiết 5</th>
-                        <th>Tiết 1</th>
-                        <th>Tiết 2</th>
-                        <th>Tiết 3</th>
-                        <th>Tiết 4</th>
-                        <th>Tiết 5</th>
-                        <th>Tiết 1</th>
-                        <th>Tiết 2</th>
-                        <th>Tiết 3</th>
-                        <th>Tiết 4</th>
-                        <th>Tiết 5</th>
-                        <th>Tiết 1</th>
-                        <th>Tiết 2</th>
-                        <th>Tiết 3</th>
-                        <th>Tiết 4</th>
-                        <th>Tiết 5</th>
-                        <th>Tiết 1</th>
-                        <th>Tiết 2</th>
-                        <th>Tiết 3</th>
-                        <th>Tiết 4</th>
-                        <th>Tiết 5</th>
-                        <th>Tiết 1</th>
-                        <th>Tiết 2</th>
-                        <th>Tiết 3</th>
-                        <th>Tiết 4</th>
-                        <th>Tiết 5</th>
-                        <th>Tiết 1</th>
-                        <th>Tiết 2</th>
-                        <th>Tiết 3</th>
-                        <th>Tiết 4</th>
-                        <th>Tiết 5</th>
-                        <th>Tiết 1</th>
-                        <th>Tiết 2</th>
-                        <th>Tiết 3</th>
-                        <th>Tiết 4</th>
-                        <th>Tiết 5</th>
-                        <th>Tiết 1</th>
-                        <th>Tiết 2</th>
-                        <th>Tiết 3</th>
-                        <th>Tiết 4</th>
-                        <th>Tiết 5</th>
-                        <th>Tiết 1</th>
-                        <th>Tiết 2</th>
-                        <th>Tiết 3</th>
-                        <th>Tiết 4</th>
-                        <th>Tiết 5</th>
-                        <th>Tiết 1</th>
-                        <th>Tiết 2</th>
-                        <th>Tiết 3</th>
-                        <th>Tiết 4</th>
-                        <th>Tiết 5</th>
-                        <!-- Repeat the pattern for the rest of the days -->
-                        </tr>
-                    </thead>
-                    <!--START THE SCHEDULE -->
-                    <tbody class="scroll-content">
-                        {{#each scheduleData}}
-                        <tr>
-                            {{#each this}}
-                            {{!-- <td>{{this}}</td> --}}
-                            <td>{{#if this}}{{this}}{{else}}&nbsp;{{/if}}</td>
-                            {{/each}}
-                        </tr>
-                        {{/each}}
-                    </tbody>
-                </table>
+                            <thead>
+                                <tr>
+                                <th rowspan="3" class="teacher-header">Giáo viên</th>
+                                <th colspan="10">Thứ 2</th>
+                                <th colspan="10">Thứ 3</th>
+                                <th colspan="10">Thứ 4</th>
+                                <th colspan="10">Thứ 5</th>
+                                <th colspan="10">Thứ 6</th>
+                                <th colspan="10">Thứ 7</th>
+                                <!-- Repeat the pattern for the rest of the days -->
+                                </tr>
+                                <tr>
+                                <th colspan="5">Sáng</th>
+                                <th colspan="5">Chiều</th>
+                                <th colspan="5">Sáng</th>
+                                <th colspan="5">Chiều</th>
+                                <th colspan="5">Sáng</th>
+                                <th colspan="5">Chiều</th>
+                                <th colspan="5">Sáng</th>
+                                <th colspan="5">Chiều</th>
+                                <th colspan="5">Sáng</th>
+                                <th colspan="5">Chiều</th>
+                                <th colspan="5">Sáng</th>
+                                <th colspan="5">Chiều</th>
+                                </tr>
+                                <tr>
+                                <!-- The third row headers -->
+                                <th>Tiết 1</th>
+                                <th>Tiết 2</th>
+                                <th>Tiết 3</th>
+                                <th>Tiết 4</th>
+                                <th>Tiết 5</th>
+                                <th>Tiết 1</th>
+                                <th>Tiết 2</th>
+                                <th>Tiết 3</th>
+                                <th>Tiết 4</th>
+                                <th>Tiết 5</th>
+                                <th>Tiết 1</th>
+                                <th>Tiết 2</th>
+                                <th>Tiết 3</th>
+                                <th>Tiết 4</th>
+                                <th>Tiết 5</th>
+                                <th>Tiết 1</th>
+                                <th>Tiết 2</th>
+                                <th>Tiết 3</th>
+                                <th>Tiết 4</th>
+                                <th>Tiết 5</th>
+                                <th>Tiết 1</th>
+                                <th>Tiết 2</th>
+                                <th>Tiết 3</th>
+                                <th>Tiết 4</th>
+                                <th>Tiết 5</th>
+                                <th>Tiết 1</th>
+                                <th>Tiết 2</th>
+                                <th>Tiết 3</th>
+                                <th>Tiết 4</th>
+                                <th>Tiết 5</th>
+                                <th>Tiết 1</th>
+                                <th>Tiết 2</th>
+                                <th>Tiết 3</th>
+                                <th>Tiết 4</th>
+                                <th>Tiết 5</th>
+                                <th>Tiết 1</th>
+                                <th>Tiết 2</th>
+                                <th>Tiết 3</th>
+                                <th>Tiết 4</th>
+                                <th>Tiết 5</th>
+                                <th>Tiết 1</th>
+                                <th>Tiết 2</th>
+                                <th>Tiết 3</th>
+                                <th>Tiết 4</th>
+                                <th>Tiết 5</th>
+                                <th>Tiết 1</th>
+                                <th>Tiết 2</th>
+                                <th>Tiết 3</th>
+                                <th>Tiết 4</th>
+                                <th>Tiết 5</th>
+                                <th>Tiết 1</th>
+                                <th>Tiết 2</th>
+                                <th>Tiết 3</th>
+                                <th>Tiết 4</th>
+                                <th>Tiết 5</th>
+                                <th>Tiết 1</th>
+                                <th>Tiết 2</th>
+                                <th>Tiết 3</th>
+                                <th>Tiết 4</th>
+                                <th>Tiết 5</th>
+                                <!-- Repeat the pattern for the rest of the days -->
+                                </tr>
+                            </thead>
+                            <!--START THE SCHEDULE -->
+                            <tbody class="scroll-content">
+                                {{#each scheduleData}}
+                                <tr>
+                                    {{#each this}}
+                                    {{!-- <td>{{this}}</td> --}}
+                                    <td>{{#if this}}{{this}}{{else}}&nbsp;{{/if}}</td>
+                                    {{/each}}
+                                </tr>
+                                {{/each}}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
             </div>
+            <div class="content">
+             <div class="list">
+                <table>
+                        <tr>
+                            <th></th>
+                            <th>Name</th>
+                            <th>Created Date</th>
+                            <th>Action</th>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>TKB_21/2-20/3_Dieu_chinh </td>
+                            <td>21/02/2023</td>
+                            <td class="d-flex">
+                                <button class="view">View</button>
+                                <button class="delete">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>TKB_21/2-20/3_Dieu_chinh </td>
+                            <td>21/02/2023</td>
+                            <td class="d-flex">
+                                <button class="view">View</button>
+                                <button class="delete">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>TKB_21/2-20/3_Dieu_chinh </td>
+                            <td>21/02/2023</td>
+                            <td class="d-flex">
+                                <button class="view">View</button>
+                                <button class="delete">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>TKB_21/2-20/3_Dieu_chinh </td>
+                            <td>21/02/2023</td>
+                            <td class="d-flex">
+                                <button class="view">View</button>
+                                <button class="delete">Delete</button>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>1</td>
+                            <td>TKB_21/2-20/3_Dieu_chinh </td>
+                            <td>21/02/2023</td>
+                            <td class="d-flex">
+                                <button class="view">View</button>
+                                <button class="delete">Delete</button>
+                            </td>
+                        </tr>
+                 
+                 
+                </table>
+             </div>
+                <div class="table-control d-inline-flex justify-content-start align-items-center">
+        <div class="rows-per-page d-inline-flex">
+            <label for="rows" class="align-self-center">Rows per page:</label>
+            <select id="rows" name="rows">
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="5">5</option>
+                <option value="10" selected>10</option>
+            </select>
+        </div>
+        <div class="pagination-info">
+            1/1 of 1
+        </div>
+        <div class="pagination-controls">
+            <button>&lt;</button> <!-- Previous page -->
+            <button>&gt;</button> <!-- Next page -->
         </div>
     </div>
+            </div>
+            <div class="content">
+                <div class="uploadFile mt-3 d-flex flex-column align-items-center justify-content-center mx-auto">
+                    <img src="/img/document 1.svg" alt="Document Upload">
+                    <h6>List of Subjects, Classes, and Teachers</h6>
+                    <p>Select a file or drag and drop here</p>
+                    <p style="opacity: 50%;"></p>
+                    <form id="uploadForm" class="d-flex flex-column align-items-center" action="/schedule/process" method="post" enctype="multipart/form-data">
+                        <input type="file" name="file" accept=".xls,.xlsx" class="form-control-file" id="exampleFormControlFile1" style="display: none;">
+                        <span id="file-chosen" class="mb-1" style="opacity: 50%;">Excel file size no more than 50MB</span>
+                        <label for="exampleFormControlFile1" class="chooseFile">Choose File</label>
+                        <button type="submit" class="edit" id="viewScheduleButton">Upload Schedule!</button>
+                
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>    
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+        const tabs = document.querySelectorAll('.tab-btn');
+        const allContent = document.querySelectorAll('.content');
+        const line = document.querySelector('.line');
+
+        function updateLine(tab) {
+            line.style.width = `${tab.offsetWidth}px`;
+            line.style.left = `${tab.offsetLeft}px`;
+            line.style.bottom = '-3px';
+        }
+
+        tabs.forEach((tab, index) => {
+            tab.addEventListener('click', () => {
+                tabs.forEach((t, i) => {
+                    t.classList.remove('active');
+                    allContent[i].style.display = 'none';
+                });
+
+                tab.classList.add('active');
+                allContent[index].style.display = 'block';
+                updateLine(tab);
+            });
+        });
+
+        if (allContent.length > 0) {
+            tabs[0].classList.add('active');
+            allContent[0].style.display = 'block';
+            updateLine(tabs[0]);
+        }
+    });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var fileInput = document.getElementById('exampleFormControlFile1');
+            var fileChosen = document.getElementById('file-chosen');
+            var uploadForm = document.getElementById('uploadForm');
+            fileInput.addEventListener('change', function() {
+                var fileName = fileInput.files[0] ? fileInput.files[0].name : "No file chosen";
+                fileChosen.textContent = 'Đã chọn file: ' + fileName;
+            });
+            uploadForm.addEventListener('submit', function(e) {
+                if (!fileInput.value) {
+                    e.preventDefault();
+                    alert('Chưa có file nào được chọn để upload!');
+                }
+            });
+        });
+    </script>    
+    <script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const defaultRowsPerPage = 10; // Set your default value here
+        let currentPage = 1;
+        let rowsPerPage = defaultRowsPerPage;
+        const rowsSelect = document.getElementById('rows');
+        const paginationInfo = document.querySelector('.pagination-info');
+        const prevButton = document.querySelector('.pagination-controls button:first-child');
+        const nextButton = document.querySelector('.pagination-controls button:last-child');
+        const table = document.querySelector('table'); // Assuming there is only one table
+
+        function updateTableDisplay() {
+            const rows = table.querySelectorAll('tr:not(:first-child)');
+            const totalPages = Math.ceil(rows.length / rowsPerPage);
+            
+            // Hide all rows
+            rows.forEach(row => {
+                row.style.display = 'none';
+            });
+
+            // Calculate the range of rows to display
+            const start = (currentPage - 1) * rowsPerPage;
+            const end = start + rowsPerPage;
+            
+            // Show the rows for the current page
+            rows.forEach((row, index) => {
+                if (index >= start && index < end) {
+                    row.style.display = '';
+                }
+            });
+
+            paginationInfo.textContent = `Page ${currentPage} of ${totalPages}`;
+        }
+
+        function goToPage(pageNumber) {
+            currentPage = pageNumber;
+            updateTableDisplay();
+        }
+
+        rowsSelect.addEventListener('change', function(event) {
+            rowsPerPage = parseInt(event.target.value, 10);
+            goToPage(1); // Reset to the first page and update table display
+        });
+
+        prevButton.addEventListener('click', function() {
+            if (currentPage > 1) {
+                goToPage(currentPage - 1);
+            }
+        });
+
+        nextButton.addEventListener('click', function() {
+            const rows = table.querySelectorAll('tr:not(:first-child)');
+            const totalPages = Math.ceil(rows.length / rowsPerPage);
+            if (currentPage < totalPages) {
+                goToPage(currentPage + 1);
+            }
+        });
+
+        // Initialize the table display
+        updateTableDisplay();
+    });
+   
+       
+</script>
 </body>

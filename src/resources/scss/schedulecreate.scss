@@ -110,3 +110,9 @@
   .edit:hover img{
     content: url("/img/edit-act.png");
   }
+  .center{
+    display: grid;
+    align-items: center;
+    justify-content: center;
+    width:fit-content;
+  }

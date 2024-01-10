@@ -7,6 +7,8 @@ const classRouter = require('./class');
 const authRouter = require('./auth');
 const teacherRouter = require('./teacher');
 const eventRouter = require('./event');
+const profileRouter = require('./profile');
+const studentRouter = require('./student');
 
 function route(app)
 {
@@ -18,6 +20,8 @@ function route(app)
     app.use('/grade', gradeRouter);
     app.use('/schedule', scheduleRouter);
     app.use('/auth', authRouter);
+    app.use('/profile', profileRouter);
+    app.use('/student', studentRouter);
     app.use('/', siteRouter);
 }
 

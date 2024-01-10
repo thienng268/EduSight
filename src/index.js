@@ -7,10 +7,20 @@ const path = require('path')
 const route = require('./routes');
 const db = require('./config/db');
 
+const bcrypt = require('bcrypt');
+const saltRounds = 10;
+
+const cors = require('cors');
+
 const bodyParser = require('body-parser');
 var favicon = require('serve-favicon')
 const app = express()
 const port = 3000
+const handlebar = require('handlebars');
+
+handlebar.registerHelper('eq', function (a, b) {
+    return a === b;
+});
 
 //connect db
 db.connect();
@@ -34,6 +44,28 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  if (req.session.adminID) {
+    res.locals.adminID = req.session.adminID;
+  };
+  next();
+});
+
+app.use((req, res, next) => {
+  if (req.session.teacherID) {
+    res.locals.teacherID = req.session.teacherID;
+  };
+  next();
+});
+
+app.use((req, res, next) => {
+  if (req.session.managerID) {
+    res.locals.managerID = req.session.managerID;
+  };
+  next();
+});
+
+
 app.use(favicon(path.join(__dirname, 'public', 'img', 'LogoEduSight.png')))
 app.use('/src/public', express.static('src/public'));
 //HTTP logger
@@ -44,6 +76,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 app.use(bodyParser.urlencoded({ extended: true }));
+app.use(cors());
 
 //Template engine
 app.engine('hbs', handlebars({extname: '.hbs',}),);

@@ -31,48 +31,33 @@
             <div class="row">
                 <div class="col-md-6 event-list">
                     <div class="row">
+                        {{#each events}}
                         <div class="col-md-6">
-                            <div class="event-item">
+                            <div class="event-item" data-name="{{this.Name}}" data-date="{{this.Date}}" data-venue="{{this.Venue}}" data-description="{{this.Description}}">
                                 <a href="#">
                                     <img src="/img/event 1.svg" alt="">
                                     <div class="title">
-                                        <h6>Acrylic Workshop “Choi non”</h6>
+                                        <h6>{{this.Name}}</h6>
                                         <a href="#">Xem thêm</a>
                                     </div>
                                     <div class="time">
-                                        <span class="date">26</span>
-                                        <span class="month">MAY</span>
+                                        <span class="date">{{this.Month}}</span>
                                     </div>
                                 </a>
                             </div>
                         </div>
-                        <div class="col-md-6">
-                            <div class="event-item">
-                                <a href="#">
-                                    <img src="/img/event 2.svg" alt="">
-                                    <div class="title">
-                                        <h6>Acrylic Workshop “Choi non”</h6>
-                                        <a href="#">Xem thêm</a>
-                                    </div>
-                                    <div class="time">
-                                        <span class="date">26</span>
-                                        <span class="month">MAY</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
+                        {{/each}}
                     </div>
                     
                     
                 </div>
-                <div class="col-md-6 event-details d-flex flex-column">
-                    <img src="/img/image 2.svg" alt="">
+                {{!-- <div class="col-md-6 event-details d-flex flex-column">
+                    <img src="/img/image 1.svg" alt="">
                     <h5>Huong Sen Art Exhibition</h5>
                     <div class="d-flex justify-content-between icon">
                         <span class="d-flex justify-content-center">
                             <img src="/img/Time.svg" alt="">
                             7h00 25/10/2023
-
                         </span>
                         <span class="d-flex">
                             <img src="/img/Pin.svg" alt="">
@@ -80,6 +65,21 @@
                         </span>
                     </div>
                     <p>Dive deep into the mesmerizing world of watercolor paintings at the "Huong Sen" Art Exhibition. This showcase features the serene beauty of lotus flowers, representing purity and grace. Experience the harmonious blend of traditional and contemporary art styles, brought to life with delicate strokes and vibrant colors.</p>
+                </div> --}}
+                <div class="col-md-6 event-details d-flex flex-column">
+                    <img src="/img/image 2.svg" alt="">
+                    <h5 id="eventName">Huong Sen Art Exhibition</h5>
+                    <div class="d-flex justify-content-between icon">
+                        <span id="eventTime" class="d-flex justify-content-center">
+                            <img src="/img/Time.svg" alt="">
+                            7h00 25/10/2023
+                        </span>
+                        <span id="eventVenue" class="d-flex">
+                            <img src="/img/Pin.svg" alt="">
+                            Auditorium C
+                        </span>
+                    </div>
+                    <p id="eventDescription">Dive deep into the mesmerizing world...</p>
                 </div>
             </div>
         </div>
@@ -140,6 +140,33 @@
             </div>
         </div>
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            document.querySelectorAll('.event-item').forEach(function (item) {
+                item.addEventListener('click', function () {
+                    // Lấy thông tin từ data attributes
+                    const name = this.getAttribute('data-name');
+                    const date = this.getAttribute('data-date');
+                    const venue = this.getAttribute('data-venue');
+                    const description = this.getAttribute('data-description');
+                    console.log("Name:", name, "Date:", date, "Venue:", venue, "Description:", description);
 
+                    // Cập nhật nội dung vào các phần tử có id tương ứng
+                    document.getElementById('eventName').textContent = name;
+                    const eventTimeSpan = document.getElementById('eventTime');
+                    const eventVenueSpan = document.getElementById('eventVenue');
+                    capNhatNoiDungSpan(eventTimeSpan, date);
+                    capNhatNoiDungSpan(eventVenueSpan, venue);
+                    document.getElementById('eventDescription').textContent = description;
+                });
+            });
+        });
+        function capNhatNoiDungSpan(spanElement, newText) {
+            const imgTag = spanElement.querySelector('img');
+            spanElement.innerHTML = ''; // Xóa nội dung hiện tại
+            spanElement.appendChild(imgTag); // Thêm lại img tag
+            spanElement.appendChild(document.createTextNode(newText)); // Thêm văn bản mới
+        }
+    </script>
 </body>
 

@@ -8,6 +8,11 @@ const Account = new Schema({
     Role: String,
     managerID: { type: mongoose.Schema.Types.ObjectId, ref: 'Manager' },
     teacherID: { type: mongoose.Schema.Types.ObjectId, ref: 'Teacher' },
+    adminID: { type: mongoose.Schema.Types.ObjectId, ref: 'Admin' },
+    Block: {
+        type: Boolean,
+        default: true,
+    }
 });
 
 module.exports = mongoose.model('Account', Account,'accounts');

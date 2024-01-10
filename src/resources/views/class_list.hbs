@@ -69,40 +69,40 @@
                 </div>
             </div>
             <div class="content">
-                <div class="form-row col-10">
-                    <div class="form-group col">
-                        <label for="className">Class Name</label>
-                        <input type="text" class="form-control" id="className">
+                <form action="/class/create_class" method="post" enctype="multipart/form-data">
+                    <div class="form-row col-10">
+                        <div class="form-group col">
+                            <label for="className">Class Name</label>
+                            <input type="text" class="form-control" name="className" id="className">
+                        </div>
+                        <div class="form-group col">
+                            <label for="headTeacher">Head Teacher</label>
+                            <select id="headTeacher" name="headTeacher" class="form-control">
+                                <option value="" disabled selected>Choose...</option>
+                                {{#each classes}}
+                                    <option value="{{this.teacherID}}">{{this.teacherName}}</option>
+                                {{/each}}
+                            </select>
+                        </div>
                     </div>
-                    <div class="form-group col">
-                        <label for="headTeacher">Head Teacher</label>
-                        <select id="headTeacher" class="form-control">
-                            <option selected>Choose...</option>
-                            <option>Nguyen Thien</option>
-                            <option>Nguyen Thien</option>
-                            <option>Nguyen Thien</option>
-                            <option>Nguyen Thien</option>
-                        </select>
+                    <div class="uploadFile mt-3 d-flex flex-column align-items-center justify-content-center mx-auto">
+                        <img src="/img/document 1.svg" alt="Document Upload">
+                        <h6>List of Students of the class</h6>
+                        <p>Select a file or drag and drop here</p>
+                        <p style="opacity: 50%;"></p>
+                        <div class="d-flex flex-column align-items-center" >
+                            <input type="file" name="file" class="form-control-file" id="exampleFormControlFile1" style="display: none;">
+                            <span id="file-chosen" class="mb-1" style="opacity: 50%;">Excel file size no more than 50MB</span>
+                            <label for="exampleFormControlFile1" class="chooseFile">Choose File</label>
+                            
+                        </div>
                     </div>
-                </div>
-                <div class="uploadFile mt-3 d-flex flex-column align-items-center justify-content-center mx-auto">
-                    <img src="/img/document 1.svg" alt="Document Upload">
-                    <h6>List of Students of the class</h6>
-                    <p>Select a file or drag and drop here</p>
-                    <p style="opacity: 50%;"></p>
-                    <form class="d-flex flex-column align-items-center" >
-                        <input type="file" class="form-control-file" id="exampleFormControlFile1" style="display: none;">
-                        <span id="file-chosen" class="mb-1" style="opacity: 50%;">Excel file size no more than 50MB</span>
-                        <label for="exampleFormControlFile1" class="chooseFile">Choose File</label>
-                        
-                    </form>
-                </div>
-                <div class="d-flex ">
-                    <button class="edit mx-auto mt-3">
-                        <img src="/img/edit.png" alt="Edit">
-                        Add Class
-                    </button>
-                </div>
+                    <div class="d-flex ">
+                        <input type="submit" value="Add Class" class="edit mx-auto mt-3">         
+                            
+                        </input>
+                    </div>
+                </form>
             </div>
             
         </div>

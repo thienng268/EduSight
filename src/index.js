@@ -44,6 +44,28 @@ app.use((req, res, next) => {
   next();
 });
 
+app.use((req, res, next) => {
+  if (req.session.adminID) {
+    res.locals.adminID = req.session.adminID;
+  };
+  next();
+});
+
+app.use((req, res, next) => {
+  if (req.session.teacherID) {
+    res.locals.teacherID = req.session.teacherID;
+  };
+  next();
+});
+
+app.use((req, res, next) => {
+  if (req.session.managerID) {
+    res.locals.managerID = req.session.managerID;
+  };
+  next();
+});
+
+
 app.use(favicon(path.join(__dirname, 'public', 'img', 'LogoEduSight.png')))
 app.use('/src/public', express.static('src/public'));
 //HTTP logger

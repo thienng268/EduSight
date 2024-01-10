@@ -126,6 +126,10 @@ class ProfileController
         }
     }
 
+    async show_profile(req, res) {
+        
+    }
+
 }
 
 module.exports = new ProfileController;

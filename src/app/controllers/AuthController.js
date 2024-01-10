@@ -290,7 +290,7 @@ class AuthController
                 return res.redirect('/profile');
               }else{
                 //return res.redirect('/profile');
-                return res.redirect('/dashboard');
+                return res.redirect('/dashboard_teacher');
               }
 
           } else {
@@ -321,7 +321,7 @@ class AuthController
                     return res.redirect('/profile/your');
                   }else{
                     //return res.redirect('/profile');
-                    return res.redirect('/dashboard');
+                    return res.redirect('/dashboard_manager');
                   }
 
               } else {

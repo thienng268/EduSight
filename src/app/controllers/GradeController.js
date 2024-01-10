@@ -7,7 +7,7 @@ class GradeController
 {
     async index(req, res) {
         try {
-            const teacherIdGoc = "659a905fb7d11e808e17b0b2";
+            const teacherIdGoc = req.session.teacherID;
             const teacherGoc = await Teacher.findById(teacherIdGoc).populate('TeachingClass');
             const classIds = teacherGoc.TeachingClass.map(tc => tc._id);
             const classes = await Class.find({ '_id': { $in: classIds } })
@@ -37,7 +37,7 @@ class GradeController
         try {
             const classId = req.query.classId;
             const students = await Student.find({ classID: classId }).lean();
-            const teacherIdGoc = "659a905fb7d11e808e17b0b2";
+            const teacherIdGoc = req.session.teacherID;
             const teacherInfo = await Teacher.findOne({ _id: teacherIdGoc }).lean();
             const subjectIDGV = teacherInfo.subjectID;
             const studentIDs = students.map(student => student._id);

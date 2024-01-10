@@ -16,6 +16,11 @@ const bodyParser = require('body-parser');
 var favicon = require('serve-favicon')
 const app = express()
 const port = 3000
+const handlebar = require('handlebars');
+
+handlebar.registerHelper('eq', function (a, b) {
+    return a === b;
+});
 
 //connect db
 db.connect();

@@ -85,7 +85,7 @@
                 
             </div>
             <div class="modal-body">
-                <form class="infor"> 
+                <form id="add_studet_form" action="/student/create" method="post" class="infor"> 
                     <div class="form-row">
                         <div class="col mb-3">
                             <label class="add-label" for="StudentName">Student Name</label>
@@ -100,12 +100,12 @@
                         </div>
                         <div class="col form-group">
                             <label class="add-label" for="Subject">Status</label>
-                            <select class="custom-select form-control" id="Subject">
-                                <option selected>Studying</option>
-                                <option>Deferred</option>
-                                <option>Drop out</option>
-                                <option>Dismissed</option>
-                                <option>Graduated</option>
+                            <select class="custom-select form-control" id="Subject" name="Subject">
+                                <option value="Studying">Studying</option>
+                                <option value="Deferred">Deferred</option>
+                                <option value="Drop out">Drop out</option>
+                                <option value="Dismissed">Dismissed</option>
+                                <option value="Graduated">Graduated</option>
                             </select>
                         </div>
                     </div>
@@ -127,13 +127,14 @@
                             <input type="text" class="form-control" name="Address" id="Address">
                         </div>
                     </div>
+                    <div class="modal-footer">
+                        <input type="reset" value="Close" class="btn btn-secondary" data-dismiss="modal"></input>
+                        <input type="submit" class="btn btn-primary" value="Save changes"></input>
+                    </div>
                 </form>
                 
             </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-primary">Save changes</button>
-            </div>
+            
             </div>
         </div>
     </div>
@@ -149,4 +150,5 @@
         });
         
     </script>
+    
 </body> 

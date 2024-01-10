@@ -72,7 +72,7 @@ class ClassController
             // Thêm Students vào DB
             await Student.insertMany(students);
         
-            res.send('Class and students created successfully');
+            res.redirect('/class');
           } catch (error) {
             console.error(error);
             res.status(500).send('Error creating class and students');

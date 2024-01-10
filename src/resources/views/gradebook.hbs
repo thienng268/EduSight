@@ -15,11 +15,7 @@
                     <input type="text" class="search-input" placeholder="Search">
                 </div>
             </div>
-            <img src="/img/Ava.svg" alt="User" class="user-avatar"> 
-            <div class="user">
-                <h3>Veronica</h3>
-                <p>Admin</p>
-            </div>
+            
         </div>
         <div class="d-flex ">
                     <button class="excel mr-3">
@@ -67,7 +63,7 @@
                             <td><input type="text" name="HS21" value="{{this.HS21}}"></td>
                             <td><input type="text" name="HS22" value="{{this.HS22}}"></td>
                             <td><input type="text" name="HS3" value="{{this.HS3}}"></td>
-                            <td><input type="text" name="Average" value="{{this.Average}}"></td>
+                            <td>{{#unless (eq this.Average 0)}}{{this.Average}}{{/unless}}</td>
                             <td><input type="text" name="HK1" value="{{this.HK1}}"></td>
                             <td><input type="text" name="CN" value="{{this.CN}}"></td>
                         </tr>
@@ -75,37 +71,37 @@
                     </tbody>
                     <script>
                         document.getElementById('saveButton').addEventListener('click', function() {
-                        const gradeInputs = document.querySelectorAll('.scroll-content tr');
-                        const gradesData = Array.from(gradeInputs).map(row => {
-                            const cells = row.querySelectorAll('input');
-                            return {
-                                gradeId: row.getAttribute('data-grade-id'),
-                                hs11: cells[0].value,
-                                hs12: cells[1].value,
-                                hs13: cells[2].value,
-                                hs14: cells[3].value,
-                                hs21: cells[4].value,
-                                hs22: cells[5].value,
-                                hs3: cells[6].value,
-                                Average: cells[7].value,
-                                // và các trường dữ liệu khác...
-                            };
+                            const gradeInputs = document.querySelectorAll('.scroll-content tr');
+                            const gradesData = Array.from(gradeInputs).map(row => {
+                                const cells = row.querySelectorAll('input');
+                                return {
+                                    gradeId: row.getAttribute('data-grade-id'),
+                                    hs11: cells[0].value || null,
+                                    hs12: cells[1].value || null,
+                                    hs13: cells[2].value || null,
+                                    hs14: cells[3].value || null,
+                                    hs21: cells[4].value || null,
+                                    hs22: cells[5].value || null,
+                                    hs3: cells[6].value || null,
+                                };
+                            });
+
+                            console.log("A:", gradesData);
+                            fetch('./grade/update', {
+                                method: 'POST',
+                                headers: { 'Content-Type': 'application/json' },
+                                body: JSON.stringify(gradesData)
+                            })
+                            .then(response => response.json())
+                            .then(data => {
+                                console.log('Thành công:', data);
+                                location.reload();
+                            })
+                            .catch((error) => {
+                                console.error('Lỗi:', error);
+                            });
                         });
-                        console.log("A:", gradesData);
-                        fetch('./grade/update', {
-                            method: 'POST',
-                            headers: { 'Content-Type': 'application/json' },
-                            body: JSON.stringify(gradesData)
-                        })
-                        .then(response => response.json()
-                            )
-                        .then(data => {
-                            console.log('Success:', data);
-                        })
-                        .catch((error) => {
-                            console.error('Loi:', error);
-                        });
-                    });
+
                     </script>
 
                     <script>

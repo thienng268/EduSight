@@ -8,7 +8,7 @@ const upload = multer({ dest: 'uploads/' }); // Chọn thư mục tạm cho các
 
 router.post('/create_class', upload.single('file'), classController.create_class);
 
-
+router.post('/create', classController.create);
 router.get('/view', classController.show);
 router.use('/', classController.index);
 

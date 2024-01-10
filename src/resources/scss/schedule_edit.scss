@@ -309,14 +309,6 @@ transition: all 0.3s ease-in-out;
 label[for="filter"] {
   @include font-medium-semi-bold;
 }
-.add{
-  background-color: $dusky-blue;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 100px;
-  border: 2px solid $dusky-blue;
-  @include font-medium-semi-bold;
-}
 .edit{
   background-color: $dusky-blue;
   color: white;
@@ -339,25 +331,12 @@ label[for="filter"] {
 .edit:hover img{
   content: url("/img/edit-act.png");
 }
-.excel{
-  background-color: $dusky-blue;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 100px;
-  border: 2px solid $dusky-blue;
-
-}
-.excel:hover{
-  background-color: transparent;
-  color: $dusky-blue;
-  border: 2px solid $dusky-blue;
-}
-.excel img{
-  width: 24px;
-  height: 24px;
-  margin-right: 4px;
-  content: url("/img/file-excel (1).png");
-}
-.excel:hover img{
-  content: url("/img/file-excel (2).png");
+  .table input[type="text"] {
+    width: 52px;
+    background-color: transparent;
+    height: 100%;
+    border: none;
+    box-sizing: border-box;
+    padding: 10px; 
+    outline: none; 
 }

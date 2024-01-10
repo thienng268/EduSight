@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/css/scheduleview.css">
+    <link rel="stylesheet" href="/css/schedule_edit.css">
 </head>
 <body>
     <div class="container">
@@ -20,8 +20,8 @@
         </div>
         <div class="tab-box d-flex justify-content-start">
             <button class="tab-btn">Schedule View</button>
-            <button class="tab-btn">Schedule List</button>
-            <button class="tab-btn">New Schedule</button>
+            <button class="tab-btn" disabled>Schedule List</button>
+            <button class="tab-btn" disabled>New Schedule</button>
             <div class="line"></div>
         </div>
         <div class="content-box">
@@ -31,22 +31,15 @@
                         <div class="filter mb-3 d-flex align-items-center justify-content-between">
                             <div>
                                 <label for="filter" class="mr-1">Filter:</label>
-                                <select id="filter" name="rows">
+                                <select id="filter" name="rows" disabled>
                                     <option value="1">Nguyen Hoang Giang</option>
                                     <option value="" disabled selected>Choose..</option>
                                 </select>
                             </div>
-                            <div>
-                                
-                                <button class="excel mr-3">
-                                    <img src="/img/file-excel (1).png" alt="Excel File Export">
-                                    Excel Export
-                                </button>
-                                <button id="saveButton" class="edit ml-auto">
+                            <button id="saveButton" class="edit ml-auto">
                                     <img src="/img/edit.png" alt="Edit">
-                                    Edit
+                                    Save
                                 </button>
-                            </div>
                         </div>
                         <table class="table" id="scheduleTable">
                 
@@ -142,14 +135,74 @@
                             </thead>
                             <!--START THE SCHEDULE -->
                             <tbody class="scroll-content">
-                                {{#each scheduleData}}
                                 <tr>
-                                    {{#each this}}
-                                    {{!-- <td>{{this}}</td> --}}
-                                    <td>{{#if this}}{{this}}{{else}}&nbsp;{{/if}}</td>
-                                    {{/each}}
+                                    <td></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
+                                    <td><input type="text" name="" value=""></td>
                                 </tr>
-                                {{/each}}
                             </tbody>
                         </table>
                     </div>

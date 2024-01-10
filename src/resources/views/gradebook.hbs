@@ -17,6 +17,16 @@
             </div>
             
         </div>
+        <div class="my-3">
+            <form class="form-inline">
+                        <label class="sem-label mr-3" for="Semester">Semester</label>
+                                <select class="custom-select form-control" id="Semester">
+                                    <option selected>Choose...</option>
+                                    <option>I</option>
+
+                                </select>
+                    </form>
+        </div>
         <div class="d-flex ">
                     <button class="excel mr-3">
                         <img src="/img/file-excel (1).png" alt="Excel File Export">
@@ -31,6 +41,7 @@
                         Save
                     </button>
         </div>
+        
         <div class="scroll-area mt-3">
             <div class="">
                 <table class="table">
@@ -56,7 +67,7 @@
                         <tr data-grade-id="{{this.GradeID}}">
                             <td>{{@index}}</td>
                             <td class="name-cell">{{this.Name}}</td>
-                            <td><input type="text" name="HS11" value="{{this.HS11}}"></td>
+                            
                             <td><input type="text" name="HS12" value="{{this.HS12}}"></td>
                             <td><input type="text" name="HS13" value="{{this.HS13}}"></td>
                             <td><input type="text" name="HS14" value="{{this.HS14}}"></td>

@@ -90,8 +90,10 @@
                         <div class="mb-3" id="gradeSelection" style="display:none;">
                             <label for="gradeChoice">Choose a Grade:</label>
                             <select id="gradeChoice">
-                                <option value="grade1">Grade 1</option>
-                                <option value="grade2">Grade 2</option>
+                                <option selected>Choose...</option>
+                                {{#each khois}}
+                                    <option value="{{this._id}}">{{this.Name}}</option>
+                                {{/each}}
                             </select>
                         </div>
                         <div class="mb-3" id="classSelection" style="display:none;">
@@ -123,12 +125,14 @@
                             <th>Class</th>
                             <th>Score</th>
                         </tr>
-                        {{#each students}}
+
+                        {{#each studentAll}}
                         <tr>
                             <td>1</td>
                             <td>{{this.Name}}</td>
                             <td>{{this.DOB}}</td>
-                            <td>6A.1</td>
+
+                            <td>{{this.ClassName}}</td>
                             <td>{{this.DTB}}</td>
                         </tr>
                         {{/each}}
@@ -143,12 +147,13 @@
                             <th>Class</th>
                             <th>Score</th>
                         </tr>
-                        {{#each students}}
+
+                        {{#each studentsKhoi}}
                         <tr>
                             <td>1</td>
                             <td>{{this.Name}}</td>
                             <td>{{this.DOB}}</td>
-                            <td>6A.1</td>
+                            <td>{{this.ClassName}}</td>
                             <td>{{this.DTB}}</td>
                         </tr>
                         {{/each}}
@@ -168,12 +173,14 @@
                             <td>1</td>
                             <td>{{this.Name}}</td>
                             <td>{{this.DOB}}</td>
-                            <td>6A.1</td>
+
+                            <td>{{this.ClassName}}</td>
                             <td>{{this.DTB}}</td>
                         </tr>
                         {{/each}}
                     </table>
                 </div>
+
                 <div class="table-control d-inline-flex justify-content-start align-items-center">
                     <div class="rows-per-page d-inline-flex">
                         <label for="rows" class="align-self-center">Rows per page:</label>
@@ -321,7 +328,6 @@
             const schoolRadio = document.getElementById('school');
             const gradeRadio = document.getElementById('grade');
             const classRadio = document.getElementById('class');
-
             const gradeSelection = document.getElementById('gradeSelection');
             const classSelection = document.getElementById('classSelection');
 
@@ -345,17 +351,6 @@
             // Initialize
             updateSelectionDisplay();
         });
-
-    </script>
-    <script>
-        function updateURLWithSemester() {
-            const semesterSelect = document.getElementById('Semester');
-            selectedSemester = semesterSelect.value; // Lưu giá trị option đã chọn
-            localStorage.setItem('selectedSemester', selectedSemester); // Lưu vào LocalStorage
-            const currentUrl = new URL(window.location.href);
-            currentUrl.searchParams.set('semesterNum', selectedSemester);
-            window.location.href = currentUrl.href;
-        }
 
         document.addEventListener('DOMContentLoaded', function () {
             const semesterSelect = document.getElementById('Semester');
@@ -383,6 +378,54 @@
             const storedClass = localStorage.getItem('selectedClass');
             if (storedClass) {
                 classSelect.value = storedClass;
+            }
+        });
+    </script>
+    <script>
+        function updateURLWithSemester() {
+            const semesterNum = document.getElementById('Semester').value;
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set('semesterNum', semesterNum);
+            window.location.href = currentUrl.href;
+        }
+    </script>
+    <script>
+        function updateURLWithClassChoice() {
+            const classSelect = document.getElementById('classChoice');
+            const selectedClass = classSelect.value;
+            localStorage.setItem('selectedClass', selectedClass);
+            const currentUrl = new URL(window.location.href);
+            const params = new URLSearchParams(currentUrl.search);
+            params.set('classID', selectedClass);
+            // Sử dụng pushState để thay đổi URL mà không làm tải lại trang
+            history.pushState({}, '', `${currentUrl.pathname}?${params.toString()}`);
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const classSelect = document.getElementById('classChoice');
+            classSelect.addEventListener('change', updateURLWithClassChoice);
+            const storedClass = localStorage.getItem('selectedClass');
+            if (storedClass) {
+                classSelect.value = storedClass;
+            }
+        });
+    </script>
+    <script>
+        function updateURLWithGradeChoice() {
+            const gradeSelect = document.getElementById('gradeChoice');
+            const selectedGrade = gradeSelect.value;
+            localStorage.setItem('selectedGrade', selectedGrade);
+            const currentUrl = new URL(window.location.href);
+            const params = new URLSearchParams(currentUrl.search);
+            params.set('khoiID', selectedGrade);
+            // Sử dụng pushState để thay đổi URL mà không làm tải lại trang
+            history.pushState({}, '', `${currentUrl.pathname}?${params.toString()}`);
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const gradeSelect = document.getElementById('gradeChoice');
+            gradeSelect.addEventListener('change', updateURLWithGradeChoice);
+            const storedGrade = localStorage.getItem('selectedGrade');
+            if (storedGrade) {
+                gradeSelect.value = storedGrade;
             }
         });
     </script>

@@ -677,19 +677,19 @@ class ScheduleController
     async post_edit(req,res) {
         try {
             const updates = req.body; // This is an array of objects containing schedule data and IDs
-            console.log('Received update data:', updates); // Log to see what is received
+            //console.log('Received update data:', updates); // Log to see what is received
         
             // Create an array of update promises
             const updatePromises = updates.map(data => {
               const { scheduleID, ...updateFields } = data;
               // Log to check if IDs and update fields are correct
-              console.log(`Updating schedule ${scheduleID} with `, updateFields);
+              //console.log(`Updating schedule ${scheduleID} with `, updateFields);
               return Schedule.findByIdAndUpdate(scheduleID, updateFields, { new: true });
             });
         
             // Await all the update promises to resolve
             const updatedSchedules = await Promise.all(updatePromises);
-            console.log('Updated schedules:', updatedSchedules); // Log the updated schedules
+            //console.log('Updated schedules:', updatedSchedules); // Log the updated schedules
         
             // If everything goes well, send back the updated schedules
             res.json({ success: true, updatedSchedules });

@@ -128,16 +128,83 @@
                                 </tr>
                             </thead>
                             <!--START THE SCHEDULE -->
+                            {{#each teacher}}
                             <tbody class="scroll-content">
-                                {{#each scheduleData}}
-                                <tr>
-                                    {{#each this}}
-                                    {{!-- <td>{{this}}</td> --}}
-                                    <td>{{#if this}}{{this}}{{else}}&nbsp;{{/if}}</td>
-                                    {{/each}}
-                                </tr>
-                                {{/each}}
+                                    <th>{{this.Name}}</th>
+
+                                    <th>{{this.T2_M1}}</th>
+                                    <th>{{this.T2_M2}}</th>
+                                    <th>{{this.T2_M3}}</th>
+                                    <th>{{this.T2_M4}}</th>
+                                    <th>{{this.T2_M5}}</th>
+
+                                    <th>{{this.T2_A1}}</th>
+                                    <th>{{this.T2_A2}}</th>
+                                    <th>{{this.T2_A3}}</th>
+                                    <th>{{this.T2_A4}}</th>
+                                    <th>{{this.T2_A5}}</th>
+
+                                    <th>{{this.T3_M1}}</th>
+                                    <th>{{this.T3_M2}}</th>
+                                    <th>{{this.T3_M3}}</th>
+                                    <th>{{this.T3_M4}}</th>
+                                    <th>{{this.T3_M5}}</th>
+
+                                    <th>{{this.T3_A1}}</th>
+                                    <th>{{this.T3_A2}}</th>
+                                    <th>{{this.T3_A3}}</th>
+                                    <th>{{this.T3_A4}}</th>
+                                    <th>{{this.T3_A5}}</th>
+
+                                    <th>{{this.T4_M1}}</th>
+                                    <th>{{this.T4_M2}}</th>
+                                    <th>{{this.T4_M3}}</th>
+                                    <th>{{this.T4_M4}}</th>
+                                    <th>{{this.T4_M5}}</th>
+
+                                    <th>{{this.T4_A1}}</th>
+                                    <th>{{this.T4_A2}}</th>
+                                    <th>{{this.T4_A3}}</th>
+                                    <th>{{this.T4_A4}}</th>
+                                    <th>{{this.T4_A5}}</th>
+
+                                    <th>{{this.T5_M1}}</th>
+                                    <th>{{this.T5_M2}}</th>
+                                    <th>{{this.T5_M3}}</th>
+                                    <th>{{this.T5_M4}}</th>
+                                    <th>{{this.T5_M5}}</th>
+
+                                    <th>{{this.T5_A1}}</th>
+                                    <th>{{this.T5_A2}}</th>
+                                    <th>{{this.T5_A3}}</th>
+                                    <th>{{this.T5_A4}}</th>
+                                    <th>{{this.T5_A5}}</th>
+
+                                    <th>{{this.T6_M1}}</th>
+                                    <th>{{this.T6_M2}}</th>
+                                    <th>{{this.T6_M3}}</th>
+                                    <th>{{this.T6_M4}}</th>
+                                    <th>{{this.T6_M5}}</th>
+
+                                    <th>{{this.T6_A1}}</th>
+                                    <th>{{this.T6_A2}}</th>
+                                    <th>{{this.T6_A3}}</th>
+                                    <th>{{this.T6_A4}}</th>
+                                    <th>{{this.T6_A5}}</th>
+
+                                    <th>{{this.T7_M1}}</th>
+                                    <th>{{this.T7_M2}}</th>
+                                    <th>{{this.T7_M3}}</th>
+                                    <th>{{this.T7_M4}}</th>
+                                    <th>{{this.T7_M5}}</th>
+
+                                    <th>{{this.T7_A1}}</th>
+                                    <th>{{this.T7_A2}}</th>
+                                    <th>{{this.T7_A3}}</th>
+                                    <th>{{this.T7_A4}}</th>
+                                    <th>{{this.T7_A5}}</th>
                             </tbody>
+                            {{/each}}
                         </table>
                     </div>
                 </div>

@@ -16,6 +16,7 @@ const Teacher = new Schema({
     HeadingClass: { type: mongoose.Schema.Types.ObjectId, ref: 'Class' },
     managerID: { type: mongoose.Schema.Types.ObjectId, ref: 'Manager' },
     avatarID: { type: mongoose.Schema.Types.ObjectId, ref: 'Avatar' },
+    scheduleID: { type: Schema.Types.ObjectId, ref: 'Schedule' },
 }, { versionKey: false });
 
 module.exports = mongoose.model('Teacher', Teacher, 'teachers');

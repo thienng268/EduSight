@@ -77,31 +77,39 @@
 
             </div>
             <div class="content">
-                <div class="radio mb-3">
-                    <input type="radio" id="school" name="option" value="school">
-                    <label for="school">School</label>
-
-                    <input type="radio" id="grade" name="option" value="grade">
-                    <label for="grade">Grade</label>
-
-                    <input type="radio" id="class" name="option" value="class">
-                    <label for="class">Class</label>
-                </div>
-
-                <div class="mb-3" id="gradeSelection" style="display:none;">
-                    <label for="gradeChoice">Choose a Grade:</label>
-                    <select id="gradeChoice">
-                        <option value="grade1">Grade 1</option>
-                        <option value="grade2">Grade 2</option>
-                    </select>
-                </div>
-
-                <div class="mb-3" id="classSelection" style="display:none;">
-                    <label for="classChoice">Choose a Class:</label>
-                    <select id="classChoice">
-                        <option value="classA">Class A</option>
-                        <option value="classB">Class B</option>
-                    </select>
+                <div class="d-flex justify-content-between">
+                    <div>
+                        <div class="radio mb-3">
+                            <input type="radio" id="school" name="option" value="school">
+                            <label for="school">School</label>
+                            <input type="radio" id="grade" name="option" value="grade">
+                            <label for="grade">Grade</label>
+                            <input type="radio" id="class" name="option" value="class">
+                            <label for="class">Class</label>
+                        </div>
+                        <div class="mb-3" id="gradeSelection" style="display:none;">
+                            <label for="gradeChoice">Choose a Grade:</label>
+                            <select id="gradeChoice">
+                                <option value="grade1">Grade 1</option>
+                                <option value="grade2">Grade 2</option>
+                            </select>
+                        </div>
+                        <div class="mb-3" id="classSelection" style="display:none;">
+                            <label for="classChoice">Choose a Class:</label>
+                            <select id="classChoice">
+                                <option value="classA">Class A</option>
+                                <option value="classB">Class B</option>
+                            </select>
+                        </div>
+                    </div>
+                    <form class="form-inline mr-5">
+                            <label class="sem-label mr-3" for="Semester">Semester</label>
+                                    <select class="custom-select form-control" id="Semester" onchange="updateURLWithSemester()">
+                                        <option value="">Choose...</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                    </select>
+                                </form>
                 </div>
 
             <table>

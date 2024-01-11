@@ -47,10 +47,7 @@
                                     <img src="/img/file-excel (1).png" alt="Excel File Export">
                                     Excel Export
                                 </button>
-                                <button id="edit" class="edit ml-auto">
-                                    <img src="/img/edit.png" alt="Edit">
-                                    Edit
-                                </button>
+                                
                             </div>
                         </div>
                         <table class="table" id="scheduleTable">
@@ -227,7 +224,7 @@
                     </div>
                 </div>
             </div>
-    
+            
     <script>
         document.addEventListener('DOMContentLoaded', function () {
         const tabs = document.querySelectorAll('.tab-btn');
@@ -345,25 +342,20 @@
 document.addEventListener('DOMContentLoaded', function() {
   const searchButton = document.getElementById('search');
   const selectElement = document.getElementById('filter');
-  const editButton = document.getElementById('edit');
 
   searchButton.addEventListener('click', function() {
     const teacherId = selectElement.value;
     if (teacherId) {
         if(teacherId === 'all'){
-            window.location.href = `/schedule`;
+            window.location.href = `/schedule/teacher`;
         }else{
             // Chuyển hướng trình duyệt đến URL mới với teacherId
-            window.location.href = `/schedule/${teacherId}`;
+            window.location.href = `/schedule/teacher/${teacherId}`;
         }
       
     } else {
       alert("Please select a teacher before searching.");
     }
-  });
-
-  editButton.addEventListener('click', function() {
-    window.location.href = `/schedule/edit_schedule`;
   });
 });
 </script>

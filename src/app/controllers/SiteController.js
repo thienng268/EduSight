@@ -14,21 +14,37 @@ class SiteController
 
     async find(req, res) {
         
-        /* try {
+        try {
             const role = 'Teaching';
-            const account = await Teacher.find({Status: role});
+            //const account = await Teacher.find({Status: role});
 
             const newAccount = await Account.create({Username: 'Liêm', Password: 'liem', Role: 'Teacher'});
+            const checkteachers = await Class.find().select('Name').exec();
+            const teacher_name = await Teacher.find({_id: '659bca493280c8a9ecfeef46'}).select('Name').lean();
+            teacher_name.Name;
+            const ex = '6A1';
+
+                // Kiểm tra xem `ex` có tồn tại trong mảng `checkteachers` hay không
+                const exists = checkteachers.some(teacher => teacher.Name === ex);
+
+                // Chuẩn bị phản hồi JSON
+                const response = {
+                    exists: exists,
+                    message: exists ? `${ex} được tìm thấy trong checkteachers` : `${ex} không được tìm thấy trong checkteachers`
+                };
+
+                //console.log(response);
+                res.json(teacher_name);
 
             //const role = 'jobseeker4@gmail.com';
 
             //const checkEmail = await Account.findOne({Email: role});
-            res.json(newAccount);
+            //res.json(checkteachers);
         } catch (err) {
             console.error(err); // Ghi log lỗi
             res.status(400).json({error: 'ERROR!!!'});
-        } */
-        res.render('homeroom')
+        }
+        
     }
     // [GET] /
     signin(req, res) {

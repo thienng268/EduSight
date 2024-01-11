@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/css/gradebook.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.16.2/xlsx.full.min.js"></script>
 </head>
 <body>
     <div class="container">
@@ -20,12 +21,12 @@
         <div class="my-3">
             <form class="form-inline">
                         <label class="sem-label mr-3" for="Semester">Semester</label>
-                                <select class="custom-select form-control" id="Semester">
-                                    <option selected>Choose...</option>
-                                    <option>I</option>
-
+                                <select class="custom-select form-control" id="Semester" onchange="updateURLWithSemester()">
+                                    <option value="">Choose...</option>
+                                    <option value="1">1</option>
+                                    <option value="2">2</option>
                                 </select>
-                    </form>
+            </form>
         </div>
         <div class="d-flex ">
                     <button class="excel mr-3">
@@ -41,13 +42,12 @@
                         Save
                     </button>
         </div>
-        
         <div class="scroll-area mt-3">
             <div class="">
                 <table class="table">
                     <thead>
                         <tr>
-                            <th colspan="6">SCHOOL YEAR - SEMESTER 2</th>
+                            <th colspan="6" id="semesterTitle">SCHOOL YEAR - SEMESTER</th>
                             <th colspan="6">SUBJECT: MATH - CLASS 6A.1</th>
                         </tr>
                         <tr>
@@ -67,7 +67,7 @@
                         <tr data-grade-id="{{this.GradeID}}">
                             <td>{{@index}}</td>
                             <td class="name-cell">{{this.Name}}</td>
-                            
+                            <td><input type="text" name="HS11" value="{{this.HS11}}"></td>
                             <td><input type="text" name="HS12" value="{{this.HS12}}"></td>
                             <td><input type="text" name="HS13" value="{{this.HS13}}"></td>
                             <td><input type="text" name="HS14" value="{{this.HS14}}"></td>
@@ -123,6 +123,38 @@
                             });
                         });
                     </script>
+
+                    <script>
+                        function updateURLWithSemester() {
+                            const semesterNum = document.getElementById('Semester').value;
+                            const currentUrl = new URL(window.location.href);
+                            currentUrl.searchParams.set('semesterNum', semesterNum);
+                            window.location.href = currentUrl.href;
+                        }
+                    </script>
+                    <script>
+                        function exportToExcel() {
+                        let tempTable = document.createElement('table');
+                        tempTable.innerHTML = document.querySelector('.table').outerHTML;
+                        let inputs = tempTable.querySelectorAll('input');
+                        inputs.forEach(function(input) {
+                            input.parentElement.innerText = input.value;
+                        });
+                        let workbook = XLSX.utils.table_to_book(tempTable);
+                        XLSX.writeFile(workbook, 'Gradebook.xlsx');
+                    }
+                    document.querySelector('.excel').addEventListener('click', exportToExcel);
+                    </script>
+                    <script>
+                        document.addEventListener('DOMContentLoaded', function() {
+                            const urlParams = new URLSearchParams(window.location.search);
+                            const semesterNum = urlParams.get('semesterNum');
+                            if (semesterNum) {
+                                document.getElementById('semesterTitle').textContent += ' ' + semesterNum;
+                            }
+                        });
+                    </script>
+
                 </table>
             </div>
         </div>

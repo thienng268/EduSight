@@ -2,6 +2,7 @@ const Teacher = require('../models/Teacher');
 const Class = require('../models/Class');
 const Student = require('../models/Student');
 const Grade = require('../models/Grade');
+const Semester = require('../models/Semester');
 const mongoose = require('mongoose');
 class GradeController
 {
@@ -40,10 +41,15 @@ class GradeController
             const teacherIdGoc = req.session.teacherID;
             const teacherInfo = await Teacher.findOne({ _id: teacherIdGoc }).lean();
             const subjectIDGV = teacherInfo.subjectID;
+            const semesterNum = req.query.semesterNum;
+            const Num = semesterNum === '2' ? 2 : 1; 
+            const semesters = await Semester.find({ semesterNum: Num }).lean();
+            const semesterIds = semesters.map(semester => semester._id);
             const studentIDs = students.map(student => student._id);
             const gradesList = await Grade.find({
                 subjectID: subjectIDGV,
                 studentID: { $in: studentIDs.map(id => id) },
+                semesterID: { $in: semesterIds },
             }).lean();
             const combinedData = students.map(student => {
                 const gradeInfo = gradesList.find(grade => grade.studentID.equals(student._id));
@@ -67,6 +73,55 @@ class GradeController
             res.status(500).send('LỖI');
         }
     }
+
+    // async show(req, res) {
+    //     try {
+    //         const classId = req.query.classId;
+    //         const currentSemester = await Semester.findOne({ semesterNum: 1 }).lean();
+    //         if (!currentSemester) {
+    //             return res.status(404).send('Học kỳ không tồn tại');
+    //         }
+    
+    //         const students = await Student.find({ classID: classId }).lean();
+    //         const teacherIdGoc = req.session.teacherID;
+    //         const teacherInfo = await Teacher.findOne({ _id: teacherIdGoc }).lean();
+    //         const subjectIDGV = teacherInfo.subjectID;
+    //         const studentIDs = students.map(student => student._id);
+    
+    //         const gradesList = await Grade.find({
+    //             subjectID: subjectIDGV,
+    //             studentID: { $in: studentIDs },
+    //             semesterID: currentSemester._id
+    //         }).lean();
+    
+    //         const combinedData = students.map(student => {
+    //             const gradeInfo = gradesList.find(grade => grade.studentID.equals(student._id));
+    //             return {
+    //                 _id: student._id,
+    //                 Name: student.Name,
+    //                 GradeID: gradeInfo ? gradeInfo._id : null,
+    //                 HS11: gradeInfo ? gradeInfo.HS11 : null,
+    //                 HS12: gradeInfo ? gradeInfo.HS12 : null,
+    //                 HS13: gradeInfo ? gradeInfo.HS13 : null,
+    //                 HS14: gradeInfo ? gradeInfo.HS14 : null,
+    //                 HS21: gradeInfo ? gradeInfo.HS21 : null,
+    //                 HS22: gradeInfo ? gradeInfo.HS22 : null,
+    //                 HS3: gradeInfo ? gradeInfo.HS3 : null,
+    //                 Average: gradeInfo ? gradeInfo.Average : null,
+    //             };
+    //         });
+    
+    //         res.render('gradebook', { combinedData, semester: currentSemester.semesterNum }); 
+    //     } catch (error) {
+    //         console.error(error);
+    //         res.status(500).send('LỖI');
+    //     }
+    // }
+    
+    
+    
+    
+    
     async updateGrades(req, res) {
         try {
             const updatedData = req.body;

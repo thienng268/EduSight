@@ -215,3 +215,11 @@
   color: $dusky-blue;
   border: 2px solid $dusky-blue;
 }
+#delete{
+  background-color: $soft-coral;
+  color: $dark-teal;
+}
+#delete:hover{
+  color: $dark-teal;
+  transform: translateY(-3px); 
+}

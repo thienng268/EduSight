@@ -125,11 +125,13 @@
                             <th>Class</th>
                             <th>Score</th>
                         </tr>
+
                         {{#each studentAll}}
                         <tr>
                             <td>1</td>
                             <td>{{this.Name}}</td>
                             <td>{{this.DOB}}</td>
+
                             <td>{{this.ClassName}}</td>
                             <td>{{this.DTB}}</td>
                         </tr>
@@ -145,6 +147,7 @@
                             <th>Class</th>
                             <th>Score</th>
                         </tr>
+
                         {{#each studentsKhoi}}
                         <tr>
                             <td>1</td>
@@ -170,12 +173,14 @@
                             <td>1</td>
                             <td>{{this.Name}}</td>
                             <td>{{this.DOB}}</td>
+
                             <td>{{this.ClassName}}</td>
                             <td>{{this.DTB}}</td>
                         </tr>
                         {{/each}}
                     </table>
                 </div>
+
                 <div class="table-control d-inline-flex justify-content-start align-items-center">
                     <div class="rows-per-page d-inline-flex">
                         <label for="rows" class="align-self-center">Rows per page:</label>
@@ -323,7 +328,6 @@
             const schoolRadio = document.getElementById('school');
             const gradeRadio = document.getElementById('grade');
             const classRadio = document.getElementById('class');
-
             const gradeSelection = document.getElementById('gradeSelection');
             const classSelection = document.getElementById('classSelection');
 
@@ -348,6 +352,34 @@
             updateSelectionDisplay();
         });
 
+        document.addEventListener('DOMContentLoaded', function () {
+            const semesterSelect = document.getElementById('Semester');
+            semesterSelect.addEventListener('change', updateURLWithSemester);
+            const storedSemester = localStorage.getItem('selectedSemester');
+            if (storedSemester) {
+                semesterSelect.value = storedSemester;
+            }
+        });
+    </script>
+    <script>
+        function updateURLWithClassChoice() {
+            const classSelect = document.getElementById('classChoice');
+            const selectedClass = classSelect.value;
+            localStorage.setItem('selectedClass', selectedClass);
+            const currentUrl = new URL(window.location.href);
+            const params = new URLSearchParams(currentUrl.search);
+            params.set('classID', selectedClass);
+            // Sử dụng pushState để thay đổi URL mà không làm tải lại trang
+            history.pushState({}, '', `${currentUrl.pathname}?${params.toString()}`);
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const classSelect = document.getElementById('classChoice');
+            classSelect.addEventListener('change', updateURLWithClassChoice);
+            const storedClass = localStorage.getItem('selectedClass');
+            if (storedClass) {
+                classSelect.value = storedClass;
+            }
+        });
     </script>
     <script>
         function updateURLWithSemester() {

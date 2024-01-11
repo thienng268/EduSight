@@ -198,4 +198,9 @@ table, th, td {
     max-width: 200px;
 }
 
-
+.sem-label{
+  @include font-h6-extra-bold;
+}
+.custom-select{
+  border-radius: 20px;
+}

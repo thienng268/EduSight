@@ -12,6 +12,7 @@ const Grade = new Schema({
     Average: Number,
     subjectID: { type: mongoose.Schema.Types.ObjectId, ref: 'Subject' },
     studentID: { type: mongoose.Schema.Types.ObjectId, ref: 'Student' },
+    semesterID: { type: mongoose.Schema.Types.ObjectId, ref: 'Semester' },
 });
 
 module.exports = mongoose.model('Grade', Grade,'grades');

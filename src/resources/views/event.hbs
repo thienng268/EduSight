@@ -29,7 +29,7 @@
                     <div class="row">
                         {{#each events}}
                         <div class="col-md-6">
-                            <div class="event-item" data-name="{{this.Name}}" data-date="{{this.Date}}" data-venue="{{this.Venue}}" data-description="{{this.Description}}">
+                            <div class="event-item" data-id ="{{this._id}}" data-name="{{this.Name}}" data-date="{{this.Date}}" data-venue="{{this.Venue}}" data-description="{{this.Description}}">
                                 <a href="#">
                                     <img src="/img/event 1.svg" alt="">
                                     <div class="title">
@@ -48,21 +48,6 @@
                     
                     
                 </div>
-                {{!-- <div class="col-md-6 event-details d-flex flex-column">
-                    <img src="/img/image 1.svg" alt="">
-                    <h5>Huong Sen Art Exhibition</h5>
-                    <div class="d-flex justify-content-between icon">
-                        <span class="d-flex justify-content-center">
-                            <img src="/img/Time.svg" alt="">
-                            7h00 25/10/2023
-                        </span>
-                        <span class="d-flex">
-                            <img src="/img/Pin.svg" alt="">
-                            Auditorium C
-                        </span>
-                    </div>
-                    <p>Dive deep into the mesmerizing world of watercolor paintings at the "Huong Sen" Art Exhibition. This showcase features the serene beauty of lotus flowers, representing purity and grace. Experience the harmonious blend of traditional and contemporary art styles, brought to life with delicate strokes and vibrant colors.</p>
-                </div> --}}
                 <div class="col-md-6 event-details d-flex flex-column">
                     <button id="delete" type="button" class="add ml-auto mb-3">
                             Delete
@@ -167,6 +152,51 @@
             spanElement.appendChild(imgTag); // Thêm lại img tag
             spanElement.appendChild(document.createTextNode(newText)); // Thêm văn bản mới
         }
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            let selectedEventId; // Biến để lưu trữ _id của sự kiện được chọn
+            document.querySelectorAll('.event-item').forEach(function (item) {
+                item.addEventListener('click', function () {
+                    // Lấy _id của sự kiện và gán vào biến selectedEventId
+                    selectedEventId = item.getAttribute('data-id');
+                });
+            });
+            // Thêm sự kiện click cho nút Delete bên ngoài vòng lặp
+            document.getElementById('delete').addEventListener('click', function () {
+                if (selectedEventId) {
+                    capNhatSuKien(selectedEventId);
+                } else {
+                    console.error('Không có sự kiện nào được chọn.');
+                }
+            });
+        });
+        function capNhatSuKien(eventId) {
+            fetch(`http://localhost:3000/event/delete`, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ _id: eventId }) // Sửa body thành đối tượng JSON
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    console.log('Thành công:', data.message);
+                } else {
+                    console.error('Lỗi:', data.message);
+                }
+                location.reload();
+            })
+            .catch((error) => {
+                console.log(error);
+                console.error('Lỗi:', error);
+            });
+        }
+
     </script>
 </body>
 

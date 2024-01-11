@@ -7,8 +7,9 @@ class EventController
 {
     async index(req, res) {
         try {
-            const events = await Event.find({})
-                .select('Name , Date , Venue , Description , Month').lean();
+            const events = await Event.find({ Avail: '1' })
+                .select('Name , Date , Venue , Description , Month , _id , Avail')
+                .lean();
             res.render('event', { events });
         } catch (error) {
             console.error(error);
@@ -16,22 +17,16 @@ class EventController
         }
     }
     
-    // async addEvent(req, res) {
-    //     try {
-    //         const { nameStudent, className, violation, date } = req.body;
-    //         const newViolation = new Violation({
-    //             NameStudent: nameStudent,
-    //             Class: className,
-    //             Violation: violation,
-    //             Date: date,
-    //         });
-    //         const savedViolation = await newViolation.save();
-    //         res.json(savedViolation);
-    //     } catch (error) {
-    //         console.error(error);
-    //         res.status(500).json({ error: 'Có lỗi xảy ra khi thêm vio' });
-    //     }
-    // }
+    async deleteEvent(req, res) {
+        try {
+            const { _id } = req.body;
+            const updatedEvent = await Event.findByIdAndUpdate(_id, { Avail: '0' }, { new: true });
+            res.status(200).json(updatedEvent);
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ error: 'Có lỗi xảy ra khi cập nhật sự kiện.' });
+        }
+    }
     // [GET] /schedule/:slug
     show(req, res) {
 

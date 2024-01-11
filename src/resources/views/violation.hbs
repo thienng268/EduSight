@@ -112,26 +112,69 @@
                                 </form>
                 </div>
 
-            <table>
-                <tr>
-                    <th></th>
-                    <th>Student Name</th>
-                    <th>Date of Birth</th>
-                    <th>Class</th>
-                    <th>Score</th>
-                    
-                </tr>
-                {{#each violations}}
-                <tr>
-                    <td>1</td>
-                    <td>Nguyen Thien</td>
-                    <td>26/03/2003</td>
-                    <td>6A.1</td>
-                    <td>9.45</td>
-                </tr>
-                {{/each}}
-
-            </table>
+            <div id="schoolTable" style="display:none;">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Student Name</th>
+                        <th>Date of Birth</th>
+                        <th>Class</th>
+                        <th>Score</th>
+                
+                    </tr>
+                    {{#each violations}}
+                    <tr>
+                        <td>1</td>
+                        <td>Nguyen Thien</td>
+                        <td>26/03/2003</td>
+                        <td>6A.1</td>
+                        <td>9.45</td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+            <div id="gradeTable" style="display:none;">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Student Name</th>
+                        <th>Date of Birth</th>
+                        <th>Class</th>
+                        <th>Score</th>
+                
+                    </tr>
+                    {{#each violations}}
+                    <tr>
+                        <td>1</td>
+                        <td>Nguyen Thien</td>
+                        <td>26/03/2003</td>
+                        <td>6A.1</td>
+                        <td>9.45</td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
+            <div id="classTable" style="display:none;">
+                <table>
+                    <tr>
+                        <th></th>
+                        <th>Student Name</th>
+                        <th>Date of Birth</th>
+                        <th>Class</th>
+                        <th>Score</th>
+                
+                    </tr>
+                    {{#each violations}}
+                    <tr>
+                        <td>1</td>
+                        <td>Nguyen Thien</td>
+                        <td>26/03/2003</td>
+                        <td>6A.1</td>
+                        <td>9.45</td>
+                    </tr>
+                    {{/each}}
+                </table>
+            </div>
             <div class="table-control d-inline-flex justify-content-start align-items-center">
                 <div class="rows-per-page d-inline-flex">
                     <label for="rows" class="align-self-center">Rows per page:</label>
@@ -303,6 +346,38 @@
     // Initialize
     updateSelectionDisplay();
 });
+
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+    var radios = document.getElementsByName('option');
+    radios.forEach(function(radio) {
+        radio.addEventListener('change', function() {
+            displayTable(this.value);
+        });
+    });
+});
+
+function displayTable(selectedOption) {
+    hideAllTables();
+    switch (selectedOption) {
+        case 'school':
+            document.getElementById('schoolTable').style.display = 'block';
+            break;
+        case 'grade':
+            document.getElementById('gradeTable').style.display = 'block';
+            break;
+        case 'class':
+            document.getElementById('classTable').style.display = 'block';
+            break;
+    }
+}
+
+function hideAllTables() {
+    document.getElementById('schoolTable').style.display = 'none';
+    document.getElementById('gradeTable').style.display = 'none';
+    document.getElementById('classTable').style.display = 'none';
+}
 
     </script>
 </body>

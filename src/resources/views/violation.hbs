@@ -17,7 +17,7 @@
                     <input type="text" class="search-input" placeholder="Search">
                 </div>
             </div>
-            
+
         </div>
 
         <div class="tab-box d-flex justify-content-start">
@@ -97,107 +97,106 @@
                         <div class="mb-3" id="classSelection" style="display:none;">
                             <label for="classChoice">Choose a Class:</label>
                             <select id="classChoice">
-                                <option value="classA">Class A</option>
-                                <option value="classB">Class B</option>
+                                <option value="">Choose...</option>
+                                {{#each classes}}
+                                    <option value="{{this._id}}">{{this.Name}}</option>
+                                {{/each}}
                             </select>
                         </div>
                     </div>
                     <form class="form-inline mr-5">
-                            <label class="sem-label mr-3" for="Semester">Semester</label>
-                                    <select class="custom-select form-control" id="Semester" onchange="updateURLWithSemester()">
-                                        <option value="">Choose...</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                    </select>
-                                </form>
+                        <label class="sem-label mr-3" for="Semester">Semester</label>
+                        <select class="custom-select form-control" id="Semester" onchange="updateURLWithSemester()">
+                            <option value="">Choose...</option>
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                        </select>
+                    </form>
                 </div>
 
-            <div id="schoolTable" style="display:none;">
-                <table>
-                    <tr>
-                        <th></th>
-                        <th>Student Name</th>
-                        <th>Date of Birth</th>
-                        <th>Class</th>
-                        <th>Score</th>
-                
-                    </tr>
-                    {{#each violations}}
-                    <tr>
-                        <td>1</td>
-                        <td>Nguyen Thien</td>
-                        <td>26/03/2003</td>
-                        <td>6A.1</td>
-                        <td>9.45</td>
-                    </tr>
-                    {{/each}}
-                </table>
-            </div>
-            <div id="gradeTable" style="display:none;">
-                <table>
-                    <tr>
-                        <th></th>
-                        <th>Student Name</th>
-                        <th>Date of Birth</th>
-                        <th>Class</th>
-                        <th>Score</th>
-                
-                    </tr>
-                    {{#each violations}}
-                    <tr>
-                        <td>1</td>
-                        <td>Nguyen Thien</td>
-                        <td>26/03/2003</td>
-                        <td>6A.1</td>
-                        <td>9.45</td>
-                    </tr>
-                    {{/each}}
-                </table>
-            </div>
-            <div id="classTable" style="display:none;">
-                <table>
-                    <tr>
-                        <th></th>
-                        <th>Student Name</th>
-                        <th>Date of Birth</th>
-                        <th>Class</th>
-                        <th>Score</th>
-                
-                    </tr>
-                    {{#each violations}}
-                    <tr>
-                        <td>1</td>
-                        <td>Nguyen Thien</td>
-                        <td>26/03/2003</td>
-                        <td>6A.1</td>
-                        <td>9.45</td>
-                    </tr>
-                    {{/each}}
-                </table>
-            </div>
-            <div class="table-control d-inline-flex justify-content-start align-items-center">
-                <div class="rows-per-page d-inline-flex">
-                    <label for="rows" class="align-self-center">Rows per page:</label>
-                    <select id="rows" name="rows">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="5">5</option>
-                    </select>
+                <div id="schoolTable" style="display:none;">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Student Name</th>
+                            <th>Date of Birth</th>
+                            <th>Class</th>
+                            <th>Score</th>
+                        </tr>
+                        {{#each students}}
+                        <tr>
+                            <td>1</td>
+                            <td>{{this.Name}}</td>
+                            <td>{{this.DOB}}</td>
+                            <td>6A.1</td>
+                            <td>{{this.DTB}}</td>
+                        </tr>
+                        {{/each}}
+                    </table>
                 </div>
-                <div class="pagination-info">
-                    1/1 of 1
+                <div id="gradeTable" style="display:none;">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Student Name</th>
+                            <th>Date of Birth</th>
+                            <th>Class</th>
+                            <th>Score</th>
+                        </tr>
+                        {{#each students}}
+                        <tr>
+                            <td>1</td>
+                            <td>{{this.Name}}</td>
+                            <td>{{this.DOB}}</td>
+                            <td>6A.1</td>
+                            <td>{{this.DTB}}</td>
+                        </tr>
+                        {{/each}}
+                    </table>
                 </div>
-                <div class="pagination-controls">
-                    <button>&lt;</button> <!-- Previous page -->
-                    <button>&gt;</button> <!-- Next page -->
+                <div id="classTable" style="display:none;">
+                    <table>
+                        <tr>
+                            <th></th>
+                            <th>Student Name</th>
+                            <th>Date of Birth</th>
+                            <th>Class</th>
+                            <th>Score</th>
+                        </tr>
+                        {{#each students}}
+                        <tr>
+                            <td>1</td>
+                            <td>{{this.Name}}</td>
+                            <td>{{this.DOB}}</td>
+                            <td>6A.1</td>
+                            <td>{{this.DTB}}</td>
+                        </tr>
+                        {{/each}}
+                    </table>
+                </div>
+                <div class="table-control d-inline-flex justify-content-start align-items-center">
+                    <div class="rows-per-page d-inline-flex">
+                        <label for="rows" class="align-self-center">Rows per page:</label>
+                        <select id="rows" name="rows">
+                            <option value="1">1</option>
+                            <option value="2">2</option>
+                            <option value="3">3</option>
+                            <option value="5">5</option>
+                        </select>
+                    </div>
+                    <div class="pagination-info">
+                        1/1 of 1
+                    </div>
+                    <div class="pagination-controls">
+                        <button>&lt;</button> <!-- Previous page -->
+                        <button>&gt;</button> <!-- Next page -->
+                    </div>
                 </div>
             </div>
         </div>
-            </div>
 
-        </div>
-        
+    </div>
+
     </div>
     <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
@@ -242,7 +241,7 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                    <button type="button" id="addButton" class="btn btn-primary" >Save changes</button>
+                    <button type="button" id="addButton" class="btn btn-primary">Save changes</button>
                 </div>
             </div>
         </div>
@@ -253,100 +252,139 @@
 
 
     <script>
-            document.getElementById('addButton').addEventListener('click', function () {
-                const nameStudent = document.getElementById('StudentName').value;
-                const className = document.getElementById('Class').value;
-                const violation = document.getElementById('Violation').value;
-                const date = document.getElementById('Date').value;
-                // Gửi POST request với dữ liệu đã nhập
-                fetch('http://localhost:3000/violation/vio/add', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json'},
-                    body: JSON.stringify({ nameStudent, className, violation, date })
+        document.getElementById('addButton').addEventListener('click', function () {
+            const nameStudent = document.getElementById('StudentName').value;
+            const className = document.getElementById('Class').value;
+            const violation = document.getElementById('Violation').value;
+            const date = document.getElementById('Date').value;
+            // Gửi POST request với dữ liệu đã nhập
+            fetch('http://localhost:3000/violation/vio/add', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ nameStudent, className, violation, date })
+            })
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok ' + response.statusText);
+                    }
+                    return response.json(); // Nếu máy chủ trả về dữ liệu không phải JSON, dòng này sẽ bị lỗi
                 })
-                    .then(response => {
-                        if (!response.ok) {
-                            throw new Error('Network response was not ok ' + response.statusText);
-                        }
-                        return response.json(); // Nếu máy chủ trả về dữ liệu không phải JSON, dòng này sẽ bị lỗi
-                    })
-                    .then(data => {
-                        if (data.success) {
-                            console.log('Thành công:', data.message);
-                        } else {
-                            console.error('ABC:', data.message);
-                        }
-                        $('#exampleModal').modal('hide'); 
-                        location.reload();
-                    })
-                    .catch((error) => {
-                        console.log(error)
-                        console.error('Loi:', error);
-                    });
+                .then(data => {
+                    if (data.success) {
+                        console.log('Thành công:', data.message);
+                    } else {
+                        console.error('ABC:', data.message);
+                    }
+                    $('#exampleModal').modal('hide');
+                    location.reload();
+                })
+                .catch((error) => {
+                    console.log(error)
+                    console.error('Loi:', error);
                 });
+        });
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-        const tabs = document.querySelectorAll('.tab-btn');
-        const allContent = document.querySelectorAll('.content');
-        const line = document.querySelector('.line');
+            const tabs = document.querySelectorAll('.tab-btn');
+            const allContent = document.querySelectorAll('.content');
+            const line = document.querySelector('.line');
 
-        function updateLine(tab) {
-            line.style.width = `${tab.offsetWidth}px`;
-            line.style.left = `${tab.offsetLeft}px`;
-            line.style.bottom = '-3px';
-        }
+            function updateLine(tab) {
+                line.style.width = `${tab.offsetWidth}px`;
+                line.style.left = `${tab.offsetLeft}px`;
+                line.style.bottom = '-3px';
+            }
 
-        tabs.forEach((tab, index) => {
-            tab.addEventListener('click', () => {
-                tabs.forEach((t, i) => {
-                    t.classList.remove('active');
-                    allContent[i].style.display = 'none';
+            tabs.forEach((tab, index) => {
+                tab.addEventListener('click', () => {
+                    tabs.forEach((t, i) => {
+                        t.classList.remove('active');
+                        allContent[i].style.display = 'none';
+                    });
+
+                    tab.classList.add('active');
+                    allContent[index].style.display = 'block';
+                    updateLine(tab);
                 });
-
-                tab.classList.add('active');
-                allContent[index].style.display = 'block';
-                updateLine(tab);
             });
+
+            if (allContent.length > 0) {
+                tabs[0].classList.add('active');
+                allContent[0].style.display = 'block';
+                updateLine(tabs[0]);
+            }
+        });
+    </script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const schoolRadio = document.getElementById('school');
+            const gradeRadio = document.getElementById('grade');
+            const classRadio = document.getElementById('class');
+
+            const gradeSelection = document.getElementById('gradeSelection');
+            const classSelection = document.getElementById('classSelection');
+
+            function updateSelectionDisplay() {
+                if (gradeRadio.checked) {
+                    gradeSelection.style.display = 'block';
+                    classSelection.style.display = 'none';
+                } else if (classRadio.checked) {
+                    gradeSelection.style.display = 'none';
+                    classSelection.style.display = 'block';
+                } else {
+                    gradeSelection.style.display = 'none';
+                    classSelection.style.display = 'none';
+                }
+            }
+
+            schoolRadio.addEventListener('change', updateSelectionDisplay);
+            gradeRadio.addEventListener('change', updateSelectionDisplay);
+            classRadio.addEventListener('change', updateSelectionDisplay);
+
+            // Initialize
+            updateSelectionDisplay();
         });
 
-        if (allContent.length > 0) {
-            tabs[0].classList.add('active');
-            allContent[0].style.display = 'block';
-            updateLine(tabs[0]);
-        }
-    });
     </script>
     <script>
-        document.addEventListener('DOMContentLoaded', function () {
-    const schoolRadio = document.getElementById('school');
-    const gradeRadio = document.getElementById('grade');
-    const classRadio = document.getElementById('class');
-
-    const gradeSelection = document.getElementById('gradeSelection');
-    const classSelection = document.getElementById('classSelection');
-
-    function updateSelectionDisplay() {
-        if (gradeRadio.checked) {
-            gradeSelection.style.display = 'block';
-            classSelection.style.display = 'none';
-        } else if (classRadio.checked) {
-            gradeSelection.style.display = 'none';
-            classSelection.style.display = 'block';
-        } else {
-            gradeSelection.style.display = 'none';
-            classSelection.style.display = 'none';
+        function updateURLWithSemester() {
+            const semesterSelect = document.getElementById('Semester');
+            selectedSemester = semesterSelect.value; // Lưu giá trị option đã chọn
+            localStorage.setItem('selectedSemester', selectedSemester); // Lưu vào LocalStorage
+            const currentUrl = new URL(window.location.href);
+            currentUrl.searchParams.set('semesterNum', selectedSemester);
+            window.location.href = currentUrl.href;
         }
-    }
 
-    schoolRadio.addEventListener('change', updateSelectionDisplay);
-    gradeRadio.addEventListener('change', updateSelectionDisplay);
-    classRadio.addEventListener('change', updateSelectionDisplay);
-
-    // Initialize
-    updateSelectionDisplay();
-});
-
+        document.addEventListener('DOMContentLoaded', function () {
+            const semesterSelect = document.getElementById('Semester');
+            semesterSelect.addEventListener('change', updateURLWithSemester);
+            const storedSemester = localStorage.getItem('selectedSemester');
+            if (storedSemester) {
+                semesterSelect.value = storedSemester;
+            }
+        });
+    </script>
+    <script>
+        function updateURLWithClassChoice() {
+            const classSelect = document.getElementById('classChoice');
+            const selectedClass = classSelect.value;
+            localStorage.setItem('selectedClass', selectedClass);
+            const currentUrl = new URL(window.location.href);
+            const params = new URLSearchParams(currentUrl.search);
+            params.set('classID', selectedClass);
+            // Sử dụng pushState để thay đổi URL mà không làm tải lại trang
+            history.pushState({}, '', `${currentUrl.pathname}?${params.toString()}`);
+        }
+        document.addEventListener('DOMContentLoaded', function () {
+            const classSelect = document.getElementById('classChoice');
+            classSelect.addEventListener('change', updateURLWithClassChoice);
+            const storedClass = localStorage.getItem('selectedClass');
+            if (storedClass) {
+                classSelect.value = storedClass;
+            }
+        });
     </script>
     <script>
         document.addEventListener('DOMContentLoaded', function() {

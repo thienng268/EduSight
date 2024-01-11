@@ -7,6 +7,7 @@ const Event = new Schema({
     Venue: String,
     Month: String,
     Description: String,
+    Avail: String,
     // managerID: { type: mongoose.Schema.Types.ObjectId, ref: 'Manager' },
     // classID: { type: mongoose.Schema.Types.ObjectId, ref: 'Class' },
 });

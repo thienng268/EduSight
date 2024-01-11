@@ -256,3 +256,9 @@ transition: all 0.3s ease-in-out;
   padding: 8px 14px;
 
 }
+.sem-label{
+  @include font-h6-extra-bold;
+}
+.custom-select{
+  border-radius: 20px;
+}

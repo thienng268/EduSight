@@ -124,14 +124,7 @@
                         });
                     </script>
 
-                    <script>
-                        function updateURLWithSemester() {
-                            const semesterNum = document.getElementById('Semester').value;
-                            const currentUrl = new URL(window.location.href);
-                            currentUrl.searchParams.set('semesterNum', semesterNum);
-                            window.location.href = currentUrl.href;
-                        }
-                    </script>
+                    
                     <script>
                         function exportToExcel() {
                         let tempTable = document.createElement('table');
@@ -151,6 +144,28 @@
                             const semesterNum = urlParams.get('semesterNum');
                             if (semesterNum) {
                                 document.getElementById('semesterTitle').textContent += ' ' + semesterNum;
+                            }
+                        });
+                    </script>
+                    <script>
+                        // Hàm xử lý khi select box thay đổi giá trị
+                        function updateURLWithSemester() {
+                            const semesterSelect = document.getElementById('Semester');
+                            selectedSemester = semesterSelect.value; // Lưu giá trị option đã chọn
+                            localStorage.setItem('selectedSemester', selectedSemester); // Lưu vào LocalStorage
+                            const currentUrl = new URL(window.location.href);
+                            currentUrl.searchParams.set('semesterNum', selectedSemester);
+                            window.location.href = currentUrl.href;
+                        }
+
+                        document.addEventListener('DOMContentLoaded', function () {
+                            const semesterSelect = document.getElementById('Semester');
+                            semesterSelect.addEventListener('change', updateURLWithSemester);
+
+                            // Lấy giá trị đã lưu từ LocalStorage (nếu có)
+                            const storedSemester = localStorage.getItem('selectedSemester');
+                            if (storedSemester) {
+                                semesterSelect.value = storedSemester;
                             }
                         });
                     </script>

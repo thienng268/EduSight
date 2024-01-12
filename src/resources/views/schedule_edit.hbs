@@ -20,8 +20,7 @@
         </div>
         <div class="tab-box d-flex justify-content-start">
             <button class="tab-btn">Schedule View</button>
-            <button class="tab-btn" disabled>Schedule List</button>
-            <button class="tab-btn" disabled>New Schedule</button>
+            
             <div class="line"></div>
         </div>
         <div class="content-box">
@@ -31,12 +30,15 @@
                         <div class="filter mb-3 d-flex align-items-center justify-content-between">
                             <div>
                                 <label for="filter" class="mr-1">Filter:</label>
-                                <select id="filter" name="rows" disabled>
-                                    <option value="1">Nguyen Hoang Giang</option>
+                                <select id="filter" name="rows">
                                     <option value="" disabled selected>Choose..</option>
+                                    <option value="all" >All</option>
+                                    {{#each listteacher}}
+                                        <option value="{{this._id}}">{{this.Name}}</option>
+                                    {{/each}}
                                 </select>
                             </div>
-                            <button id="saveButton" class="edit ml-auto">
+                            <button id="save" class="edit ml-auto">
                                     <img src="/img/edit.png" alt="Edit">
                                     Save
                                 </button>
@@ -134,175 +136,133 @@
                                 </tr>
                             </thead>
                             <!--START THE SCHEDULE -->
-                            <tbody class="scroll-content">
-                                <tr>
-                                    <td></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
+                            {{#each teacher}}
+                                <tbody data-schedule-id="{{this.scheduleID}}" class="scroll-content">
+                                    <tr>
+                                        <td>{{this.Name}}</td>
+                                        <td><input type="text" name="T2_M1" value="{{this.T2_M1}}"></td>
+                                        <td><input type="text" name="T2_M2" value="{{this.T2_M2}}"></td>
+                                        <td><input type="text" name="T2_M3" value="{{this.T2_M3}}"></td>
+                                        <td><input type="text" name="T2_M4" value="{{this.T2_M4}}"></td>
+                                        <td><input type="text" name="T2_M5" value="{{this.T2_M5}}"></td>
 
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
+                                        <td><input type="text" name="T2_A1" value="{{this.T2_A1}}"></td>
+                                        <td><input type="text" name="T2_A2" value="{{this.T2_A1}}"></td>
+                                        <td><input type="text" name="T2_A3" value="{{this.T2_A1}}"></td>
+                                        <td><input type="text" name="T2_A4" value="{{this.T2_A1}}"></td>
+                                        <td><input type="text" name="T2_A5" value="{{this.T2_A1}}"></td>
 
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
+                                        <td><input type="text" name="T3_M1" value="{{this.T3_M1}}"></td>
+                                        <td><input type="text" name="T3_M2" value="{{this.T3_M2}}"></td>
+                                        <td><input type="text" name="T3_M3" value="{{this.T3_M3}}"></td>
+                                        <td><input type="text" name="T3_M4" value="{{this.T3_M4}}"></td>
+                                        <td><input type="text" name="T3_M5" value="{{this.T3_M5}}"></td>
 
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
+                                        <td><input type="text" name="T3_A1" value="{{this.T3_A1}}"></td>
+                                        <td><input type="text" name="T3_A2" value="{{this.T3_A1}}"></td>
+                                        <td><input type="text" name="T3_A3" value="{{this.T3_A1}}"></td>
+                                        <td><input type="text" name="T3_A4" value="{{this.T3_A1}}"></td>
+                                        <td><input type="text" name="T3_A5" value="{{this.T3_A1}}"></td>
 
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                    <td><input type="text" name="" value=""></td>
-                                </tr>
-                            </tbody>
+                                        <td><input type="text" name="T4_M1" value="{{this.T4_M1}}"></td>
+                                        <td><input type="text" name="T4_M2" value="{{this.T4_M2}}"></td>
+                                        <td><input type="text" name="T4_M3" value="{{this.T4_M3}}"></td>
+                                        <td><input type="text" name="T4_M4" value="{{this.T4_M4}}"></td>
+                                        <td><input type="text" name="T4_M5" value="{{this.T4_M5}}"></td>
+
+                                        <td><input type="text" name="T4_A1" value="{{this.T4_A1}}"></td>
+                                        <td><input type="text" name="T4_A2" value="{{this.T4_A1}}"></td>
+                                        <td><input type="text" name="T4_A3" value="{{this.T4_A1}}"></td>
+                                        <td><input type="text" name="T4_A4" value="{{this.T4_A1}}"></td>
+                                        <td><input type="text" name="T4_A5" value="{{this.T4_A1}}"></td>
+                                        
+                                        <td><input type="text" name="T5_M1" value="{{this.T5_M1}}"></td>
+                                        <td><input type="text" name="T5_M2" value="{{this.T5_M2}}"></td>
+                                        <td><input type="text" name="T5_M3" value="{{this.T5_M3}}"></td>
+                                        <td><input type="text" name="T5_M4" value="{{this.T5_M4}}"></td>
+                                        <td><input type="text" name="T5_M5" value="{{this.T5_M5}}"></td>
+
+                                        <td><input type="text" name="T5_A1" value="{{this.T5_A1}}"></td>
+                                        <td><input type="text" name="T5_A2" value="{{this.T5_A1}}"></td>
+                                        <td><input type="text" name="T5_A3" value="{{this.T5_A1}}"></td>
+                                        <td><input type="text" name="T5_A4" value="{{this.T5_A1}}"></td>
+                                        <td><input type="text" name="T5_A5" value="{{this.T5_A1}}"></td>
+
+                                        <td><input type="text" name="T6_M1" value="{{this.T6_M1}}"></td>
+                                        <td><input type="text" name="T6_M2" value="{{this.T6_M2}}"></td>
+                                        <td><input type="text" name="T6_M3" value="{{this.T6_M3}}"></td>
+                                        <td><input type="text" name="T6_M4" value="{{this.T6_M4}}"></td>
+                                        <td><input type="text" name="T6_M5" value="{{this.T6_M5}}"></td>
+
+                                        <td><input type="text" name="T6_A1" value="{{this.T6_A1}}"></td>
+                                        <td><input type="text" name="T6_A2" value="{{this.T6_A1}}"></td>
+                                        <td><input type="text" name="T6_A3" value="{{this.T6_A1}}"></td>
+                                        <td><input type="text" name="T6_A4" value="{{this.T6_A1}}"></td>
+                                        <td><input type="text" name="T6_A5" value="{{this.T6_A1}}"></td>
+
+                                        <td><input type="text" name="T7_M1" value="{{this.T7_M1}}"></td>
+                                        <td><input type="text" name="T7_M2" value="{{this.T7_M2}}"></td>
+                                        <td><input type="text" name="T7_M3" value="{{this.T7_M3}}"></td>
+                                        <td><input type="text" name="T7_M4" value="{{this.T7_M4}}"></td>
+                                        <td><input type="text" name="T7_M5" value="{{this.T7_M5}}"></td>
+
+                                        <td><input type="text" name="T7_A1" value="{{this.T7_A1}}"></td>
+                                        <td><input type="text" name="T7_A2" value="{{this.T7_A1}}"></td>
+                                        <td><input type="text" name="T7_A3" value="{{this.T7_A1}}"></td>
+                                        <td><input type="text" name="T7_A4" value="{{this.T7_A1}}"></td>
+                                        <td><input type="text" name="T7_A5" value="{{this.T7_A1}}"></td>
+                                    </tr>
+                                </tbody>
+                            {{/each}}
                         </table>
                     </div>
                 </div>
             </div>
-            <div class="content">
-             <div class="list">
-                <table>
-                        <tr>
-                            <th></th>
-                            <th>Name</th>
-                            <th>Created Date</th>
-                            <th>Action</th>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>TKB_21/2-20/3_Dieu_chinh </td>
-                            <td>21/02/2023</td>
-                            <td class="d-flex">
-                                <button class="view">View</button>
-                                <button class="delete">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>TKB_21/2-20/3_Dieu_chinh </td>
-                            <td>21/02/2023</td>
-                            <td class="d-flex">
-                                <button class="view">View</button>
-                                <button class="delete">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>TKB_21/2-20/3_Dieu_chinh </td>
-                            <td>21/02/2023</td>
-                            <td class="d-flex">
-                                <button class="view">View</button>
-                                <button class="delete">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>TKB_21/2-20/3_Dieu_chinh </td>
-                            <td>21/02/2023</td>
-                            <td class="d-flex">
-                                <button class="view">View</button>
-                                <button class="delete">Delete</button>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td>1</td>
-                            <td>TKB_21/2-20/3_Dieu_chinh </td>
-                            <td>21/02/2023</td>
-                            <td class="d-flex">
-                                <button class="view">View</button>
-                                <button class="delete">Delete</button>
-                            </td>
-                        </tr>
-                 
-                 
-                </table>
-             </div>
-                <div class="table-control d-inline-flex justify-content-start align-items-center">
-        <div class="rows-per-page d-inline-flex">
-            <label for="rows" class="align-self-center">Rows per page:</label>
-            <select id="rows" name="rows">
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="5">5</option>
-                <option value="10" selected>10</option>
-            </select>
-        </div>
-        <div class="pagination-info">
-            1/1 of 1
-        </div>
-        <div class="pagination-controls">
-            <button>&lt;</button> <!-- Previous page -->
-            <button>&gt;</button> <!-- Next page -->
-        </div>
-    </div>
-            </div>
-            <div class="content">
-                <div class="uploadFile mt-3 d-flex flex-column align-items-center justify-content-center mx-auto">
-                    <img src="/img/document 1.svg" alt="Document Upload">
-                    <h6>List of Subjects, Classes, and Teachers</h6>
-                    <p>Select a file or drag and drop here</p>
-                    <p style="opacity: 50%;"></p>
-                    <form id="uploadForm" class="d-flex flex-column align-items-center" action="/schedule/process" method="post" enctype="multipart/form-data">
-                        <input type="file" name="file" accept=".xls,.xlsx" class="form-control-file" id="exampleFormControlFile1" style="display: none;">
-                        <span id="file-chosen" class="mb-1" style="opacity: 50%;">Excel file size no more than 50MB</span>
-                        <label for="exampleFormControlFile1" class="chooseFile">Choose File</label>
-                        <button type="submit" class="edit" id="viewScheduleButton">Upload Schedule!</button>
-                
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>    
+    <script>
+            document.getElementById('save').addEventListener('click', function() {
+            const scheduleRows = document.querySelectorAll('.scroll-content');
+
+            const schedulesToUpdate = Array.from(scheduleRows).map(row => {
+                const inputs = row.querySelectorAll('input');
+                const scheduleData = {
+                scheduleID: row.dataset.scheduleId,
+                };
+
+                inputs.forEach(input => {
+                const key = input.name;
+                scheduleData[key] = input.value;
+                });
+
+                return scheduleData;
+            });
+
+            fetch('/schedule/update_schedule', {
+                method: 'POST',
+                headers: {
+                'Content-Type': 'application/json',
+                // Add any other headers like authorization if needed
+                },
+                body: JSON.stringify(schedulesToUpdate)
+            })
+            .then(response => {
+                if (!response.ok) {
+                throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(updatedSchedules => {
+                console.log('Updated schedules:', updatedSchedules);
+                // Redirect here if needed or show a success message
+                window.location.href = '/schedule';
+            })
+            .catch(error => {
+                console.error('Error while updating schedules:', error);
+                // Handle errors here, such as showing a notification to the user
+            });
+            });
+
+
+    </script>      
     <script>
         document.addEventListener('DOMContentLoaded', function () {
         const tabs = document.querySelectorAll('.tab-btn');
